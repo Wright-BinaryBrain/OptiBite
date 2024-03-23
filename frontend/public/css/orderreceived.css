@@ -1,0 +1,17 @@
+.ordrecv-container {
+  max-width: 1440px;
+  width: 90%;
+  margin: 260px auto 70px auto;
+}
+
+.ordrecv-path {
+  margin-bottom: 50px;
+
+  font-family: "Nunito Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.005em;
+  color: #000000;
+}

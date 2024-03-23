@@ -1,0 +1,166 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "SabjiLand Backend",
+    "description": "",
+    "version": "0.0.1"
+  },
+  "paths": {
+    "/api/v1/register": {
+      "post": {
+        "summary": "User Register",
+        "tags": ["Admin"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/userRegister"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Request successfully executed"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Request not found"
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/api/v1/login": {
+      "post": {
+        "summary": "User Login",
+        "tags": ["Admin"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/userLogin"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Request successfully executed"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Request not found"
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/api/v1/whoami": {
+      "get": {
+        "summary": "User Detail",
+        "tags": ["Admin"],
+        "security": [
+          {
+            "bearerAuth": {
+              "$ref": "#/components/securitySchemes/bearerAuth"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successfully executed"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Request not found"
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/api/v1/logout": {
+      "get": {
+        "summary": "User Logout",
+        "tags": ["Admin"],
+        "responses": {
+          "200": {
+            "description": "Request successfully executed"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Request not found"
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "userRegister": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "email"
+          },
+          "password": {
+            "type": "string"
+          },
+          "contactNo1": {
+            "type": "string"
+          },
+          "contactNo2": {
+            "type": "string"
+          }
+        },
+        "required": ["name", "email", "password", "contactNo1", "contactNo2"]
+      },
+      "userLogin": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": ["email", "password"]
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "responses": {
+      "UnauthorizedError": {
+        "description": "Access token is missing or invalid"
+      }
+    }
+  }
+}

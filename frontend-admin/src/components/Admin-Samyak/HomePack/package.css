@@ -1,0 +1,335 @@
+.package-container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  color: black;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.package-content {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: none;
+  position: fixed;
+  width: 750px;
+  /* height: 942px; */
+  height: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
+  border-radius: 10px;
+  padding: 20px 70px 47px 60px;
+}
+
+/* .package-contatiner h2 {} */
+
+.top-section {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 24px;
+  justify-content: space-between;
+}
+
+.name-input {
+  display: flex;
+  flex-direction: column;
+  margin-right: 40px;
+}
+
+.name-input > label {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+.name-input > input {
+  width: 502px;
+  height: 54px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: #fff;
+  outline: none;
+}
+
+.package-image {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-up {
+  display: flex;
+  flex-direction: row;
+}
+
+.package-image > label {
+  margin-top: 20px;
+}
+
+.package-image > label > span {
+  color: black;
+  background-color: #d9d9d9;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 30px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.package-image > label > input {
+  display: none;
+}
+
+.package-product {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-search {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.product-search > label {
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28.8px;
+
+  margin-bottom: 16px;
+}
+
+.search-pp {
+  display: flex;
+  margin-right: 20px;
+  margin-bottom: 8px;
+  padding-left: 17px;
+  border: 1px solid #d9d9d9;
+  padding: 11px 4px 11px 15px;
+  width: 510px;
+
+  border-radius: 6px;
+  /* background: transparent
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E")
+      no-repeat 13px center; */
+}
+
+.search-pp input {
+  border: none;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 22px;
+  outline: none;
+  width: 300px;
+  margin-left: 0px;
+}
+
+.searchDrop {
+  position: absolute;
+  z-index: 999;
+  top: 43%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  width: 610px;
+  margin-top: 5px;
+  background-color: #ffffff;
+}
+
+.droprow {
+  padding: 5px 0 5px 16px;
+}
+
+.droprow:hover {
+  background-color: #f2f3f3;
+}
+
+.prod-table > table {
+  width: 100%;
+  height: 250px;
+  margin-bottom: 24px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: #fff;
+  text-align: center;
+  border-spacing: 0;
+}
+
+.prod-table > table > thead > tr > th {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.prod-table > table > tbody {
+  /* display: block; */
+  height: 200px;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.prod-table > table > thead > tr {
+  /* display: block;  */
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.prod-table > table > tbody > tr {
+  height: 80px;
+  width: 100%;
+  display: table-row;
+  /* table-layout: fixed; */
+}
+
+.prod-table > table > tbody > tr > td {
+  height: 50px;
+  padding-top: 6px;
+  margin: 0;
+  align-items: center;
+}
+
+.save-butn > button {
+  width: 102px;
+  height: 47px;
+  border: none;
+  border-radius: 7px;
+  background: var(--brand-color-2, #be4217);
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.06),
+    0px 0px 4px 0px rgba(0, 0, 0, 0.04);
+  color: white;
+}
+
+/*  Delete Prompt CSS */
+
+/* .deletePrompt {
+    border: solid 1px #5d606d;
+    font-size: 20px;
+    font-weight: 600;
+    height: 117px;
+    padding: 10px 25px 40px;
+    background: #ffffff;
+    border-radius: 10px;
+    z-index: 15;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.deletePrompt p {
+    margin-bottom: 8px;
+}
+
+.deletePrompt span {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.promptBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 87%;
+    position: absolute;
+    bottom: 20px;
+}
+
+.promptBtn button {
+    height: 42px;
+    width: 120px;
+    background: transparent;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 10px;
+    border: solid 1px #5d606d;
+}
+
+.promptDel {
+    background-color: #aa2e2a !important;
+    border: solid 1px #aa2e2a !important;
+    color: whitesmoke;
+} */
+
+/*//////////////////////////////////*/
+
+.package-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  margin-top: 50px;
+}
+
+.leftContent {
+  align-self: flex-start;
+}
+
+.rightContent {
+  align-self: flex-end;
+}
+
+.package-top button {
+  width: 135px;
+  height: 48px;
+  background: #be4217;
+  border-radius: 7px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+.package-table {
+  border: 1px solid rgba(193, 190, 190, 0.6);
+  border-radius: 8px;
+  padding: 0px 10px;
+}
+
+.package-table table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.package-table > table > thead {
+  border-bottom: 1px solid rgba(193, 190, 190, 0.5);
+}
+.edit-btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.edit-btn button {
+  border-radius: 7px;
+  background: var(--brand-color-2, #71b646);
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.06),
+    0px 0px 4px 0px rgba(0, 0, 0, 0.04);
+  color: white;
+  width: 71px;
+  height: 36px;
+  border: none;
+}
+
+.del-btn button {
+  border: none;
+  box-shadow: none;
+  background-color: white;
+  margin-left: 20px;
+}

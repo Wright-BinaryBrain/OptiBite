@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "productFamily": "Organic Honey"
+  },
+  {
+    "id": 2,
+    "productFamily": "Fresh Vegetables"
+  },
+  {
+    "id": 3,
+    "productFamily": "Fresh Fruits"
+  },
+  {
+    "id": 4,
+    "productFamily": "Dairy"
+  },
+  {
+    "id": 5,
+    "productFamily": "Spices"
+  },
+  {
+    "id": 6,
+    "productFamily": "Organic Honey"
+  },
+  {
+    "id": 7,
+    "productFamily": "Fresh Vegetables"
+  },
+  {
+    "id": 8,
+    "productFamily": "Fresh Fruits"
+  },
+  {
+    "id": 9,
+    "productFamily": "Dairy"
+  },
+  {
+    "id": 10,
+    "productFamily": "Spices"
+  }
+]

@@ -1,0 +1,75 @@
+.billing-details-heading{
+    color: #000;
+    font-family: Nunito Sans;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.16px;
+    text-transform: capitalize;
+}
+
+.billing-details-content{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.billing-details-content-data{
+    display: flex;
+    gap: 20px;
+}
+.billing-details-content-data-heading{
+    color: var(--grey, #5D606D);
+    font-family: Nunito Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.08px;
+    text-transform: capitalize;
+    width: 50%;
+}
+.billing-details-content-data-contents{
+    color: #333;
+    font-family: Nunito Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.08px;
+    text-transform: capitalize;
+    width: 50%;
+}
+.billing-details-content-data-contents span{
+    cursor: pointer;
+    margin: 0 0 0 5px;
+}
+
+.billing-details-content-data-contents input{
+    width: 75%;
+}
+
+@media screen and (max-width: 885px){
+    .billing-details{
+        width: 100%;
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width:  450px) {
+    .place-order-summary{
+      width: 100%;
+    }
+    
+  }
+
+  @media screen and (max-width:890px) and (min-width: 490px) {
+    .billing-details-content-data-heading{
+        width: 135px;
+    }
+    .billing-details-content-data{
+        width: 90%;
+    }
+  }

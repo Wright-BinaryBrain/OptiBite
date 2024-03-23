@@ -1,0 +1,328 @@
+.wishlist-container {
+  max-width: 1440px;
+  width: 90%;
+  margin: 260px auto 70px auto;
+}
+
+.wishlist-path {
+  margin-bottom: 50px;
+
+  font-family: "Nunito Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.005em;
+  color: #000000;
+}
+
+.wishlist-title {
+  font-family: "Nunito Sans", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 44px;
+  color: #000000;
+}
+
+.wishlist-table-container {
+  max-height: 524px;
+  overflow-y: scroll;
+}
+
+.wishlist-table-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.wishlist-table-container::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+  margin: 40px 0;
+}
+
+.wishlist-table-container::-webkit-scrollbar-thumb {
+  background-color: #be4217;
+  border-radius: 100px;
+}
+
+.wishlist-table {
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.wishlist-table,
+.wishlist-table-row,
+.wishlist-table-data {
+  border: 1px solid #d9d9d9;
+  border-collapse: collapse;
+  border-right: none;
+  border-left: none;
+}
+
+.wishlist-table-heading {
+  font-family: "Nunito Sans", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.005em;
+  color: #333333;
+  text-align: center;
+  height: 80px;
+}
+
+.wishlist-table-row {
+  padding: 50px 0;
+}
+
+.wishlist-table-data {
+  padding: 5px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.wishlist-checkbox {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
+.wishlist-image {
+  width: 120px;
+  height: 100px;
+  object-fit: cover;
+  margin: 0;
+}
+
+.wishlist-product-name {
+  font-family: "Nunito Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.005em;
+  color: #000000;
+}
+
+.wishlist-product-stock {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 130%;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  color: #216600;
+}
+
+.wishlist-product-price {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.005em;
+  color: #747474;
+}
+
+.wishlist-remove-item {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.005em;
+  text-decoration-line: underline;
+  color: #333333;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.wishlist-qty-btn-container {
+  position: relative;
+  display: inline-block;
+}
+
+.wishlist-date-added {
+  font-family: "Nunito Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.005em;
+  color: #000000;
+}
+
+.wishlist-cart-button {
+  display: inline-block;
+  background-color: #be4217;
+  width: 152px;
+  height: 40px;
+  position: relative;
+  border: 2px solid #be4217;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.06);
+  border-radius: 5px;
+  overflow: hidden;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.submit-wishlist-cart {
+  background-color: transparent;
+  border: none;
+  color: transparent;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.wishlist-cart-btn-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+  color: #ffffff;
+  pointer-events: none;
+}
+
+.wishlist-buttons {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.wishlist-continue-shopping {
+  width: 197px;
+  height: 42px;
+  position: relative;
+  border: 2px solid #434343;
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.04))
+    drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.06));
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  font-family: "Nunito Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  color: #333333;
+}
+
+.wishlist-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wishlist-bottom-cart-button {
+  display: inline-block;
+  background-color: #be4217;
+  width: 177px;
+  height: 42px;
+  position: relative;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.06);
+  border: 2px solid #be4217;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.bottom-button-margin {
+  margin-right: 20px;
+}
+
+.submit-wishlist-bottom-cart {
+  background-color: transparent;
+  border: none;
+  color: transparent;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.wishlist-bottom-cart-btn-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  font-family: "Nunito Sans", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.005em;
+  color: #ffffff;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.wishlist-recently-viewed-titles {
+  max-width: 1440px;
+  margin: 70px auto 50px auto;
+  padding-left: 40px;
+  text-align: left;
+
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 0.005em;
+  color: #000000;
+}
+
+@media only screen and (max-width: 800px) {
+  .wishlist-container {
+    margin: 100px auto 70px auto;
+  }
+}
+
+@media only screen and (max-width: 675px) {
+  .wishlist-buttons {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 434px) {
+  .wishlist-buttons-container {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .bottom-button-margin {
+    margin-right: 0;
+  }
+}

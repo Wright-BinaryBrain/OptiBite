@@ -1,0 +1,29 @@
+{
+  "adminUsers": [
+    {
+      "id": 1,
+      "username": "prashant",
+      "password": "maharjan"
+    },
+    {
+      "id": 2,
+      "username": "rockey",
+      "password": "maharjan"
+    },
+    {
+      "email": "prashant",
+      "password": "maharjan",
+      "id": 3
+    },
+    {
+      "email": "prashant",
+      "password": "maharjan",
+      "id": 4
+    },
+    {
+      "email": "abc",
+      "password": "def",
+      "id": 5
+    }
+  ]
+}

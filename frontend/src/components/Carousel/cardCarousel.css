@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Playfair+Display:wght@700&display=swap");
+:root {
+  --orange: #be4217;
+  --green: #71b646;
+  --white: #fff;
+}
+
+.rec-slider-container {
+  background-color: #f2f2f2;
+  border-radius: 25px;
+}
+.rec-carousel-wrapper {
+  margin-top: 24px;
+}
+.card {
+  height: 177px;
+  width: 164px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent !important;
+  border: none;
+}
+.card-items {
+  height: 131px;
+  width: 137px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.product-icon {
+  width: 96px;
+  height: 96px;
+}
+.product-category {
+  font-family: "Nunito Sans";
+  font-size: 16px;
+  text-transform: capitalize;
+}
+.rec-arrow {
+  all: unset !important;
+  font-size: 1.6em !important;
+}
+.rec-arrow:hover:enabled,
+.rec:focus:enabled {
+  all: unset !important;
+  font-size: 1.6em !important;
+  background-color: transparent !important;
+}
+.rec-dot {
+  display: none !important;
+}
+@media screen and (max-width: 768px) {
+  .product-icon {
+    width: 70px;
+    height: 70px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .rec-carousel-wrapper {
+    height: 100px;
+  }
+  .product-icon {
+    width: 60px;
+    height: 60px;
+  }
+  .product-category {
+    font-size: 14px;
+  }
+  .rec-slider-container {
+    display: flex;
+    align-items: center;
+  }
+}

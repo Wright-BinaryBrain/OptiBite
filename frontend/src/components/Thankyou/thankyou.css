@@ -1,0 +1,265 @@
+.thankyou-box {
+  display: flex;
+  width: 100%;
+  height: 107px;
+  padding: 16px 24px;
+  border: 2px solid #216600;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+
+  color: #216600;
+  font-family: Nunito Sans;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.thankyou-container {
+  max-width: 1440px;
+  width: 90%;
+  margin: 260px auto 70px auto;
+}
+
+.thankyou-path {
+  margin-bottom: 50px;
+
+  font-family: "Nunito Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.005em;
+  color: #000000;
+}
+
+.thankyou-details-heading {
+  color: #000;
+  font-family: Nunito Sans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: uppercase;
+}
+.thankyou-order-container {
+  height: auto;
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.thankyou-order-invoice {
+  /* display: flex; */
+  width: 735px;
+
+  border: 1px solid var(--image-background-color, #d9d9d9);
+  /* padding: 24px; */
+}
+
+.thankyou-userdetails {
+  height: auto;
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  padding: 24px 0 0 24px;
+  flex-wrap: wrap;
+  flex-direction: column;
+  /* position: relative; */
+}
+
+.thankyou-userdetails-data {
+  display: flex;
+  gap: 20px;
+}
+.thankyou-user-heading {
+  width: 135px;
+}
+
+.thankyou-invoice {
+  width: 100%;
+  /* outline: 1px solid black; */
+  height: auto;
+  margin: 40px 0 0 0;
+}
+.invoice-header {
+  width: 100%;
+  /* outline: 1px solid black; */
+  display: flex;
+}
+
+.invoice-header-product {
+  display: flex;
+  width: 393px;
+  padding: 10px 30px;
+  border: 1px solid var(--image-background-color, #d9d9d9);
+  align-items: center;
+  gap: 10px;
+  /* outline: 1px solid black; */
+  justify-content: center;
+}
+
+.invoice-header-quality {
+  display: flex;
+  width: 99px;
+  padding: 10px;
+  border: 1px solid var(--image-background-color, #d9d9d9);
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+.invoice-header-total {
+  display: flex;
+  width: 243px;
+  padding: 10px;
+  border: 1px solid var(--image-background-color, #d9d9d9);
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+.invoice-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid var(--image-background-color, #d9d9d9);
+}
+.invoice-ordered-items {
+  display: flex;
+}
+.invoice-item-name {
+  width: 393px;
+  padding: 10px 30px;
+  /* border: 1px solid var(--image-background-color, #D9D9D9); */
+  align-items: center;
+  /* gap: 10px; */
+  /* outline: 1px solid black; */
+  /* justify-content: center; */
+}
+
+.invoice-item-qty {
+  width: 99px;
+  padding: 10px;
+  /* border: 1px solid var(--image-background-color, #D9D9D9); */
+  text-align: center;
+}
+
+.invoice-item-price {
+  width: 243px;
+  padding: 10px;
+  /* border: 1px solid var(--image-background-color, #D9D9D9); */
+  text-align: center;
+}
+.invoice-deliver-container,
+.invoice-total-container {
+  width: 100%;
+  display: flex;
+}
+.invoice-deliver,
+.invoice-total {
+  display: flex;
+  width: 492px;
+  padding: 10px 30px;
+  border: 1px solid var(--image-background-color, #d9d9d9);
+  align-items: center;
+  gap: 10px;
+}
+.invoice-deliver-fee,
+.invoice-total-fee {
+  display: flex;
+  width: 243px;
+  padding: 10px;
+  border: 1px solid var(--image-background-color, #d9d9d9);
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.thankyou-order-summary {
+  width: 393px;
+  height: 255px;
+  display: flex;
+  /* overflow: hidden; */
+  padding: 24px 20px 17px 20px;
+  border-radius: 10px;
+  border: 2px solid var(--brand-color-3, #216600);
+  flex-direction: column;
+  /* justify-content: flex-end; */
+  /* align-items: flex-start; */
+  /* gap: 24px; */
+}
+
+.thankyou-order-itemsCount {
+  color: var(--body-text-color, #747474);
+  font-family: Nunito Sans;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 130%;
+  letter-spacing: 0.06px;
+}
+.thankyou-order-details-content {
+  display: flex;
+  justify-content: space-between;
+}
+.thankyou-order-details-heading {
+  color: var(--body-text-color, #747474);
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.08px;
+  text-transform: capitalize;
+}
+.thankyou-order-details-price {
+  color: #333;
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.08px;
+}
+.thankyou-order-summary-total {
+  display: flex;
+  justify-content: space-between;
+}
+
+.thankyou-order-summary-total-heading {
+  color: #000;
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.08px;
+  text-transform: capitalize;
+}
+.thankyou-order-summary-total-price {
+  color: #000;
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.08px;
+  text-transform: capitalize;
+}
+
+@media screen and (max-width: 800px) {
+  .thankyou-order-invoice {
+    width: 100%;
+  }
+  .thankyou-container {
+    margin: 100px auto 70px auto;
+  }
+  .thankyou-path{
+    margin-bottom: 40px;
+  }
+  .thankyou-box{
+    margin-bottom: 40px;
+  }
+}

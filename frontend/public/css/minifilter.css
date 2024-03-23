@@ -1,0 +1,118 @@
+.mini-filter-overlay {
+    position: fixed !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    z-index: 99999;
+    /* pointer-events: none; */
+    overflow: hidden !important;
+    transition: background 0.4s ease-out 0s, backdrop-filter 0.4s ease-out 0s;
+}
+  
+.mini-filter-overlay2 {
+    width: 1000px;
+    min-width: 100px;
+    max-width: 1000px;
+    /* width: 300px;
+    min-width: 100px;
+    max-width: 300px; */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    position: relative !important;
+    transform: translateX(100%);
+    overflow: hidden !important;
+    background-color: transparent !important;
+}
+  
+.increase-filter-overlay2 {
+    animation: expand-filter-overlay2 0.4s ease-out 0s;
+    animation-fill-mode: forwards;
+}
+  
+@keyframes expand-filter-overlay2 {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+  
+.decrease-filter-overlay2 {
+    animation: contract-filter-overlay2 0.4s linear 0s;
+    animation-fill-mode: forwards;
+}
+  
+@keyframes contract-filter-overlay2 {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.mini-filter{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    z-index: 999999;
+    padding: 5px;
+    padding: 120px 30px 80px 30px;
+    overflow-y: scroll;
+}
+
+.mini-filter::-webkit-scrollbar {
+    width: 6px;
+}
+
+.mini-filter::-webkit-scrollbar-track {
+    background-color: #e4e4e4;
+    border-radius: 100px;
+    margin: 40px 0;
+}
+
+.mini-filter::-webkit-scrollbar-thumb {
+    background-color: #be4217;
+    border-radius: 100px;
+}
+
+
+.close-popup-mini-filter {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    border: 2px solid #f40009 !important;
+    border-radius: 50%;
+    right: 30px !important;
+    top: 80px !important;
+    cursor: pointer;
+    background-color: white;
+    transition: background-color 0.2s;
+  }
+
+  .close-popup-mini-filter:hover {
+    /* background-color: #f40009; */
+    transition: background-color 0.2s;
+  }
+  
+  .close-popup-mini-filter:hover > .close-cross1 {
+    background-color: #f40009;
+    transform: translate(-50%, -50%) rotate(0deg);
+    transition: background-color 0.5s, transform 0.3s;
+  }
+  
+  .close-popup-mini-filter:hover > .close-cross2 {
+    background-color: #f40009;
+    transform: translate(-50%, -50%) rotate(180deg);
+    transition: background-color 0.5s, transform 0.3s;
+  }

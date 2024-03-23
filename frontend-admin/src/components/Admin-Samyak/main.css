@@ -1,0 +1,367 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 41px;
+  color: rgba(0, 0, 0, 0.8);
+
+  margin-bottom: 25px;
+}
+
+.filter {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 45px;
+}
+
+.filter-item {
+  margin-right: 12px;
+}
+
+.filter-item button {
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid #71b646;
+  border-radius: 50px;
+  color: #71b646;
+
+  padding: 6px 17px 6px 17px;
+}
+
+.active button {
+  background-color: #71b646;
+  color: white;
+}
+
+.sort {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search {
+  display: flex;
+  margin-right: 20px;
+  margin-bottom: 8px;
+  padding-left: 17px;
+  border: 1px solid #d9d9d9;
+  padding: 11px 4px 11px 15px;
+
+  border-radius: 6px;
+  /* background: transparent
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat 13px center; */
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20.6px;
+  width: 20.6px;
+}
+
+.search input {
+  border: none;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 22px;
+  outline: none;
+  width: 27vw;
+  margin-left: 0px;
+}
+
+::placeholder {
+  color: #00000066;
+}
+
+.top-btns {
+  display: flex;
+}
+
+.top-btns button {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.06);
+  border-radius: 7px;
+  border: none;
+  /* padding: 12.5px 29px 12.5px 13px; */
+  height: 47px;
+  width: 102px;
+  cursor: pointer;
+}
+
+.top-btns svg {
+  margin-left: 11px;
+}
+
+.move-right {
+  align-items: end;
+}
+
+.export-btn button {
+  background-color: #71b646;
+}
+
+.add-btn button {
+  background-color: #be4217;
+  margin-left: 11px;
+}
+
+.paginate {
+  font-size: 1.25rem;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-bottom: 2%;
+  margin-top: 2%;
+}
+
+.paginate select {
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+
+  padding: 5px 18px 4px 10px;
+  margin-right: 10px;
+}
+
+.paginate button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  background-color: white;
+  border: none;
+  margin-left: 17px;
+}
+
+.table-container {
+  /* width: 100%; */
+  border: 1px solid rgba(193, 190, 190, 0.6);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1% 2%;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  text-align: left !important;
+}
+
+.table-container table {
+  width: 100%;
+  text-align: center;
+}
+
+.head-row tr {
+  border-bottom: 1px solid rgba(193, 190, 190, 0.5);
+}
+
+.table-container th {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: left !important;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(193, 190, 190, 0.5);
+}
+
+.table-container th button {
+  border: none;
+  background-color: white;
+  margin-left: 10.54px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.table-container td {
+  text-align: left;
+
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+
+  padding: 18px 0 20px 0;
+  border-bottom: 1px solid rgba(193, 190, 190, 0.5);
+}
+
+.table-container > table > tbody > tr > td > select {
+  border-radius: 7px;
+  border: none;
+  width: min-content;
+  padding: 8.5px 0;
+  padding-left: 10px;
+  padding-right: 4px;
+  outline: none;
+}
+
+.table-container > table > tbody > tr > td > select > option[value="Unpaid"],
+.table-container
+  > table
+  > tbody
+  > tr
+  > td
+  > select
+  > option[value="Unassigned"],
+.table-container > table > tbody > tr > td > select > option[value="Cancelled"],
+.table-container > table > tbody > tr > td > select > option[value="Refunded"] {
+  background-color: #f1f1f1;
+  color: black;
+  text-decoration: none;
+}
+
+.table-container > table > tbody > tr > td > select > option[value="Paid"],
+.table-container
+  > table
+  > tbody
+  > tr
+  > td
+  > select
+  > option[value="Completed"] {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.table-container
+  > table
+  > tbody
+  > tr
+  > td
+  > select
+  > option[value="In Process"],
+.table-container
+  > table
+  > tbody
+  > tr
+  > td
+  > select
+  > option[value="Being Delivered"],
+.table-container > table > tbody > tr > td > select > option[value="Pending"] {
+  background-color: #f1f1f1;
+  color: black;
+}
+.Pending {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2713%27 height=%2713%27 fill=%27currentColor%27 class=%27bi bi-chevron-down%27 viewBox=%270 0 16 16%27 id=%27IconChangeColor%27%3E%3Cpath fill-rule=%27evenodd%27 d=%27M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z%27 id=%27mainIconPathAttribute%27 stroke-width=%271%27 stroke=%27%230e0d0d%27 fill=%27%23ffffff%27%3E%3C/path%3E%3C/svg%3E") !important;
+}
+.Paid,
+.Completed {
+  background-color: #71b646;
+  color: white;
+}
+
+.Unpaid,
+.Refunded,
+.Cancelled,
+.Unassigned {
+  background-color: #be4217;
+  color: white;
+}
+
+.InProcress,
+.Pending,
+.BeingDelivered {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.no-border {
+  border: 0px;
+  padding-left: 10px;
+  padding-right: 7px;
+}
+
+.drop {
+  background-color: white;
+  border: none;
+  padding: 3px 4px 0 4px;
+  border: 1px solid white;
+  border-radius: 15px;
+}
+
+.drop:hover {
+  border: 1px solid #0000001a;
+  background-color: #0000001a;
+}
+
+.dropdown {
+  flex-direction: column;
+  position: absolute;
+  overflow: auto;
+  z-index: 1;
+  right: 90px;
+
+  border: 1px solid #d9d5d5;
+  border-radius: 2px;
+}
+
+.drop-btn {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+
+  padding: 6px 30px 6px 12px;
+
+  border: none;
+  background-color: white;
+}
+
+.drop-btn:hover {
+  background-color: #f1f1f1;
+}
+
+.drop-line {
+  border: 1px solid #d9d5d5;
+  height: 0;
+  margin: 0 6px 0 6px;
+}
+
+.prompt-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+.head-row > th {
+  cursor: pointer;
+}
