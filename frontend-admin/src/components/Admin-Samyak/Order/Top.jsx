@@ -10,7 +10,7 @@ function Top(props) {
   const rowSize = 50;
   const fetch = async () => {
     const totalData = await axios.get(
-      `https://backend.sabjiland.com/api/v1/getAllOrder`,
+      `http://localhost:4000/api/v1/getAllOrder`,
       { params: { orderStatus: status }, withCredentials: true }
     );
     setCount(totalData.data.data?.length);

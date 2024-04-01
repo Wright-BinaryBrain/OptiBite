@@ -30,7 +30,7 @@ export default function AddCustomers({
 
   const ref = useRef();
 
-  const url = `https://backend.sabjiland.com/api/v1/${route}`;
+  const url = `http://localhost:4000/api/v1/${route}`;
 
   useEffect(() => {
     console.log(type);

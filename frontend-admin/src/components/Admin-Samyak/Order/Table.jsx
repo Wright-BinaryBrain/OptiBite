@@ -37,13 +37,10 @@ function Table(props) {
       if (props.orderStatus !== "") {
         params.orderStatus = props.orderStatus;
       }
-      const res = await axios.get(
-        "https://backend.sabjiland.com/api/v1/getAllOrder",
-        {
-          params,
-          withCredentials: true,
-        }
-      );
+      const res = await axios.get("http://localhost:4000/api/v1/getAllOrder", {
+        params,
+        withCredentials: true,
+      });
       const dataProp = {
         data: res.data.data,
         count: res.data.count,
@@ -72,7 +69,7 @@ function Table(props) {
 
   useEffect(() => {
     axios
-      .get(`https://backend.sabjiland.com/api/v1/getAllUser`, {
+      .get(`http://localhost:4000/api/v1/getAllUser`, {
         withCredentials: true,
       })
       .then((res) => setUserData(res.data.data))
@@ -81,7 +78,7 @@ function Table(props) {
 
   function deleteOrder(id) {
     axios
-      .delete(`https://backend.sabjiland.com/api/v1/deleteOrder/${id}`, {
+      .delete(`http://localhost:4000/api/v1/deleteOrder/${id}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -98,7 +95,7 @@ function Table(props) {
 
   useEffect(() => {
     axios
-      .get(`https://backend.sabjiland.com/api/v1/getProducts`, {
+      .get(`http://localhost:4000/api/v1/getProducts`, {
         withCredentials: true,
       })
       .then((res) =>
@@ -118,7 +115,7 @@ function Table(props) {
           username = guestName;
         } else if (userId) {
           const userEntry = await axios.get(
-            `https://backend.sabjiland.com/api/v1/getUser/${userId}`,
+            `http://localhost:4000/api/v1/getUser/${userId}`,
             {
               withCredentials: true,
             }

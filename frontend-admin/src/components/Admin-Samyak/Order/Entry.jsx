@@ -42,7 +42,7 @@ function Entry(props) {
   //   const fetchData = async () => {
   //     try {
   //       const response = await fetch(
-  //         `https://backend.sabjiland.comapi/v1/getAllRider`
+  //         `http://localhost:4000api/v1/getAllRider`
   //       );
   //       const json = await response.json();
   //       setRiders(json.data);
@@ -69,7 +69,7 @@ function Entry(props) {
         ? { paymentStatus: value }
         : { orderStatus: value };
     axios
-      .patch(`https://backend.sabjiland.com/api/v1/updateOrder/${id}`, odata, {
+      .patch(`http://localhost:4000/api/v1/updateOrder/${id}`, odata, {
         withCredentials: true,
       })
       .then((res) => {

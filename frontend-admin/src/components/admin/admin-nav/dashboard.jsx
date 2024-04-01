@@ -11,7 +11,7 @@ export default function Dashboard() {
   //   console.log(loggedInUser);
   // }, []);
   // const navigate = useNavigate();
-  // axios.get("https://backend.sabjiland.com/api/v1/whoami").then((res) => {
+  // axios.get("http://localhost:4000/api/v1/whoami").then((res) => {
   //   console.log(res);
   // });
   return (

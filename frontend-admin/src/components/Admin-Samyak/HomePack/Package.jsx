@@ -13,7 +13,7 @@ function Package() {
   const [delId, setDelId] = useState("");
   function getPackageApi() {
     axios
-      .get(`https://backend.sabjiland.com/api/v1/getAllPackage`, {
+      .get(`http://localhost:4000/api/v1/getAllPackage`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -45,7 +45,7 @@ function Package() {
   function deletePackage(id) {
     console.log(id);
     axios
-      .delete(`https://backend.sabjiland.com/api/v1/deletePackage/${id}`, {
+      .delete(`http://localhost:4000/api/v1/deletePackage/${id}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -65,8 +65,8 @@ function Package() {
         setEid={setEid}
       />
       <div className="package-top">
-          <h1 className="admin-title">Package</h1>
-          <button onClick={showPack}>Add Package</button>
+        <h1 className="admin-title">Package</h1>
+        <button onClick={showPack}>Add Package</button>
       </div>
       <div className="package-table">
         <table>
@@ -99,7 +99,7 @@ function Package() {
                   <tr id="item._id">
                     <td>
                       <img
-                        src={`https://backend.sabjiland.com/uploads/${item.image}`}
+                        src={`http://localhost:4000/uploads/${item.image}`}
                         height={"48px"}
                         width={"48px"}
                       />
@@ -110,27 +110,27 @@ function Package() {
                       <button onClick={() => editPack(item._id)}>Edit</button>
                       {/* </td> */}
                       <div className="del-btn">
-                      <button
-                        onClick={() => {
-                          setDelPrompt(true);
-                          setDelId(item._id);
-                        }}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          fill="none"
+                        <button
+                          onClick={() => {
+                            setDelPrompt(true);
+                            setDelId(item._id);
+                          }}
                         >
-                          <path
-                            stroke="#FF3434"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6"
-                          />
-                        </svg>
-                      </button>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            fill="none"
+                          >
+                            <path
+                              stroke="#FF3434"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6"
+                            />
+                          </svg>
+                        </button>
                       </div>
                     </td>
                   </tr>

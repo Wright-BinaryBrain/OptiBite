@@ -131,15 +131,14 @@
 
 // export default LoginForm;
 
-
 // Prashant's code
-import { useState,useRef,useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 // import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
-import { AiOutlineEyeInvisible,AiOutlineEye } from "react-icons/ai";
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 const LoginForm = (props) => {
   const navigate = useNavigate();
@@ -147,51 +146,51 @@ const LoginForm = (props) => {
   const [verified, setVerified] = useState(true);
   const [loginDetails, setLoginDetails] = useState({
     loginFullname: "",
-    loginPassword: ""
+    loginPassword: "",
   });
- 
-
 
   function handleLoginForm(event) {
-    
     const { name, value } = event.target;
     setLoginDetails((prevLoginDetails) => {
       return {
         ...prevLoginDetails,
-        [name]: value
+        [name]: value,
       };
     });
   }
   function submitLoginForm(event) {
     event.preventDefault();
-    
+
     axios
-    .post('https://backend.sabjiland.com/api/v1/login',{
-      email: loginDetails.loginFullname,
-      password: loginDetails.loginPassword
-    },{withCredentials: true})
-    .then((res)=>{
-props.setIsLoggedIn(true)
-props.setUserData(res.data.user);
+      .post(
+        "http://localhost:4000/api/v1/login",
+        {
+          email: loginDetails.loginFullname,
+          password: loginDetails.loginPassword,
+        },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        props.setIsLoggedIn(true);
+        props.setUserData(res.data.user);
 
         setLoginDetails({
           loginFullname: "",
-          loginPassword: ""
+          loginPassword: "",
         });
         toast.success("Logged In", {
           position: toast.POSITION.TOP_RIGHT,
         });
-        navigate("/")
-       props.close();
-      console.log(res);
-      
-    })
-    .catch((err)=>{
-      console.log(err.response.data.message);
-      toast.error(err.response.data.message, {
-        position: toast.POSITION.TOP_RIGHT,
+        navigate("/");
+        props.close();
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err.response.data.message);
+        toast.error(err.response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
       });
-    })
 
     console.log(loginDetails);
     // alert(
@@ -200,21 +199,16 @@ props.setUserData(res.data.user);
     //     "\nPassword:" +
     //     loginDetails.loginPassword
     // );
-   
+
     // captcha.current.reset();
     // setVerified(false);
-
-
   }
 
-  
   const [showPassword, setShowPassword] = useState(false);
 
   function TogglePassword() {
-    
     // setShowPassword((prev) => !prev);
     setShowPassword((prev) => !prev);
-    
   }
   const [token, setToken] = useState(null);
   const captchaRef = useRef(null);
@@ -226,13 +220,10 @@ props.setUserData(res.data.user);
   //   captchaRef.current.execute();
   // };
   useEffect(() => {
-
-    if (token){
-
+    if (token) {
       console.log(`hCaptcha Token: ${token}`);
       setVerified(true);
     }
-
   }, [token]);
   return (
     <div className="login-container">
@@ -248,7 +239,6 @@ props.setUserData(res.data.user);
             value={loginDetails.loginFullname}
             // style={{boxShadow:fullNameColor}}
           />
-          
         </div>
         <div className="input-box">
           <input
@@ -259,17 +249,11 @@ props.setUserData(res.data.user);
             placeholder="Password"
             onChange={handleLoginForm}
             value={loginDetails.loginPassword}
-            
           />
-        
-  <i className="toggleLoginPassword" onClick={TogglePassword}>
-    {showPassword ? (
-      <AiOutlineEyeInvisible />
-    ) : (
-      <AiOutlineEye />
-    )}
-  </i>
 
+          <i className="toggleLoginPassword" onClick={TogglePassword}>
+            {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+          </i>
         </div>
 
         {/* <a
@@ -281,16 +265,14 @@ props.setUserData(res.data.user);
           Forgot Password ?
         </a> */}
 
-
-        
         {/* recaptcha component from google is used */}
         {/* site key: currently used key is only form test purspose available freely */}
         <HCaptcha
-        sitekey="a50e48ed-2f79-4d9a-93fd-1a2d7e89f4dc"
-        // onLoad={onLoad}
-        onVerify={setToken}
-        ref={captchaRef}
-      />
+          sitekey="a50e48ed-2f79-4d9a-93fd-1a2d7e89f4dc"
+          // onLoad={onLoad}
+          onVerify={setToken}
+          ref={captchaRef}
+        />
         <div className="buttons">
           <button
             type="submit"
@@ -332,7 +314,6 @@ props.setUserData(res.data.user);
         </div> */}
         <p className="dont">
           Don't have an account? &nbsp;
-         
           <span className="signUp" onClick={props.handleSignUpSide}>
             Sign Up
           </span>

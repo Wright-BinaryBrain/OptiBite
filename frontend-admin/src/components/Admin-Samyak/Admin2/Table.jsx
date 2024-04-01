@@ -8,7 +8,7 @@ function Table(props) {
 
   const getApiData = async () => {
     axios
-      .get("https://backend.sabjiland.com/api/v1/getAllUser", {
+      .get("http://localhost:4000/api/v1/getAllUser", {
         withCredentials: true,
       })
       .then((res) => {
@@ -51,7 +51,7 @@ function Table(props) {
 
   function deleteAdmin(id) {
     axios
-      .delete(`https://backend.sabjiland.com/api/v1/deleteUser/${id}`, {
+      .delete(`http://localhost:4000/api/v1/deleteUser/${id}`, {
         withCredentials: true,
       })
       .then((res) => {

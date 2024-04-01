@@ -13,7 +13,7 @@ function EditPopUp(props) {
 
   useEffect(() => {
     axios
-      .get(`https://backend.sabjiland.com/api/v1/getUser/${props.id}`, {
+      .get(`http://localhost:4000/api/v1/getUser/${props.id}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -48,7 +48,7 @@ function EditPopUp(props) {
 
     axios
       .patch(
-        `https://backend.sabjiland.com/api/v1/updateUser/${props.id}`,
+        `http://localhost:4000/api/v1/updateUser/${props.id}`,
         {
           name: editAdmin.aName,
           email: editAdmin.aEmail,
@@ -92,7 +92,9 @@ function EditPopUp(props) {
           </button>
         </div>
         <form onSubmit={handleSubmit}>
-          <label>Name <span style={{ color: "red" }}>*</span></label>
+          <label>
+            Name <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type={"text"}
             onChange={handleInput}
@@ -100,7 +102,9 @@ function EditPopUp(props) {
             name="aName"
             required
           />
-          <label>Password <span style={{ color: "red" }}>*</span></label>
+          <label>
+            Password <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type={"password"}
             onChange={handleInput}
@@ -108,7 +112,9 @@ function EditPopUp(props) {
             name="aPassword"
             required
           />
-          <label>Address <span style={{ color: "red" }}>*</span></label>
+          <label>
+            Address <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type={"text"}
             onChange={handleInput}
@@ -116,7 +122,9 @@ function EditPopUp(props) {
             name="aAddress"
             required
           />
-          <label>Contact no. <span style={{ color: "red" }}>*</span></label>
+          <label>
+            Contact no. <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type={"text"}
             onChange={handleInput}
@@ -131,7 +139,9 @@ function EditPopUp(props) {
             value={editAdmin.aOptional}
             name="aOptional"
           />
-          <label>Email <span style={{ color: "red" }}>*</span></label>
+          <label>
+            Email <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type={"email"}
             onChange={handleInput}

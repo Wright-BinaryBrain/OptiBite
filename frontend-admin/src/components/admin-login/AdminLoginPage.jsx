@@ -26,7 +26,7 @@ const AdminLoginPage = () => {
 
   useEffect(() => {
     axios
-      .get("https://backend.sabjiland.com/api/v1/whoami", {
+      .get("http://localhost:4000/api/v1/whoami", {
         withCredentials: true,
       })
       .then((res) => {
@@ -48,7 +48,7 @@ const AdminLoginPage = () => {
     setLoading(true);
     axios
       .post(
-        "https://backend.sabjiland.com/api/v1/login",
+        "http://localhost:4000/api/v1/login",
         {
           email: adminLoginDetails.adminUsername,
           password: adminLoginDetails.adminPassword,
@@ -74,13 +74,13 @@ const AdminLoginPage = () => {
         if (res.data.success === true) {
           setLoading(false);
           axios
-            .get("https://backend.sabjiland.com/api/v1/whoami", {
+            .get("http://localhost:4000/api/v1/whoami", {
               withCredentials: true,
             })
             .then((res) => {
               console.log("success", res);
               if (res.data.user.role === "customer") {
-                axios.get("https://backend.sabjiland.com/api/v1/logout", {
+                axios.get("http://localhost:4000/api/v1/logout", {
                   withCredentials: true,
                 });
                 toast.error("You are not authorized");

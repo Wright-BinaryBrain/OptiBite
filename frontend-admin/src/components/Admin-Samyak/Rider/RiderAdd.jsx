@@ -55,7 +55,7 @@ function RiderAdd(props) {
 
     axios
       .post(
-        "https://backend.sabjiland.com/api/v1/postRider",
+        "http://localhost:4000/api/v1/postRider",
         {
           riderName: addRider.rName,
           contact: addRider.rContact,

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Entry from "./Entry";
 // import data from "./riderData";
 import axios from "../Axios";
-import _ from "lodash"
+import _ from "lodash";
 
 function Table(props) {
   const [count, setCount] = useState();
@@ -16,13 +16,10 @@ function Table(props) {
         rowsPerPage: props.selected,
       };
 
-      const res = await axios.get(
-        "https://backend.sabjiland.com/api/v1/getAllRider",
-        {
-          params,
-          withCredentials: true,
-        }
-      );
+      const res = await axios.get("http://localhost:4000/api/v1/getAllRider", {
+        params,
+        withCredentials: true,
+      });
       console.log(res);
       const dataProp = {
         data: res.data.data,

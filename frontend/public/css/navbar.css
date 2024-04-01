@@ -48,6 +48,7 @@ nav::-webkit-scrollbar {
 
 .nav-header-logo {
   display: inline-block;
+  height: 85px;
 }
 
 .nav-category-position {
@@ -112,69 +113,67 @@ nav::-webkit-scrollbar {
 
 /* @media only screen and (min-width: 800.1px) { */
 
-  
-
-  /* #nav1:hover,
+/* #nav1:hover,
   #nav2:hover,
   #nav3:hover,
   #nav4:hover {
     color: #0058dd;
   } */
 
-  .nav-line {
-    position: absolute;
-    width: 0%;
-    height: 10%;
-    background-color: #646464;
-  }
+.nav-line {
+  position: absolute;
+  width: 0%;
+  height: 10%;
+  background-color: #646464;
+}
 
-  .nav-line1 {
-    left: 100%;
-    top: 0;
-    transition: all 0.2s;
-    background-color: #be4217;
-  }
+.nav-line1 {
+  left: 100%;
+  top: 0;
+  transition: all 0.2s;
+  background-color: #be4217;
+}
 
-  .nav-line2 {
-    left: 0%;
-    top: 100%;
-    transition: width 0.2s;
-    background-color: #be4217;
-  }
+.nav-line2 {
+  left: 0%;
+  top: 100%;
+  transition: width 0.2s;
+  background-color: #be4217;
+}
 
-  #nav1,
-  #nav2,
-  #nav3,
-  #nav4,
-  #nav5,
-  #nav6,
-  #nav7,
-  #nav8,
-  #nav9,
-  #nav10 {
-    color: black;
-    transition: color 0.2s;
-  }
+#nav1,
+#nav2,
+#nav3,
+#nav4,
+#nav5,
+#nav6,
+#nav7,
+#nav8,
+#nav9,
+#nav10 {
+  color: black;
+  transition: color 0.2s;
+}
 
-  .nav-links.active{
-    color: #be4217 !important;
-  }
+.nav-links.active {
+  color: #be4217 !important;
+}
 
-  #nav1:hover,
-  #nav2:hover,
-  #nav3:hover,
-  #nav4:hover,
-  #nav5:hover,
-  #nav6:hover,
-  #nav7:hover,
-  #nav8:hover,
-  #nav9:hover,
-  #nav10:hover {
-    color: #be4217;
-    transition: color 0.2s;
-  }
+#nav1:hover,
+#nav2:hover,
+#nav3:hover,
+#nav4:hover,
+#nav5:hover,
+#nav6:hover,
+#nav7:hover,
+#nav8:hover,
+#nav9:hover,
+#nav10:hover {
+  color: #be4217;
+  transition: color 0.2s;
+}
 
-  /* #nav1:hover > .nav-line,
+/* #nav1:hover > .nav-line,
   #nav2:hover > .nav-line,
   #nav3:hover > .nav-line,
   #nav4:hover > .nav-line,
@@ -362,6 +361,6 @@ nav::-webkit-scrollbar {
     position: absolute;
     left: 45% !important;
     top: 50%;
-    transform: translate(-45%, -50%)!important;
+    transform: translate(-45%, -50%) !important;
   }
 }

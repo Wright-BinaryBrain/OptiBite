@@ -22,9 +22,9 @@ export default function AddCategory({
   const [family, setFamily] = useState("");
   const [type, setType] = useState("");
   const [data, setData] = useState([]);
-  const productUrl = `https://backend.sabjiland.com/api/v1/getAllProductFamily`;
+  const productUrl = `http://localhost:4000/api/v1/getAllProductFamily`;
 
-  const url = `https://backend.sabjiland.com/api/v1/${route}`;
+  const url = `http://localhost:4000/api/v1/${route}`;
   useEffect(() => {
     setCategory(oldCategory);
     setFamily(oldFamily);

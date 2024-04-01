@@ -97,7 +97,7 @@ function AddOrder(props) {
   useEffect(() => {
     if (postUser) {
       axios
-        .post("https://backend.sabjiland.com/api/v1/postOrder", postUser, {
+        .post("http://localhost:4000/api/v1/postOrder", postUser, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -134,7 +134,7 @@ function AddOrder(props) {
   //Fetch data for product dropdown
   useEffect(() => {
     axios
-      .get(`https://backend.sabjiland.com/api/v1/getProducts`, {
+      .get(`http://localhost:4000/api/v1/getProducts`, {
         params: {
           keyword: search,
         },
@@ -149,7 +149,7 @@ function AddOrder(props) {
   // Fetch data for rider
   useEffect(() => {
     axios
-      .get(`https://backend.sabjiland.com/api/v1/getAllRider?keyword=`)
+      .get(`http://localhost:4000/api/v1/getAllRider?keyword=`)
       .then((res) => setRider(res.data.data))
       .catch((err) => console.log(err.message));
   }, [props.showAdd]);
@@ -157,7 +157,7 @@ function AddOrder(props) {
   //Fetch data for customer
   useEffect(() => {
     axios
-      .get(`https://backend.sabjiland.com/api/v1/getAllUser?keyword=`, {
+      .get(`http://localhost:4000/api/v1/getAllUser?keyword=`, {
         withCredentials: true,
       })
       .then((res) => setUserData(res.data.data))
@@ -504,7 +504,7 @@ function AddOrder(props) {
                           <tr key={dataT._id}>
                             <td>
                               <img
-                                src={`https://backend.sabjiland.com/uploads/${dataT.image[0]}`}
+                                src={`http://localhost:4000/uploads/${dataT.image[0]}`}
                                 alt=""
                                 height="100px"
                                 width="100px"

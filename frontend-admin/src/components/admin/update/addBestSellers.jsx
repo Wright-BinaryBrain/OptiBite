@@ -16,7 +16,7 @@ function AddBestSellers({ totalData, ...props }) {
 
   console.log(totalData);
   useEffect(() => {
-    const url = `https://backend.sabjiland.com/api/v1/getProducts`;
+    const url = `http://localhost:4000/api/v1/getProducts`;
     // const url2 = `http://192.168.101.11:4004/bestSeller`;
     const fetchData = async () => {
       try {
@@ -74,7 +74,7 @@ function AddBestSellers({ totalData, ...props }) {
   //     // console.log(jsonS);
   //     // jsonS = JSON.stringify(jsonData);
   //     axios
-  //       .post(`https://backend.sabjiland.com/api/v1/postBestSeller`, bestSellerData, {
+  //       .post(`http://localhost:4000/api/v1/postBestSeller`, bestSellerData, {
   //         withCredentials: true,
   //       })
   //       .then(() => {
@@ -101,7 +101,7 @@ function AddBestSellers({ totalData, ...props }) {
           console.log(bestSellerData);
 
           await axios.post(
-            "https://backend.sabjiland.com/api/v1/postBestSeller",
+            "http://localhost:4000/api/v1/postBestSeller",
             bestSellerData,
             {
               withCredentials: true,
@@ -188,7 +188,7 @@ function AddBestSellers({ totalData, ...props }) {
                     return (
                       <td>
                         <img
-                          src={`https://backend.sabjiland.com/uploads/${entry[accessor]}`}
+                          src={`http://localhost:4000/uploads/${entry[accessor]}`}
                           alt=""
                         />
                       </td>

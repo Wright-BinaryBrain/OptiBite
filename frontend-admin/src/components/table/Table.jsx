@@ -83,12 +83,12 @@ export default function Table({
 
   const fetchData = async () => {
     try {
-      // if (url === "https://backend.sabjiland.com/api/v1/getProducts") {
+      // if (url === "http://localhost:4000/api/v1/getProducts") {
       //   console.log("here");
 
-      if (url === "https://backend.sabjiland.com/api/v1/getAllUser") {
+      if (url === "http://localhost:4000/api/v1/getAllUser") {
         const response = await axios.get(
-          `https://backend.sabjiland.com/api/v1/getAllUser`,
+          `http://localhost:4000/api/v1/getAllUser`,
           {
             params: {
               keyword: searchKeyword,

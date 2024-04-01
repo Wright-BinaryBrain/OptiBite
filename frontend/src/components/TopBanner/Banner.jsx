@@ -14,7 +14,7 @@ const Banner = () => {
 
   const getAllData = () => {
     axios
-      .get("https://backend.sabjiland.com/api/v1/getAllAd")
+      .get("http://localhost:4000/api/v1/getAllAd")
       .then((res) => {
         // console.log(res.data.data);
         setImageKoLink(res.data.data);
@@ -33,7 +33,7 @@ const Banner = () => {
           <Link to={image.url}>
           <img
             className="d-block w-100 img-height"
-            src={`https://backend.sabjiland.com/uploads/${image.image[0]}`}
+            src={`http://localhost:4000/uploads/${image.image[0]}`}
             alt="image"
           />
           </Link>

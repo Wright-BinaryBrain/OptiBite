@@ -59,10 +59,10 @@ export default function AddProducts({
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://backend.sabjiland.com/api/v1/getAllProductFamily`
+          `http://localhost:4000/api/v1/getAllProductFamily`
         );
         const response2 = await fetch(
-          `https://backend.sabjiland.com/api/v1/getAllProductType`
+          `http://localhost:4000/api/v1/getAllProductType`
         );
         const json = await response.json();
         const json2 = await response2.json();
@@ -120,7 +120,7 @@ export default function AddProducts({
   console.log(pimg);
   function handleSubmit(event) {
     event.preventDefault();
-    const url = `https://backend.sabjiland.com/api/v1/postProduct`;
+    const url = `http://localhost:4000/api/v1/postProduct`;
 
     const data = new FormData(event.target);
     const imgData = pimg;
@@ -190,16 +190,12 @@ export default function AddProducts({
       // let jsonS = JSON.stringify(jsonData);
       data.append("image", pimg[0]);
       axios
-        .patch(
-          `https://backend.sabjiland.com/api/v1/updateProduct/${id}`,
-          data,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-            withCredentials: true,
-          }
-        )
+        .patch(`http://localhost:4000/api/v1/updateProduct/${id}`, data, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true,
+        })
         .then(() => {
           toggleRefresh();
           close(false);

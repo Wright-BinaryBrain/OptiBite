@@ -33,7 +33,7 @@ function OrderEdit(props) {
   useEffect(() => {
     if (props.id !== "") {
       axios
-        .get(`https://backend.sabjiland.com/api/v1/getOrder/${props.id}`, {
+        .get(`http://localhost:4000/api/v1/getOrder/${props.id}`, {
           withCredentials: true,
         })
         .then((res) => {
@@ -68,7 +68,7 @@ function OrderEdit(props) {
         .catch((err) => console.log(err));
     }
     axios
-      .get(`https://backend.sabjiland.com/api/v1/getAllUser`, {
+      .get(`http://localhost:4000/api/v1/getAllUser`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -78,7 +78,7 @@ function OrderEdit(props) {
       .catch((err) => console.log(err));
 
     axios
-      .get(`https://backend.sabjiland.com/api/v1/getAllRider`, {
+      .get(`http://localhost:4000/api/v1/getAllRider`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -90,7 +90,7 @@ function OrderEdit(props) {
   useEffect(() => {
     if (orderData !== []) {
       axios
-        .get(`https://backend.sabjiland.com/api/v1/getProducts`, {
+        .get(`http://localhost:4000/api/v1/getProducts`, {
           withCredentials: true,
         })
         .then((res) => {
@@ -117,7 +117,7 @@ function OrderEdit(props) {
   useEffect(() => {
     if (riderId !== "") {
       axios
-        .get(`https://backend.sabjiland.com/api/v1/getRider/${riderId}`)
+        .get(`http://localhost:4000/api/v1/getRider/${riderId}`)
         .then((res) => {
           setDisplayD((prevV) => {
             return {
@@ -133,7 +133,7 @@ function OrderEdit(props) {
   useEffect(() => {
     if (userId !== "") {
       axios
-        .get(`https://backend.sabjiland.com/api/v1/getUser/${userId}`, {
+        .get(`http://localhost:4000/api/v1/getUser/${userId}`, {
           withCredentials: true,
         })
         .then((res) => {
@@ -151,7 +151,7 @@ function OrderEdit(props) {
 
   useEffect(() => {
     axios
-      .get(`https://backend.sabjiland.com/api/v1/getProducts`, {
+      .get(`http://localhost:4000/api/v1/getProducts`, {
         params: {
           keyword: search,
         },
@@ -294,7 +294,7 @@ function OrderEdit(props) {
     if (postData.riderId) {
       axios
         .patch(
-          `https://backend.sabjiland.com/api/v1/updateOrder/${props.id}`,
+          `http://localhost:4000/api/v1/updateOrder/${props.id}`,
           postData,
           {
             withCredentials: true,
@@ -524,7 +524,7 @@ function OrderEdit(props) {
                           <tr key={dataT._id}>
                             <td>
                               <img
-                                src={`https://backend.sabjiland.com/uploads/${dataT.image[0]}`}
+                                src={`http://localhost:4000/uploads/${dataT.image[0]}`}
                                 alt=""
                                 height="100px"
                                 width="100px"

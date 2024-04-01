@@ -37,7 +37,7 @@ export default function BestSellers() {
   const [edible, setEdible] = useState("");
   const [desc, setDesc] = useState();
 
-  const url = `https://backend.sabjiland.com/api/v1/${urlData}`;
+  const url = `http://localhost:4000/api/v1/${urlData}`;
   const [refresh, setRefresh] = useState(false);
   const [productId, setProductId] = useState();
   const [products, setProducts] = useState([]);
@@ -59,7 +59,7 @@ export default function BestSellers() {
   const fetchProducts = async () => {
     try {
       const response = await axios.get(
-        `https://backend.sabjiland.com/api/v1/getProducts`
+        `http://localhost:4000/api/v1/getProducts`
       );
       setProducts(response.data.data);
     } catch (error) {

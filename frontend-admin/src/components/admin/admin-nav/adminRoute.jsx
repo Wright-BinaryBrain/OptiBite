@@ -75,7 +75,7 @@ export default function AdminRoute(props) {
   }, [expirationTime]);
 
   axios
-    .get("https://backend.sabjiland.com/api/v1/whoami", {
+    .get("http://localhost:4000/api/v1/whoami", {
       withCredentials: true,
     })
     .then((res) => {
@@ -96,7 +96,7 @@ export default function AdminRoute(props) {
 
   const logOut = () => {
     axios
-      .get("https://backend.sabjiland.com/api/v1/logout", {
+      .get("http://localhost:4000/api/v1/logout", {
         withCredentials: true,
       })
       .then((res) => {

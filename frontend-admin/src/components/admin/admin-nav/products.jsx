@@ -45,7 +45,7 @@ export default function Products() {
 
   const [success, setSuccess] = useState({ method: "", state: false });
 
-  const url = `https://backend.sabjiland.com/api/v1/getProducts`;
+  const url = `http://localhost:4000/api/v1/getProducts`;
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -69,7 +69,7 @@ export default function Products() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `https://backend.sabjiland.com/api/v1/getProducts`
+        `http://localhost:4000/api/v1/getProducts`
       );
       setdata(response.data.data);
     } catch (error) {
@@ -153,7 +153,7 @@ export default function Products() {
   // }
 
   // useEffect(() => {
-  //   fetch("https://backend.sabjiland.com/products")
+  //   fetch("http://localhost:4000/products")
   //     .then((response) => {
   //       return response.json();
   //     })

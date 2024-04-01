@@ -89,7 +89,7 @@ const UploadAds = ({
                 <img
                   src={
                     // !isBlobURL(url.image)
-                    `https://backend.sabjiland.com/uploads/${url.image}`
+                    `http://localhost:4000/uploads/${url.image}`
                     // : url
                   }
                   alt={`Image ${index + 1}`}
@@ -174,9 +174,7 @@ const UploadAds = ({
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        `https://backend.sabjiland.com/api/v1/${url}`
-      );
+      const response = await axios.get(`http://localhost:4000/api/v1/${url}`);
       setdata(response.data.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -255,12 +253,9 @@ const UploadAds = ({
     const updatedImages = data[index];
     console.log(updatedImages);
     axios
-      .delete(
-        `https://backend.sabjiland.com/api/v1/deleteAd/${updatedImages._id}`,
-        {
-          withCredentials: true,
-        }
-      )
+      .delete(`http://localhost:4000/api/v1/deleteAd/${updatedImages._id}`, {
+        withCredentials: true,
+      })
       .then((res) => {
         console.log(res);
       })
@@ -297,7 +292,7 @@ const UploadAds = ({
       });
 
       await axios
-        .post("https://backend.sabjiland.com/api/v1/postAd", formData, {
+        .post("http://localhost:4000/api/v1/postAd", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

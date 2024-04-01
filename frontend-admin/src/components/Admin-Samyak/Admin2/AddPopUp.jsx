@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "../Axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function AddPopUp(props) {
   const [addAdmin, setAddAdmin] = useState({
@@ -28,7 +28,14 @@ function AddPopUp(props) {
     event.preventDefault();
     // console.log(addAdmin);
 
-    if (!addAdmin.aName || !addAdmin.aPassword || !addAdmin.aCPassword || !addAdmin.aAddress || !addAdmin.aContact || !addAdmin.aEmail) {
+    if (
+      !addAdmin.aName ||
+      !addAdmin.aPassword ||
+      !addAdmin.aCPassword ||
+      !addAdmin.aAddress ||
+      !addAdmin.aContact ||
+      !addAdmin.aEmail
+    ) {
       toast.error("Please fill in all required fields! *");
       return; // Exit the function if validation fails
     }
@@ -42,7 +49,7 @@ function AddPopUp(props) {
       console.log("not");
       axios
         .post(
-          "https://backend.sabjiland.com/api/v1/postUser",
+          "http://localhost:4000/api/v1/postUser",
           {
             name: addAdmin.aName,
             email: addAdmin.aEmail,
@@ -56,17 +63,16 @@ function AddPopUp(props) {
             withCredentials: true,
           }
         )
-        .then(res => {
-          console.log(res)
+        .then((res) => {
+          console.log(res);
           CloseAdd();
         })
         .catch((err) => console.log(err));
-    }
-    else {
+    } else {
       console.log("empty");
       axios
         .post(
-          "https://backend.sabjiland.com/api/v1/postUser",
+          "http://localhost:4000/api/v1/postUser",
           {
             name: addAdmin.aName,
             email: addAdmin.aEmail,
@@ -79,8 +85,8 @@ function AddPopUp(props) {
             withCredentials: true,
           }
         )
-        .then(res => {
-          console.log(res)
+        .then((res) => {
+          console.log(res);
           CloseAdd();
         })
         .catch((err) => console.log(err));
@@ -100,7 +106,7 @@ function AddPopUp(props) {
       aContact: "",
       aOptional: "",
       aEmail: "",
-    })
+    });
   }
 
   return (
@@ -127,7 +133,9 @@ function AddPopUp(props) {
           </button>
         </div>
         <form onSubmit={handleSubmit}>
-          <label>Name <span style={{ color: "red" }}>*</span></label>
+          <label>
+            Name <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type={"text"}
             onChange={handleInput}
@@ -135,7 +143,9 @@ function AddPopUp(props) {
             name="aName"
             required
           />
-          <label>Password <span style={{ color: "red" }}>*</span></label>
+          <label>
+            Password <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type={"password"}
             onChange={handleInput}
@@ -144,7 +154,9 @@ function AddPopUp(props) {
             minLength="6"
             required
           />
-          <label>Confirm Password <span style={{ color: "red" }}>*</span></label>
+          <label>
+            Confirm Password <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type={"password"}
             onChange={handleInput}
@@ -152,7 +164,9 @@ function AddPopUp(props) {
             name="aCPassword"
             required
           />
-          <label>Address <span style={{ color: "red" }}>*</span></label>
+          <label>
+            Address <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type={"text"}
             onChange={handleInput}
@@ -160,7 +174,9 @@ function AddPopUp(props) {
             name="aAddress"
             required
           />
-          <label>Contact no. <span style={{ color: "red" }}>*</span></label>
+          <label>
+            Contact no. <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type={"text"}
             onChange={handleInput}
@@ -175,7 +191,9 @@ function AddPopUp(props) {
             value={addAdmin.aOptional}
             name="aOptional"
           />
-          <label>Email <span style={{ color: "red" }}>*</span></label>
+          <label>
+            Email <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type={"email"}
             onChange={handleInput}

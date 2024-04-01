@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import WishLists from "./WishLists.js";
 import QuantityBtn from "../Products/QuantityBtn.jsx";
 import ProductDiv from "../Products/ProductDiv.jsx";
@@ -14,25 +14,32 @@ function WishList(props) {
   var productDetails = useRef([]);
 
   function getProduct() {
-    axios.get("https://backend.sabjiland.com/api/v1/getMyFavourite",{withCredentials: true})
-    .then((res)=> {
-      productId.current = res.data.data.productId;
-      for (let i = 0; i < productId.current.length; i++) {
-        axios.get("https://backend.sabjiland.com/api/v1/getProduct/" + String(productId.current[i]))
-        .then((res)=> {
-          productDetails.current.push(res.data.data)
-          if (i + 1 === productId.current.length) {
-            setFavoriteList([...productDetails.current]);
-          }
-        })
-        .catch((err)=>console.log(err))
-      }
-      // setFavoriteList([...productDetails.current]);
-    })
-    .catch((err)=>console.log(err))
+    axios
+      .get("http://localhost:4000/api/v1/getMyFavourite", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        productId.current = res.data.data.productId;
+        for (let i = 0; i < productId.current.length; i++) {
+          axios
+            .get(
+              "http://localhost:4000/api/v1/getProduct/" +
+                String(productId.current[i])
+            )
+            .then((res) => {
+              productDetails.current.push(res.data.data);
+              if (i + 1 === productId.current.length) {
+                setFavoriteList([...productDetails.current]);
+              }
+            })
+            .catch((err) => console.log(err));
+        }
+        // setFavoriteList([...productDetails.current]);
+      })
+      .catch((err) => console.log(err));
 
     axios
-      .get("https://backend.sabjiland.com/api/v1/getProducts", {
+      .get("http://localhost:4000/api/v1/getProducts", {
         params: { rowsPerPage: 4 },
       })
       .then((res) => setProductList(res.data.data))
@@ -42,13 +49,13 @@ function WishList(props) {
     getProduct();
   }, []);
 
-  function updateWishlist (productIdList){
+  function updateWishlist(productIdList) {
     // console.log("PassedList = ",productIdList);
-    console.log("Test this list = ",productIdList);
+    console.log("Test this list = ", productIdList);
     // productDetails.current = [];
     if (productIdList.length !== 0) {
       // for (let i = 0; i < productIdList.length; i++) {
-      //   Promise.all(axios.get("https://backend.sabjiland.com/api/v1/getProduct/" + String(productIdList[i])))
+      //   Promise.all(axios.get("http://localhost:4000/api/v1/getProduct/" + String(productIdList[i])))
       //   .then((res)=> {
       //     productDetails.current.push(res.data.data)
       //     if (i + 1 === productIdList.length) {
@@ -59,19 +66,18 @@ function WishList(props) {
       //   .catch((err)=>console.log(err))
       // }
 
-      const fetchPromises = productIdList.map(itemValue =>
-        axios.get(`https://backend.sabjiland.com/api/v1/getProduct/${itemValue}`)
+      const fetchPromises = productIdList.map((itemValue) =>
+        axios.get(`http://localhost:4000/api/v1/getProduct/${itemValue}`)
       );
-    
+
       Promise.all(fetchPromises)
-        .then(responses => {
-          const newProductDetails = responses.map(res => res.data.data);
-          console.log("newProductDetails =",newProductDetails);
+        .then((responses) => {
+          const newProductDetails = responses.map((res) => res.data.data);
+          console.log("newProductDetails =", newProductDetails);
           setFavoriteList([...newProductDetails]);
         })
-        .catch(err => console.log(err));
-    }
-    else {
+        .catch((err) => console.log(err));
+    } else {
       setFavoriteList([...productIdList]);
     }
   }
@@ -82,56 +88,68 @@ function WishList(props) {
   // }, [changeWishlist]);
 
   function removeWishHandler(itemValue) {
-    axios.get("https://backend.sabjiland.com/api/v1/getMyFavourite",{withCredentials: true})
-    .then((res)=> {
-      productId.current = res.data.data.productId;
-      for (let i = 0; i < productId.current.length; i++) {
-        if (productId.current[i] === String(itemValue._id)) {
-          productId.current.splice(i, 1);
-          break;
-        }
-      }
-      // productId.current=[];
-      axios.patch("https://backend.sabjiland.com/api/v1/updateFavourite",{"productId": productId.current},{withCredentials: true})
-      .then((res) => {
-        // console.log(productId.current); 
-        updateWishlist(productId.current);
-        props.setDetectWishlistChange((prevValue) => !prevValue);
+    axios
+      .get("http://localhost:4000/api/v1/getMyFavourite", {
+        withCredentials: true,
       })
-      .catch((err)=>console.log(err))
-    })
-    .catch((err)=> console.log(err))
+      .then((res) => {
+        productId.current = res.data.data.productId;
+        for (let i = 0; i < productId.current.length; i++) {
+          if (productId.current[i] === String(itemValue._id)) {
+            productId.current.splice(i, 1);
+            break;
+          }
+        }
+        // productId.current=[];
+        axios
+          .patch(
+            "http://localhost:4000/api/v1/updateFavourite",
+            { productId: productId.current },
+            { withCredentials: true }
+          )
+          .then((res) => {
+            // console.log(productId.current);
+            updateWishlist(productId.current);
+            props.setDetectWishlistChange((prevValue) => !prevValue);
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
   }
 
   function deleteAllHandler() {
-    axios.patch("https://backend.sabjiland.com/api/v1/updateFavourite",{"productId": []},{withCredentials: true})
+    axios
+      .patch(
+        "http://localhost:4000/api/v1/updateFavourite",
+        { productId: [] },
+        { withCredentials: true }
+      )
       .then((res) => {
         // updateWishlist(productId.current);
         setFavoriteList([]);
         props.setDetectWishlistChange((prevValue) => !prevValue);
       })
-      .catch((err)=> {
-        if(err.response.data.message === "You are not logged in") {
+      .catch((err) => {
+        if (err.response.data.message === "You are not logged in") {
           alert("Please login to add items in favorites.");
+        } else if (err.response.data.message === "Favourite not found") {
         }
-        else if(err.response.data.message === "Favourite not found") {
-        }
-      })
+      });
   }
 
   function handleShopping() {
-    window.scrollTo({ top:0, left:0, behavior: "instant"});
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }
 
   function handleShoppingPress(event) {
     if (event.key === "Enter") {
-      window.scrollTo({ top:0, left:0, behavior: "instant"});
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     }
   }
 
   function addAllToCart() {
-    for(let i = 0; i < favoriteList.length; i++) {
-      props.addToCart(favoriteList[i], 1)
+    for (let i = 0; i < favoriteList.length; i++) {
+      props.addToCart(favoriteList[i], 1);
     }
   }
 
@@ -142,7 +160,7 @@ function WishList(props) {
       </div>
       <p className="wishlist-title">My Favourites</p>
       <div>
-        <div style={{ overflowX: "auto"}} className="wishlist-table-container">
+        <div style={{ overflowX: "auto" }} className="wishlist-table-container">
           <table className="wishlist-table">
             <tr className="wishlist-table-row">
               {/* <th className="wishlist-table-heading ">Select</th> */}
@@ -170,7 +188,7 @@ function WishList(props) {
                 <td className="wishlist-table-data">
                   <img
                     className="wishlist-image"
-                    src={`https://backend.sabjiland.com/uploads/${itemValue.image[0]}`}
+                    src={`http://localhost:4000/uploads/${itemValue.image[0]}`}
                     alt={itemValue.productName}
                   />
                 </td>
@@ -185,7 +203,12 @@ function WishList(props) {
                       <span style={{ color: "#BE4217" }}>OUT OF STOCK</span>
                     )}
                   </div>
-                  <div className="wishlist-remove-item" onClick={() => removeWishHandler(itemValue)}>Remove Item</div>
+                  <div
+                    className="wishlist-remove-item"
+                    onClick={() => removeWishHandler(itemValue)}
+                  >
+                    Remove Item
+                  </div>
                 </td>
                 {/* <td className="wishlist-table-data">
                   <div className="wishlist-qty-btn-container">
@@ -193,7 +216,7 @@ function WishList(props) {
                   </div>
                 </td> */}
                 <td className="wishlist-table-data">
-                <div className="wishlist-product-price">
+                  <div className="wishlist-product-price">
                     Rs.
                     <span style={{ color: "#BE4217" }}>{itemValue.rate}/-</span>
                   </div>
@@ -215,11 +238,15 @@ function WishList(props) {
           </table>
         </div>
         <div className="wishlist-buttons">
-          <Link to="/Shop" onClick={handleShopping} onKeyPress={handleShoppingPress}>
+          <Link
+            to="/Shop"
+            onClick={handleShopping}
+            onKeyPress={handleShoppingPress}
+          >
             <button className="wishlist-continue-shopping">
               CONTINUE SHOPPING
             </button>
-            </Link>
+          </Link>
           <div className="wishlist-buttons-container">
             <button className="wishlist-bottom-cart-button bottom-button-margin">
               <input
@@ -253,21 +280,19 @@ function WishList(props) {
         RECENTLY VIEWED PRODUCTS
       </div>
       <div className="product-div-container">
-        {
-          ProductList.map((itemValue)=>{
+        {ProductList.map((itemValue) => {
           return (
-            <ProductDiv 
-              itemValue={itemValue} 
-              productPopup={props.productPopup} 
-              addToCart={props.addToCart} 
+            <ProductDiv
+              itemValue={itemValue}
+              productPopup={props.productPopup}
+              addToCart={props.addToCart}
               addedToCart={props.addedToCart}
               updateWishlist={updateWishlist}
               detectWishlistChange={props.detectWishlistChange}
               setDetectWishlistChange={props.setDetectWishlistChange}
             />
-            )
-          })     
-        }
+          );
+        })}
       </div>
     </div>
   );

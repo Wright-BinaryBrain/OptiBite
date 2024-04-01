@@ -23,7 +23,7 @@ export default function Categories() {
   const [seeCategory, setSeeCategory] = useState(false);
   const [filter, setFilter] = useState();
 
-  const url = `https://backend.sabjiland.com/api/v1/${urlData}`;
+  const url = `http://localhost:4000/api/v1/${urlData}`;
 
   const toggleRefresh = () => {
     setRefresh(!refresh);
@@ -64,7 +64,7 @@ export default function Categories() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://backend.sabjiland.com/api/v1/getAllProductFamily`
+          `http://localhost:4000/api/v1/getAllProductFamily`
         );
         const json = await response.json();
         setFamilyData(json.data);

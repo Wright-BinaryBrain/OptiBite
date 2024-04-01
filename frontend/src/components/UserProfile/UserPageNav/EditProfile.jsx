@@ -46,7 +46,7 @@ const EditProfile = () => {
 
     axios
       .put(
-        "https://backend.sabjiland.com/api/v1/password/update",
+        "http://localhost:4000/api/v1/password/update",
         {
           oldPassword: changePassword.oldPassword,
           newPassword: changePassword.newPassword,
@@ -86,7 +86,7 @@ const EditProfile = () => {
     event.preventDefault();
     axios
       .patch(
-        `https://backend.sabjiland.com/api/v1/updateUser/${userId}`,
+        `http://localhost:4000/api/v1/updateUser/${userId}`,
         {
           name: EditProfileDetails.fullName,
           address: EditProfileDetails.address,
@@ -114,7 +114,7 @@ const EditProfile = () => {
   // ***************************
   useEffect(() => {
     axios
-      .get("https://backend.sabjiland.com/api/v1/whoami", { withCredentials: true })
+      .get("http://localhost:4000/api/v1/whoami", { withCredentials: true })
       .then((res) => {
         console.log(res.data.user.name);
         setEditProfileDetails((prev) => {
@@ -135,31 +135,31 @@ const EditProfile = () => {
 
   return (
     <>
-    <div className="profile-Main-Box">
-      <div className="profile-top-bar">
-      <div className="user-page-right-top-bar">
-        <img
-          src="https://i.postimg.cc/pT65LyC9/sabji-land-logo-1.png"
-          alt="logo"
-        />
-        <p className="user-page-right-title">Profile</p>
-      </div>
-      </div>
-    
-      <p className="user-page-edit-profile-title">Edit Profile</p>
-      <div className="user-page-right-form-container">
-        <form>
-          <FormInput
-            type="text"
-            width="full"
-            label="Full Name"
-            name="fullName"
-            compulsory="true"
-            handleEditForm={handleEditForm}
-            value={EditProfileDetails.fullName}
-            disabled={false}
-          />
-          {/* <FormInput
+      <div className="profile-Main-Box">
+        <div className="profile-top-bar">
+          <div className="user-page-right-top-bar">
+            <img
+              src="https://i.postimg.cc/pT65LyC9/sabji-land-logo-1.png"
+              alt="logo"
+            />
+            <p className="user-page-right-title">Profile</p>
+          </div>
+        </div>
+
+        <p className="user-page-edit-profile-title">Edit Profile</p>
+        <div className="user-page-right-form-container">
+          <form>
+            <FormInput
+              type="text"
+              width="full"
+              label="Full Name"
+              name="fullName"
+              compulsory="true"
+              handleEditForm={handleEditForm}
+              value={EditProfileDetails.fullName}
+              disabled={false}
+            />
+            {/* <FormInput
             type="text"
             width="half"
             label="Last Name"
@@ -167,73 +167,74 @@ const EditProfile = () => {
             name="lastName"
             handleEditForm={handleEditForm}
           /> */}
-          <FormInput
-            type="text"
-            width="full"
-            label="Address"
-            compulsory="true"
-            name="address"
-            handleEditForm={handleEditForm}
-            value={EditProfileDetails.address}
-            disabled={false}
-          />
-         
-          <FormInput
-            type="text"
-            width="full"
-            label="Email"
-            compulsory=""
-            name="email"
-            handleEditForm={handleEditForm}
-            value={EditProfileDetails.email}
-            disabled={true}
-          />
-          <input
-            onClick={HandleEdit}
-            type="submit"
-            value="Save"
-            className="user-page-profile-details-form-submit-btn"
-          />
-        </form>
-        <form>
-          <p className="user-profile-password-change-title">Password Change</p>
-          <FormInput
-            type="password"
-            width="full"
-            label="Current Password"
-            name="oldPassword"
-            compulsory=""
-            handleEditForm={handlePasswordFeild}
-            value={changePassword.oldPassword}
-          />
-          <FormInput
-            type="password"
-            width="full"
-            label="New Password"
-            compulsory=""
-            name="newPassword"
-            handleEditForm={handlePasswordFeild}
-            value={changePassword.newPassword}
-          />
-          <FormInput
-            type="password"
-            width="full"
-            label="Confirm Password"
-            compulsory=""
-            name="confirmNewPassword"
-            handleEditForm={handlePasswordFeild}
-            value={changePassword.confirmNewPassword}
-          />
-          <input
-            onClick={HandlePasswordChange}
-            type="submit"
-            value="Save"
-            className="user-page-profile-details-form-submit-btn"
-          />
-        </form>
+            <FormInput
+              type="text"
+              width="full"
+              label="Address"
+              compulsory="true"
+              name="address"
+              handleEditForm={handleEditForm}
+              value={EditProfileDetails.address}
+              disabled={false}
+            />
+
+            <FormInput
+              type="text"
+              width="full"
+              label="Email"
+              compulsory=""
+              name="email"
+              handleEditForm={handleEditForm}
+              value={EditProfileDetails.email}
+              disabled={true}
+            />
+            <input
+              onClick={HandleEdit}
+              type="submit"
+              value="Save"
+              className="user-page-profile-details-form-submit-btn"
+            />
+          </form>
+          <form>
+            <p className="user-profile-password-change-title">
+              Password Change
+            </p>
+            <FormInput
+              type="password"
+              width="full"
+              label="Current Password"
+              name="oldPassword"
+              compulsory=""
+              handleEditForm={handlePasswordFeild}
+              value={changePassword.oldPassword}
+            />
+            <FormInput
+              type="password"
+              width="full"
+              label="New Password"
+              compulsory=""
+              name="newPassword"
+              handleEditForm={handlePasswordFeild}
+              value={changePassword.newPassword}
+            />
+            <FormInput
+              type="password"
+              width="full"
+              label="Confirm Password"
+              compulsory=""
+              name="confirmNewPassword"
+              handleEditForm={handlePasswordFeild}
+              value={changePassword.confirmNewPassword}
+            />
+            <input
+              onClick={HandlePasswordChange}
+              type="submit"
+              value="Save"
+              className="user-page-profile-details-form-submit-btn"
+            />
+          </form>
+        </div>
       </div>
-    </div>
-      
     </>
   );
 };

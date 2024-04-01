@@ -11,17 +11,14 @@ function Table(props) {
   //
   const getApiData = async () => {
     try {
-      const res = await axios.get(
-        "https://backend.sabjiland.com/api/v1/getAllReview",
-        {
-          params: {
-            keyword: props.search,
-            page: props.page,
-            rowsPerPage: props.selected,
-          },
-          withCredentials: true,
-        }
-      );
+      const res = await axios.get("http://localhost:4000/api/v1/getAllReview", {
+        params: {
+          keyword: props.search,
+          page: props.page,
+          rowsPerPage: props.selected,
+        },
+        withCredentials: true,
+      });
       const dataProp = {
         data: res.data.data,
         count: res.data.count,

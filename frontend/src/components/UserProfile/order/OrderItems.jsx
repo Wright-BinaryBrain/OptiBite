@@ -17,7 +17,7 @@ const OrderItems = ({ orderitem, changeOrder, cancel }) => {
   useEffect(() => {
     console.log("cancel");
     axios
-      .get(`https://backend.sabjiland.com/api/v1/getProducts`, {
+      .get(`http://localhost:4000/api/v1/getProducts`, {
         withCredentials: true,
       })
       .then((res) =>

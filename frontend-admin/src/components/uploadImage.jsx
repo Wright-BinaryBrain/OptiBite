@@ -272,9 +272,7 @@ const UploadImg = ({
 
             <img
               src={
-                isFile
-                  ? url
-                  : `https://backend.sabjiland.com/uploads/${previewImages}`
+                isFile ? url : `http://localhost:4000/uploads/${previewImages}`
               }
               alt={`Image ${index + 1}`}
               className={`ad-img ${imgClass}`}
@@ -383,16 +381,12 @@ const UploadImg = ({
       });
       console.log(selectedImages);
       console.log(formData);
-      await axios.post(
-        "https://backend.sabjiland.com/api/v1/postAd",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          withCredentials: true,
-        }
-      );
+      await axios.post("http://localhost:4000/api/v1/postAd", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      });
 
       // Clear selected images and preview
       setSelectedImages([]);

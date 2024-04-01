@@ -90,7 +90,7 @@
 //     if (guestDetails.guestFullname !== "" && guestDetails.guestPhoneNumber !== ""){
 //       if (cartId.length !== 0 && cartQty.length !== 0){
 
-//         axios.post("https://backend.sabjiland.com/api/v1/postOrder", {
+//         axios.post("http://localhost:4000/api/v1/postOrder", {
 //           guestName: String(guestDetails.guestFullname),
 //           guestContact: String(guestDetails.guestPhoneNumber),
 //           productId: cartId,
@@ -289,21 +289,20 @@ const Guest = (props) => {
     if (
       nameColor === "inset 0px 0px 0px 2px #71b646" &&
       phoneColor === "inset 0px 0px 0px 2px #71b646" &&
-      addressColor === "inset 0px 0px 0px 2px #71b646" && sendOTPCount!==0 
+      addressColor === "inset 0px 0px 0px 2px #71b646" &&
+      sendOTPCount !== 0
     ) {
-      
       setDisableBtn(false);
     } else {
       setDisableBtn(true);
     }
-  }, [nameColor, phoneColor, addressColor,sendOTPCount]);
+  }, [nameColor, phoneColor, addressColor, sendOTPCount]);
 
   function handleGuestForm(event) {
     const { name, value, files } = event.target;
     if (name === "file") {
       const file = Array.from(files);
       setQrImage(file[0]);
-
     } else {
       setGuestDetails((prevGuestDetails) => ({
         ...prevGuestDetails,
@@ -321,10 +320,10 @@ const Guest = (props) => {
   function SendOtp(e) {
     e.preventDefault();
 
-    setSendOTPCount((prev)=>prev + 1)
+    setSendOTPCount((prev) => prev + 1);
     console.log(sendOTPCount);
     axios
-      .post("https://backend.sabjiland.com/api/v1/sendOtp", {
+      .post("http://localhost:4000/api/v1/sendOtp", {
         contactNo1: guestDetails.guestPhoneNumber,
       })
       .then((res) => {
@@ -365,7 +364,7 @@ const Guest = (props) => {
     // if (guestDetails.guestFullname !== "" && guestDetails.guestPhoneNumber !== ""){
     //   if (cartId.length !== 0 && cartQty.length !== 0){
 
-    //     axios.post("https://backend.sabjiland.com/api/v1/postOrder",{
+    //     axios.post("http://localhost:4000/api/v1/postOrder",{
     //       guestName: String(guestDetails.guestFullname),
     //       guestContact: String(guestDetails.guestPhoneNumber),
     //       productId: cartId,
@@ -397,26 +396,28 @@ const Guest = (props) => {
     if (
       guestDetails.guestFullname !== "" &&
       guestDetails.guestPhoneNumber !== "" &&
-      guestDetails.guestAddress !== "" 
+      guestDetails.guestAddress !== ""
     ) {
-      if(guestDetails.paymentMethod==="QR" && qrImage=== null){
-        alert("Upload Screenshot")
-      }else{
+      if (guestDetails.paymentMethod === "QR" && qrImage === null) {
+        alert("Upload Screenshot");
+      } else {
         if (cartId.length !== 0 && cartQty.length !== 0) {
           const formData = new FormData();
           formData.append("guestName", String(guestDetails.guestFullname));
-          formData.append("guestContact", String(guestDetails.guestPhoneNumber));
+          formData.append(
+            "guestContact",
+            String(guestDetails.guestPhoneNumber)
+          );
           cartId.forEach((value) => {
             formData.append("productId", value);
           });
           cartQty.forEach((value) => {
             formData.append("quantity", value);
           });
-          
+
           formData.append("orderAddress", String(guestDetails.guestAddress));
           formData.append("otpCode", parseInt(guestDetails.guestotp));
-          
-  
+
           console.log(typeof guestDetails.guestotp);
           // Add a placeholder or default value for the image field
           formData.append("image", qrImage || "");
@@ -426,7 +427,7 @@ const Guest = (props) => {
           console.log(formData);
           axios
             .post(
-              "https://backend.sabjiland.com/api/v1/postOrder",
+              "http://localhost:4000/api/v1/postOrder",
               formData
               // {
               //   guestName: String(guestDetails.guestFullname),
@@ -471,13 +472,12 @@ const Guest = (props) => {
               // });
               console.log(err);
             });
-  
+
           // alert("Order placed successfully!");
         } else {
           alert("Cart Items are empty. Add items to cart prior to purchasing.");
         }
       }
-      
     } else {
       alert("Fill up your name, address and contact number.");
     }

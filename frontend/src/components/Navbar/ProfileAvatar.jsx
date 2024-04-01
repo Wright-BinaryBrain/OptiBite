@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./ProfileAvatar.css";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
@@ -34,7 +34,7 @@ const ProfileAvatar = ({ userData, setUserData, setIsLoggedIn }) => {
   const handleLogout = () => {
     console.log("Logging out...");
     axios
-      .get("https://backend.sabjiland.com/api/v1/logout", { withCredentials: true })
+      .get("http://localhost:4000/api/v1/logout", { withCredentials: true })
       .then((res) => {
         setIsLoggedIn(false);
         setUserData(null);
@@ -46,42 +46,39 @@ const ProfileAvatar = ({ userData, setUserData, setIsLoggedIn }) => {
   };
   useEffect(() => {
     if (open) {
-      document
-        .getElementById('root')
-        .removeAttribute('aria-hidden', 'false')
+      document.getElementById("root").removeAttribute("aria-hidden", "false");
     }
-  }, [open])
+  }, [open]);
   console.log(open);
   console.log(userData);
   const initial = userData.name[0];
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   console.log(windowWidth);
-    useEffect(() => {
-      const handleWindowResize = () => {
-        setWindowWidth(()=>window.innerWidth);
-      };
-  
-      window.addEventListener('resize', handleWindowResize);
-  
-      return () => {
-        window.removeEventListener('resize', handleWindowResize);
-      };
-    });
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowWidth(() => window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  });
   return (
     <>
-      <Tooltip title="Account settings" >
+      <Tooltip title="Account settings">
         <IconButton
           onClick={hahaha}
           size="small"
-          style={{ marginLeft: windowWidth>800? 20:0}}
+          style={{ marginLeft: windowWidth > 800 ? 20 : 0 }}
           aria-controls={open ? "account-menu" : undefined}
           aria-haspopup="false"
           aria-expanded={open ? "true" : undefined}
         >
-          <Avatar sx={{ width: 40, height: 40 ,backgroundColor: "#71b646", 
-  
-  
- }}>{initial}</Avatar>
+          <Avatar sx={{ width: 40, height: 40, backgroundColor: "#71b646" }}>
+            {initial}
+          </Avatar>
         </IconButton>
       </Tooltip>
 
@@ -90,7 +87,7 @@ const ProfileAvatar = ({ userData, setUserData, setIsLoggedIn }) => {
         open={open}
         onClose={handleClose}
         onClick={handleClose}
-        style={{ zIndex: "999999", left: 0}}
+        style={{ zIndex: "999999", left: 0 }}
         PaperProps={{
           elevation: 0,
           sx: {
@@ -109,7 +106,7 @@ const ProfileAvatar = ({ userData, setUserData, setIsLoggedIn }) => {
               display: "block",
               position: "absolute",
               top: 0,
-              right: windowWidth>800? 40 : 115,
+              right: windowWidth > 800 ? 40 : 115,
               width: 10,
               height: 10,
               bgcolor: "background.paper",

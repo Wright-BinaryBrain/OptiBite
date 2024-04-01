@@ -23,7 +23,7 @@ function RiderEdit(props) {
 
     if (props.id !== "") {
       axios
-        .get(`https://backend.sabjiland.com/api/v1/getRider/${props.id}`)
+        .get(`http://localhost:4000/api/v1/getRider/${props.id}`)
         .then((res) => {
           console.log(res.data.data);
           setEditRider((prevV) => {
@@ -35,9 +35,7 @@ function RiderEdit(props) {
               rEmail: res.data.data.email,
             };
           });
-          setFile(
-            `https://backend.sabjiland.com/uploads/${res.data.data.image[0]}`
-          );
+          setFile(`http://localhost:4000/uploads/${res.data.data.image[0]}`);
         })
         .catch((err) => console.log(err));
     }
@@ -71,7 +69,7 @@ function RiderEdit(props) {
 
     axios
       .patch(
-        `https://backend.sabjiland.com/api/v1/updateRider/${props.id}`,
+        `http://localhost:4000/api/v1/updateRider/${props.id}`,
         {
           riderName: editRider.rName,
           contact: editRider.rContact,

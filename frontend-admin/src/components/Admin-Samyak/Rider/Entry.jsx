@@ -6,7 +6,7 @@ function Entry(props) {
   function delRider(id) {
     console.log(id);
     axios
-      .delete(`https://backend.sabjiland.com/api/v1/deleteRider/${id}`, {
+      .delete(`http://localhost:4000/api/v1/deleteRider/${id}`, {
         withCredentials: true,
       })
       .then(() => props.RefreshC())
@@ -26,7 +26,7 @@ function Entry(props) {
         <tr>
           <td>
             <img
-              src={`https://backend.sabjiland.com/uploads/${props.image}`}
+              src={`http://localhost:4000/uploads/${props.image}`}
               alt=""
               height={"100px"}
               width={"100px"}

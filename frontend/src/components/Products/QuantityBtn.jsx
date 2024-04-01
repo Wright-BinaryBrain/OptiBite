@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 
 function QuantityBtn(props) {
-
   function handleChange(event) {
     const newValue = event.target.value;
     props.setQuantity(newValue);
   }
 
   function addNumber() {
-    props.setQuantity((prevValue) => Number(prevValue) + 0.5);
+    props.setQuantity((prevValue) => Number(prevValue) + 1);
   }
 
   function subtractNumber() {
     props.setQuantity((prevValue) =>
-      Number(prevValue) > 0.5 ? Number(prevValue) - 0.5 : Number(prevValue)
+      Number(prevValue) > 0.5 ? Number(prevValue) - 1 : Number(prevValue)
     );
   }
 

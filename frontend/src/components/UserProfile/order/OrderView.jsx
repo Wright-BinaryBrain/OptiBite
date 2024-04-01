@@ -14,7 +14,7 @@
 //   const fetchProducts = async () => {
 //     try {
 //       const response = await axios.get(
-//         `https://backend.sabjiland.com/api/v1/searchProducts`
+//         `http://localhost:4000/api/v1/searchProducts`
 //       );
 //       setProducts(response.data.data);
 //     } catch (error) {
@@ -28,7 +28,7 @@
 
 //   useEffect(() => {
 //     axios
-//       .get(`https://backend.sabjiland.com/api/v1/getAllRider?keyword=`)
+//       .get(`http://localhost:4000/api/v1/getAllRider?keyword=`)
 //       .then((res) => setRider(res.data.data))
 //       .catch((err) => console.log(err.message));
 //   }, [props.delivered]);
@@ -229,7 +229,7 @@ import axios from "axios";
 
 //   useEffect(() => {
 //     axios
-//       .get(`https://backend.sabjiland.com/api/v1/getOrder/${props.id}`, {
+//       .get(`http://localhost:4000/api/v1/getOrder/${props.id}`, {
 //         withCredentials: true,
 //       })
 //       .then((res) => {
@@ -257,7 +257,7 @@ import axios from "axios";
 
 //   useEffect(() => {
 //     axios
-//       .get(`https://backend.sabjiland.com/api/v1/getUser/${userId}`, {
+//       .get(`http://localhost:4000/api/v1/getUser/${userId}`, {
 //         withCredentials: true,
 //       })
 //       .then((res) => setUserData(res.data.data))
@@ -266,7 +266,7 @@ import axios from "axios";
 
 //   useEffect(() => {
 //     axios
-//       .get(`https://backend.sabjiland.com/api/v1/getRider/${riderId}`, {
+//       .get(`http://localhost:4000/api/v1/getRider/${riderId}`, {
 //         withCredentials: true,
 //       })
 //       .then((res) => setRiderData(res.data.data))
@@ -275,7 +275,7 @@ import axios from "axios";
 
 //   useEffect(() => {
 //     axios
-//       .get(`https://backend.sabjiland.com/api/v1/getProducts`, {
+//       .get(`http://localhost:4000/api/v1/getProducts`, {
 //         withCredentials: true,
 //       })
 //       .then((res) =>
@@ -474,7 +474,7 @@ function OrderView(props) {
   });
   useEffect(() => {
     axios
-      .get(`https://backend.sabjiland.com/api/v1/getOrder/${props.id}`, {
+      .get(`http://localhost:4000/api/v1/getOrder/${props.id}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -493,7 +493,7 @@ function OrderView(props) {
     // console.log("user");
     if (userId != undefined) {
       axios
-        .get(`https://backend.sabjiland.com/api/v1/whoami`, {
+        .get(`http://localhost:4000/api/v1/whoami`, {
           withCredentials: true,
         })
         .then((res) => {
@@ -507,7 +507,7 @@ function OrderView(props) {
 
   useEffect(() => {
     axios
-      .get(`https://backend.sabjiland.com/api/v1/getRider/${riderId}`, {
+      .get(`http://localhost:4000/api/v1/getRider/${riderId}`, {
         withCredentials: true,
       })
       .then((res) => setRiderData(res.data.data))
@@ -516,7 +516,7 @@ function OrderView(props) {
 
   useEffect(() => {
     axios
-      .get(`https://backend.sabjiland.com/api/v1/getProducts`, {
+      .get(`http://localhost:4000/api/v1/getProducts`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -527,7 +527,6 @@ function OrderView(props) {
   }, [props.id]);
   // console.log(allProducts);
 
-  
   useEffect(() => {
     const filteredProducts = allProducts.filter((product) =>
       productIds.includes(product._id)
@@ -557,9 +556,9 @@ function OrderView(props) {
   const dateStr = orderData.orderDate;
 
   const date = new Date(dateStr);
-const pdate = orderData.paymentDate;
-const payDate = new Date(pdate);
- 
+  const pdate = orderData.paymentDate;
+  const payDate = new Date(pdate);
+
   const options = {
     timeZone: "Asia/Kathmandu",
     year: "numeric",

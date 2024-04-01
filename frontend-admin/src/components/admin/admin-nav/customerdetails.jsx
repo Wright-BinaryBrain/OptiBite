@@ -24,7 +24,7 @@ export default function Customers() {
   // const [type, setType] = useState("");
   const [refresh, setRefresh] = useState(false);
 
-  const url = `https://backend.sabjiland.com/api/v1/${urlData}`; //url for the json file
+  const url = `http://localhost:4000/api/v1/${urlData}`; //url for the json file
 
   const toggleRefresh = () => {
     setRefresh(!refresh);

@@ -8,42 +8,42 @@ import axios from "axios";
 const Thankyou = (props) => {
   // console.log(props.orderResponse);
 
- 
-  const [orderedProducts, setOrderedProducts] = useState(props.orderResponse.productId);
- const [allProducts,setAllProducts] = useState([]);
- const [quantities, setQuantities] = useState(props.orderResponse.quantity)
- const [filteredData, setFilteredData] = useState([]);
+  const [orderedProducts, setOrderedProducts] = useState(
+    props.orderResponse.productId
+  );
+  const [allProducts, setAllProducts] = useState([]);
+  const [quantities, setQuantities] = useState(props.orderResponse.quantity);
+  const [filteredData, setFilteredData] = useState([]);
   const productIds = props.orderResponse.productId;
-  const [userInfo,setUserInfo] = useState();
+  const [userInfo, setUserInfo] = useState();
 
-
-  useEffect(()=>{
-    axios.get("https://backend.sabjiland.com/api/v1/whoami",{withCredentials:true})
-    .then((res)=>{
-      console.log(res.data.user);
-      setUserInfo(res.data.user);
-    })
-    .catch((err)=>{
-      console.log(err);
-    })
-  },[])
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/v1/whoami", { withCredentials: true })
+      .then((res) => {
+        console.log(res.data.user);
+        setUserInfo(res.data.user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   useEffect(() => {
     const filteredProducts = allProducts.filter((product) =>
       productIds.includes(product._id)
     );
-  
+
     const updatedData = filteredProducts.map((product, index) => ({
       ...product,
       quantity: props.orderQty[index],
     }));
-  
+
     setOrderedProducts(updatedData);
   }, [props.orderResponse, productIds, props.orderQty, allProducts]);
-  
-  
+
   useEffect(() => {
     axios
-      .get(`https://backend.sabjiland.com/api/v1/getProducts`, {
+      .get(`http://localhost:4000/api/v1/getProducts`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -54,10 +54,9 @@ const Thankyou = (props) => {
   }, [props.orderResponse]);
   // console.log(allProducts);
 
-  
   useEffect(() => {
     const filteredProducts = allProducts.filter((product) =>
-    orderedProducts.includes(product._id)
+      orderedProducts.includes(product._id)
     );
 
     const updatedData = filteredProducts.map((product, index) => ({
@@ -68,25 +67,23 @@ const Thankyou = (props) => {
     setFilteredData(updatedData);
   }, [allProducts, orderedProducts, quantities]);
 
+  // console.log(orderedProducts);
 
-// console.log(orderedProducts);
+  const [total, setTotal] = useState();
+  useEffect(() => {
+    let tt = 0;
 
-const[total,setTotal] = useState()
-useEffect(() => {
-  let tt = 0;
+    for (const product of orderedProducts) {
+      tt += product.rate * product.quantity;
+    }
 
-  for (const product of orderedProducts) {
-    tt += product.rate * product.quantity;
-  }
-
-
-  setTotal(tt + 100);
-}, [filteredData]);
+    setTotal(tt + 100);
+  }, [filteredData]);
 
   // console.log(orderedProducts);
   // props.orderResponse.productId.map((product) => {
   //   console.log(product);
-  //   axios.get(`https://backend.sabjiland.com/api/v1/getProduct/${product}`).then((res) => {
+  //   axios.get(`http://localhost:4000/api/v1/getProduct/${product}`).then((res) => {
   //     const producct = res.data.data;
   //     console.log(producct);
   //   });
@@ -110,19 +107,23 @@ useEffect(() => {
               <div className="thankyou-userdetails-data">
                 <div className="thankyou-user-heading">Receiver's Name:</div>
                 <div className="thankyou-user-details">
-                  {userInfo? userInfo.name : props.orderResponse.guestName }
+                  {userInfo ? userInfo.name : props.orderResponse.guestName}
                 </div>
               </div>
               <div className="thankyou-userdetails-data">
                 <div className="thankyou-user-heading">Contact No.:</div>
                 <div className="thankyou-user-details">
-                  { userInfo? userInfo.contactNo1 : props.orderResponse.guestContact}
+                  {userInfo
+                    ? userInfo.contactNo1
+                    : props.orderResponse.guestContact}
                 </div>
               </div>
               <div className="thankyou-userdetails-data">
                 <div className="thankyou-user-heading">Delivery Address</div>
                 <div className="thankyou-user-details">
-                  {userInfo? userInfo.address : props.orderResponse.orderAddress}
+                  {userInfo
+                    ? userInfo.address
+                    : props.orderResponse.orderAddress}
                 </div>
               </div>
               {/* <div className="thankyou-userdetails-data">
@@ -148,16 +149,18 @@ useEffect(() => {
 
                 {orderedProducts.map((product) => {
                   // console.log(product);
-                 
+
                   return (
                     <div className="invoice-ordered-items">
-                      <div className="invoice-item-name">{product.productName}</div>
+                      <div className="invoice-item-name">
+                        {product.productName}
+                      </div>
                       <div className="invoice-item-qty">{product.quantity}</div>
                       <div className="invoice-item-price">
-                       Rs. {product.rate * product.quantity}
+                        Rs. {product.rate * product.quantity}
                       </div>
-                   </div>
-                   );
+                    </div>
+                  );
                 })}
               </div>
               <div className="invoice-deliver-container">
@@ -176,9 +179,13 @@ useEffect(() => {
               <hr />
               <div className="thankyou-order-details-content">
                 <div className="thankyou-order-details-heading">Sub-Total</div>
-                <div className="thankyou-order-details-price">Rs. {total - 100}</div>
+                <div className="thankyou-order-details-price">
+                  Rs. {total - 100}
+                </div>
               </div>
-              <div className="thankyou-order-itemsCount">({orderedProducts.length} items)</div>
+              <div className="thankyou-order-itemsCount">
+                ({orderedProducts.length} items)
+              </div>
               <div className="thankyou-order-details-content">
                 <div className="thankyou-order-details-heading">
                   Shipping Fee
@@ -191,7 +198,9 @@ useEffect(() => {
               <div className="thankyou-order-summary-total-heading">
                 Total Amount
               </div>
-              <div className="thankyou-order-summary-total-price">Rs. {total}</div>
+              <div className="thankyou-order-summary-total-price">
+                Rs. {total}
+              </div>
             </div>
           </div>
         </div>

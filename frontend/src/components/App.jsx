@@ -65,47 +65,44 @@ function App() {
   const [isOrderCart, setIsOrderCart] = useState();
   const [buyProduct, setBuyProduct] = useState();
   const [btnQuantity, setBtnQuantity] = useState();
-const [orderResponse, setOrderResponse] = useState({});
-const[orderQuantity,setOrderQuantity] = useState([])
-const [isLoggedIn, setIsLoggedIn] = useState(false);
-const [userData,setUserData] = useState();
+  const [orderResponse, setOrderResponse] = useState({});
+  const [orderQuantity, setOrderQuantity] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userData, setUserData] = useState();
 
-useEffect(()=> {
-  axios.get("https://backend.sabjiland.com/api/v1/whoami",{withCredentials: true})
-  .then((res)=> {
-    if (res.data.success === true){
-      console.log(res);
-      setIsLoggedIn(true);
-      setUserData(res.data.user);
-    }
-    else{
-      setIsLoggedIn(false);
-    }
-  })
-  .catch((err)=>console.log(err))
-},[]);
-
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/v1/whoami", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        if (res.data.success === true) {
+          console.log(res);
+          setIsLoggedIn(true);
+          setUserData(res.data.user);
+        } else {
+          setIsLoggedIn(false);
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   function handleGuest(displayPop, quantity) {
     if (isLoggedIn === false) {
-      
       setDisplayGuest((preValue) => !preValue);
-    }
-    else{
+    } else {
       handleClick();
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-      navigate("/billingdetails")
+      navigate("/billingdetails");
     }
-    
+
     if (displayPop === "none" && quantity === "none") {
       setIsOrderCart(true);
-    }
-    else if (displayPop === "delete" && quantity === "delete") {
+    } else if (displayPop === "delete" && quantity === "delete") {
       setIsOrderCart(true);
       localStorage.removeItem("sabjilandBuyProduct");
       localStorage.removeItem("sabjilandQuantity");
-    } 
-    else {
+    } else {
       // console.log("Order Details=",orderDetails);
       setIsOrderCart(false);
       setBuyProduct(displayPop);
@@ -166,7 +163,7 @@ useEffect(()=> {
       cartItems.push(itemValue);
     }
 
-    if (cartItems !== []) {
+    if (cartItems != []) {
       localStorage.setItem("sabjilandAddToCart", JSON.stringify(cartItems));
       setAddedToCart(JSON.parse(localStorage.getItem("sabjilandAddToCart")));
     }
@@ -182,30 +179,31 @@ useEffect(()=> {
   }
 
   const [searchItem, setSearchItem] = useState();
-  
+
   function searchHandler(event) {
     navigate("/Shop");
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     setSearchItem(event.target.value);
-    if(document.getElementById("nav").offsetHeight >= window.innerHeight) {
+    if (document.getElementById("nav").offsetHeight >= window.innerHeight) {
       document.querySelector(".hamburger-icon").click();
     }
   }
-  
+
   return (
     <div>
-      <ToastContainer style={{zIndex: "9999999"}} />
+      <ToastContainer style={{ zIndex: "9999999" }} />
       {isLogin ? (
-        <Login setIsLoggedIn={setIsLoggedIn}  setUserData={setUserData} closeLogin={closeLoginBox}  />
+        <Login
+          setIsLoggedIn={setIsLoggedIn}
+          setUserData={setUserData}
+          closeLogin={closeLoginBox}
+        />
       ) : isGuest ? (
         <Guest close={closeGuest} />
       ) : (
         ""
       )}
       <div className="index-container">
-      
-        <HeaderContact navVisible={navVisible} />
-
         <UpperNav
           navHeaderLink="/"
           open={openLoginBox}
@@ -291,14 +289,19 @@ useEffect(()=> {
               />
             }
           />
-          <Route path="/WishList" element={<WishList 
-              productPopup={handleClick}
-              addToCart={addToCart}
-              addedToCart={addedToCart}
-              setAddedToCart={setAddedToCart}
-              detectWishlistChange={detectWishlistChange}
-              setDetectWishlistChange={setDetectWishlistChange}
-          />} />
+          <Route
+            path="/WishList"
+            element={
+              <WishList
+                productPopup={handleClick}
+                addToCart={addToCart}
+                addedToCart={addedToCart}
+                setAddedToCart={setAddedToCart}
+                detectWishlistChange={detectWishlistChange}
+                setDetectWishlistChange={setDetectWishlistChange}
+              />
+            }
+          />
           <Route
             path="/Cart"
             element={
@@ -313,11 +316,30 @@ useEffect(()=> {
               />
             }
           />
-          <Route path="/BillingDetails" element={<BillingDetails 
-            isOrderCart={isOrderCart}/>} />
-          <Route path="/Payment" element={<Payment setAddedToCart={setAddedToCart} isOrderCart={isOrderCart} setOrderResponse={setOrderResponse}
-          setOrderQuantity={setOrderQuantity}/>} />
-          <Route path="/invoice" element={<Thankyou orderQty={orderQuantity} orderResponse={orderResponse}/>} />
+          <Route
+            path="/BillingDetails"
+            element={<BillingDetails isOrderCart={isOrderCart} />}
+          />
+          <Route
+            path="/Payment"
+            element={
+              <Payment
+                setAddedToCart={setAddedToCart}
+                isOrderCart={isOrderCart}
+                setOrderResponse={setOrderResponse}
+                setOrderQuantity={setOrderQuantity}
+              />
+            }
+          />
+          <Route
+            path="/invoice"
+            element={
+              <Thankyou
+                orderQty={orderQuantity}
+                orderResponse={orderResponse}
+              />
+            }
+          />
           {/* <Route path="/OrderReceived" element={<OrderReceived />} /> */}
           {/* <Route path="/DeliveryLocation" element={<DeliveryLocation />} /> */}
           <Route path="/AboutUs" element={<AboutUs />} />
@@ -328,16 +350,15 @@ useEffect(()=> {
           <Route path="/view">
             <Route path="" element={<EditProfile />} />
 
-            <Route path="orders" element={<Orders />} /> 
+            <Route path="orders" element={<Orders />} />
             {/* not needed */}
             {/* <Route path="address" element={<AddressBook />} />
             <Route path="wallet" element={<Wallet />} /> */}
           </Route>
-          <Route path="/*" element={<ErrorPage/>}/>
+          <Route path="/*" element={<ErrorPage />} />
           {/* ******************************************************************** */}
         </Routes>
         <Footer />
-       
 
         {/* <ProductDiv /> */}
         {/* <ProductPopup /> */}
@@ -346,7 +367,7 @@ useEffect(()=> {
 
         {maxPopup ? (
           <ProductPopup
-          isLoggedIn={isLoggedIn}
+            isLoggedIn={isLoggedIn}
             productPopup={handleClick}
             displayPop={displayPop}
             addToCart={addToCart}
@@ -373,8 +394,8 @@ useEffect(()=> {
 
         {displayGuest ? (
           <Guest
-          setOrderResponse={setOrderResponse}
-          setOrderQuantity={setOrderQuantity}
+            setOrderResponse={setOrderResponse}
+            setOrderQuantity={setOrderQuantity}
             close={handleGuest}
             handleClick={handleClick}
             isOrderCart={isOrderCart}

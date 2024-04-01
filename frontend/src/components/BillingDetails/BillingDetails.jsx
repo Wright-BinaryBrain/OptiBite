@@ -7,34 +7,34 @@ import { useNavigate } from "react-router-dom";
 
 function BillingDetails(props) {
   const [userDetails, setUserDetails] = useState({});
-  const [editAddress,setEditAddress] =  useState(true);
-  const [address,setAddress] =  useState();
+  const [editAddress, setEditAddress] = useState(true);
+  const [address, setAddress] = useState();
   useEffect(() => {
     axios
-      .get("https://backend.sabjiland.com/api/v1/whoami", {
+      .get("http://localhost:4000/api/v1/whoami", {
         withCredentials: true,
       })
       .then((res) => {
         console.log(res.data.user);
         setUserDetails(res.data.user);
-        setAddress(res.data.user.address)
+        setAddress(res.data.user.address);
       })
       .catch((err) => {
         console.log(err);
       });
-  },[]);
+  }, []);
   const date = new Date();
 
-  let currentDay= String(date.getDate()).padStart(2, '0');
-  
-  let currentMonth = String(date.getMonth()+1).padStart(2,"0");
-  
+  let currentDay = String(date.getDate()).padStart(2, "0");
+
+  let currentMonth = String(date.getMonth() + 1).padStart(2, "0");
+
   let currentYear = date.getFullYear();
-  
-  // we will display the date as DD-MM-YYYY 
-  
+
+  // we will display the date as DD-MM-YYYY
+
   let currentDate = `${currentDay}-${currentMonth}-${currentYear}`;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className="billing-container">
       <div className="billing-path">
@@ -53,7 +53,7 @@ function BillingDetails(props) {
                 Receiver's Name:
               </div>
               <div className="billing-details-content-data-contents">
-              {userDetails.name}
+                {userDetails.name}
               </div>
             </div>
             <div className="billing-details-content-data">
@@ -66,30 +66,33 @@ function BillingDetails(props) {
             </div>
             <div className="billing-details-content-data">
               <div className="billing-details-content-data-heading">
-               Delivery Address
+                Delivery Address
               </div>
               <div className="billing-details-content-data-contents">
-             
-              <input type="text" value={address} disabled onChange={(e)=>{setAddress(e.target.value)}}/> 
-              {/* <span onClick={() => setEditAddress((prev) => !prev)}>{editAddress? "Edit" :  "Done"}</span> */}
-              <span onClick={()=>navigate('/view')}>Edit</span>
+                <input
+                  type="text"
+                  value={address}
+                  disabled
+                  onChange={(e) => {
+                    setAddress(e.target.value);
+                  }}
+                />
+                {/* <span onClick={() => setEditAddress((prev) => !prev)}>{editAddress? "Edit" :  "Done"}</span> */}
+                <span onClick={() => navigate("/view")}>Edit</span>
               </div>
             </div>
             <div className="billing-details-content-data">
               <div className="billing-details-content-data-heading">
-              Order Date:
+                Order Date:
               </div>
               <div className="billing-details-content-data-contents">
                 {currentDate}
               </div>
             </div>
-           
           </div>
         </div>
         <div>
-          <OrderNow 
-            isOrderCart={props.isOrderCart}
-           />
+          <OrderNow isOrderCart={props.isOrderCart} />
         </div>
       </div>
     </div>

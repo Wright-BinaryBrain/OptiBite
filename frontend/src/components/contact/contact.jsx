@@ -30,14 +30,13 @@ const Contact = () => {
     //192.168.101.12:4000/api/v1/sendEmail
 
     http: axios
-      .post(" https://backend.sabjiland.com/api/v1/sendEmail", {
+      .post(" http://localhost:4000/api/v1/sendEmail", {
         customerName: contactFormDetails.contactFullname,
         customerContact: contactFormDetails.contactPhone,
         customerEmail: contactFormDetails.contactEmail,
         customerMessage: contactFormDetails.contactMessage,
       })
       .then((res) => {
-        
         toast.success("Thank you for your feedback", {
           position: toast.POSITION.TOP_RIGHT,
         });

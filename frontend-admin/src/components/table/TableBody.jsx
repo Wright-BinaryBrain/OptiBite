@@ -11,7 +11,7 @@ export default function TableBody({
   totalData,
 }) {
   const deleteEntry = (id) => {
-    fetch(`https://backend.sabjiland.com/api/v1/${delUrl}/${id}`, {
+    fetch(`http://localhost:4000/api/v1/${delUrl}/${id}`, {
       method: "DELETE",
       credentials: "include",
     })
@@ -117,7 +117,7 @@ export default function TableBody({
                     return (
                       <td>
                         <img
-                          src={`https://backend.sabjiland.com/uploads/${img}`}
+                          src={`http://localhost:4000/uploads/${img}`}
                           alt=""
                         />
                       </td>
