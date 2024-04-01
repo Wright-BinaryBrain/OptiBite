@@ -11,7 +11,7 @@ import PopupBox from "../login/PopupBox";
 import Guest from "../login/Guest";
 
 import ProfileAvatar from "./ProfileAvatar"
-import "../../PrashantCSS/uppernav.css"
+import "../../CSS/uppernav.css"
 
 function UpperNav(props) {
   // const [isLogin, setIsLogin] = useState(false);

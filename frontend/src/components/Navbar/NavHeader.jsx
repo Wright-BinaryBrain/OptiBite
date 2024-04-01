@@ -21,7 +21,7 @@ import React from "react";
 import HamburgerIcon from "./HamburgerIcon.jsx";
 import {Link} from "react-router-dom";
 
-import "../../PrashantCSS/headercontact.css"
+import "../../CSS/headercontact.css"
 
 function NavHeader(props) {
   return (

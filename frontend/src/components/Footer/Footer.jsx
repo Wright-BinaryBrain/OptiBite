@@ -5,7 +5,7 @@ import footer from "./footer";
 import FooterContent from "./FooterContent";
 import FooterCopy from "./FooterCopy";
 
-import "../../PrashantCSS/footer.css"
+import "../../CSS/footer.css"
 
 function Footer() {
   return (

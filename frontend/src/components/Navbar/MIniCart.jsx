@@ -2,7 +2,7 @@ import React from "react";
 import CartTable from "../Cart/CartTable.jsx";
 import QuantityBtnCart from "../Cart/QuantityBtnCart.jsx";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import '../../PrashantCSS/minicart.css'
+import '../../CSS/minicart.css'
 function MiniCart(props) {
     return  (
         <div

@@ -5,9 +5,7 @@ import ProductDiv from "../Products/ProductDiv.jsx";
 import homeImages from "./home-images.js";
 import axios from "axios";
 import { Link } from "react-router-dom";
-// import ProductList from "../Products/ProductList.js";
 
-// import "../../PrashantCSS/minicart.css"
 
 function Home(props) {
   const [ProductList, setProductList] = useState([]);

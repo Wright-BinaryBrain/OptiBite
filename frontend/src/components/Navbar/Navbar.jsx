@@ -10,9 +10,9 @@ import {BiUserCircle} from "react-icons/bi";
 import ProfileAvatar from "./ProfileAvatar.jsx";
 import NavSearchMobile from "./NavSearchMobile.jsx";
 
-import "../../PrashantCSS/navbar.css"
+import "../../CSS/navbar.css"
 
-import "../../PrashantCSS/minicart.css"
+import "../../CSS/minicart.css"
 function Navbar(props) {
   // const navHeader = "SYVAR";
   

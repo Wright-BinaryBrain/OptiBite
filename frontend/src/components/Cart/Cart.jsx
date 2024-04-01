@@ -6,7 +6,7 @@ import axios from "axios";
 import CartTable from "./CartTable.jsx";
 import { Link } from "react-router-dom";
 
-import "../../PrashantCSS/cart.css"
+import "../../CSS/cart.css"
 
 function Cart(props) {
   const [ProductList, setProductList] = useState([]);
