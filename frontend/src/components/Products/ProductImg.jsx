@@ -8,7 +8,7 @@ function ProductImg(props) {
   const [iconHover, setIconHover] = useState({
     shuffle: false,
     maximize: false,
-    heart: false
+    heart: false,
   });
 
   function handleHover(iconName) {
@@ -23,8 +23,15 @@ function ProductImg(props) {
     <div className="product-img-container">
       <img className="product-img" src={props.src} alt={props.alt} />
       <div className="product-overlay"></div>
-      {props.itemValue.crossedPrice != null ? <div className="discount-percent">{((props.itemValue.crossedPrice - props.itemValue.rate)/props.itemValue.crossedPrice)*100}% off</div> : null}
-      {props.itemValue.organic === "Yes" ? <div className="small-description" style={props.itemValue.crossedPrice == null ? {transform: "translateY(0)"} : {transform: "translateY(120%)"}}>Organic</div> : null}
+      {props.itemValue.crossedPrice != null ? (
+        <div className="discount-percent">
+          {((props.itemValue.crossedPrice - props.itemValue.rate) /
+            props.itemValue.crossedPrice) *
+            100}
+          % off
+        </div>
+      ) : null}
+
       <div className="product-options">
         <div className="product-icons-container">
           <TiArrowShuffle
@@ -56,7 +63,9 @@ function ProductImg(props) {
             className="product-maximize-icon"
             onMouseOver={() => handleHover("maximize")}
             onMouseLeave={() => handleHoverLeave("maximize")}
-            onClick={()=>{props.productPopup(props.itemValue)}}
+            onClick={() => {
+              props.productPopup(props.itemValue);
+            }}
           />
           <div
             className="square-arrow"
@@ -82,7 +91,9 @@ function ProductImg(props) {
             id={"addToWishBtn" + String(props.itemValue._id)}
             className="product-heart-icon"
             style={
-              props.addToWish ? { display: "none" } : { display: "inline-block" }
+              props.addToWish
+                ? { display: "none" }
+                : { display: "inline-block" }
             }
             onClick={() => props.handleAdd(props.itemValue)}
             onMouseOver={() => handleHover("heart")}

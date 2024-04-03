@@ -148,18 +148,6 @@ function ProductPopup(props) {
                   % off
                 </div>
               ) : null}
-              {props.displayPop.organic === "Yes" ? (
-                <div
-                  className="small-description"
-                  style={
-                    props.displayPop.crossedPrice == null
-                      ? { transform: "translateY(0)" }
-                      : { transform: "translateY(120%)" }
-                  }
-                >
-                  Organic
-                </div>
-              ) : null}
             </div>
             {/* <div className="popup-vertical-line"></div> */}
           </div>
@@ -186,9 +174,6 @@ function ProductPopup(props) {
             ) : null}
             <div className="popup-detail">
               {props.displayPop.productDescription}
-              {/* Organic Honey is our pride possession. Raw honey has about 22
-              amino acids in it, 31 different minerals, and a wide range of
-              vitamins and enzymes that your body needs to function at its best. */}
             </div>
             <div className="popup-qty-container"></div>
             <div className="popup-buttons"></div>
@@ -286,7 +271,6 @@ function ProductPopup(props) {
                       ? ", Veg"
                       : ", Non-Veg"
                     : null}
-                  {props.displayPop.organic === "Yes" ? ", Organic" : null}
                 </span>
               </div>
             </div>

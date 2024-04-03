@@ -102,7 +102,7 @@ function ProductDiv(props) {
             break;
           }
         }
-        // productId.current=[];
+
         axios
           .patch(
             "http://localhost:4000/api/v1/updateFavourite",
@@ -121,18 +121,6 @@ function ProductDiv(props) {
       })
       .catch((err) => console.log(err));
   }
-
-  // useEffect(() => {
-  //   setQuantity(1);
-  // },[props.addedToCart]);
-
-  // var cartBtnAnimation = document.querySelector(".cart-button");
-
-  // useEffect(()=>{
-  //   // document.querySelector(".cart-button").addEventListener("Click", function(){
-  //       document.querySelector(".submit-cart-txt").classList.add("submit-cart-txt-animation");
-  //     // });
-  // },[props.addedToCart]);
 
   return (
     <div
