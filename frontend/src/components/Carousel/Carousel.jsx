@@ -1,41 +1,31 @@
-import Carousel from "react-elastic-carousel";
-import { useState, useEffect } from "react";
-import Card from "./Card";
-import "./cardCarousel.css";
-import cardItems from "./cardItems";
-import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
+import React, { useState } from "react";
+import images from "./images.json"; // Adjust the path as necessary
 
-const Carousell = () => {
-  const [carouselImage, setCarouselImage] = useState([]);
+const Carousel = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const getAllData = () => {
-    axios
-      .get("https://maharjanp.com.np/sabjiland/Carousel/api/")
-      .then((res) => {
-        setCarouselImage(res.data);
-      })
-      .catch((err) => console.log(err));
+  const goToPrevious = () => {
+    const isFirstImage = currentImageIndex === 0;
+    const newIndex = isFirstImage ? images.length - 1 : currentImageIndex - 1;
+    setCurrentImageIndex(newIndex);
   };
-  useEffect(() => {
-    getAllData();
-  }, []);
 
-  const breakPoints = [
-    { width: 400, itemsToShow: 2 },
-    { width: 500, itemsToShow: 4 },
-    { width: 767, itemsToShow: 6 },
-    { width: 1200, itemsToShow: 6 },
-    { width: 1500, itemsToShow: 6 }
-  ];
+  const goToNext = () => {
+    const isLastImage = currentImageIndex === images.length - 1;
+    const newIndex = isLastImage ? 0 : currentImageIndex + 1;
+    setCurrentImageIndex(newIndex);
+  };
+
   return (
-    <div className="container">
-      <Carousel breakPoints={breakPoints}>
-        {carouselImage.map((item, index) => {
-          return <Card key={index} image={item.link} title={item.name} />;
-        })}
-      </Carousel>
+    <div>
+      <button onClick={goToPrevious}>Previous</button>
+      <img
+        src={images[currentImageIndex].src}
+        alt={images[currentImageIndex].alt}
+      />
+      <button onClick={goToNext}>Next</button>
     </div>
   );
 };
-export default Carousell;
+
+export default Carousel;

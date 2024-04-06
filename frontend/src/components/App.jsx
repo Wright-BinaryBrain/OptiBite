@@ -5,8 +5,8 @@ import HeaderContact from "./HeaderContact/HeaderContact.jsx";
 import UpperNav from "./Navbar/UpperNav.jsx";
 import ProductDiv from "./Products/ProductDiv.jsx";
 import ProductPopup from "./ProductPopup/ProductPopup.jsx";
-import WishList from "./WishList/WishList.jsx";
-import AboutUs from "./AboutUs/AboutUS";
+// import WishList from "./WishList/WishList.jsx";
+// import AboutUs from "./AboutUs/AboutUS";
 import Footer from "./Footer/Footer.jsx";
 import Contact from "./contact/contact";
 import Home from "./Home/home.jsx";
@@ -34,7 +34,7 @@ import "./UserProfile/userProfile.css";
 // toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Thankyou from "./Thankyou/Thankyou.jsx";
+// import Thankyou from "./Thankyou/Thankyou.jsx";
 import ErrorPage from "./404/404.jsx";
 
 function App() {
@@ -289,7 +289,7 @@ function App() {
               />
             }
           />
-          <Route
+          {/* <Route
             path="/WishList"
             element={
               <WishList
@@ -301,7 +301,7 @@ function App() {
                 setDetectWishlistChange={setDetectWishlistChange}
               />
             }
-          />
+          /> */}
           <Route
             path="/Cart"
             element={
@@ -331,7 +331,7 @@ function App() {
               />
             }
           />
-          <Route
+          {/* <Route
             path="/invoice"
             element={
               <Thankyou
@@ -339,10 +339,10 @@ function App() {
                 orderResponse={orderResponse}
               />
             }
-          />
+          /> */}
           {/* <Route path="/OrderReceived" element={<OrderReceived />} /> */}
           {/* <Route path="/DeliveryLocation" element={<DeliveryLocation />} /> */}
-          <Route path="/AboutUs" element={<AboutUs />} />
+          {/* <Route path="/AboutUs" element={<AboutUs />} /> */}
           <Route path="/contact" element={<Contact />} />
 
           {/* ******************************************************************** */}

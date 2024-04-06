@@ -16,7 +16,6 @@ exports.register = catchAsyncErrors(async (req, res, next) => {
     contactNo1,
     contactNo2,
     role,
-    otpCode
   } = req.body;
 
   // Checking if  User in DB
@@ -26,53 +25,31 @@ exports.register = catchAsyncErrors(async (req, res, next) => {
   if (checkUserEmail) {
     res.status(400).json({
       message: "User with the email already exists.",
-      success: false
+      success: false,
     });
-  }
-
-  else if (checkUserContact1) {
+  } else if (checkUserContact1) {
     res.status(400).json({
       message: "User with the primary contact already exists.",
-      success: false
+      success: false,
     });
-  }
-
-  else{
-
+  } else {
     const contactOtp = await ContactOtp.findOne({ contactNo1: contactNo1 });
-    if(!contactOtp) {
-      res.status(404).json({
-        message: "Invalid OTP.",
-        success: false
-      });
-    }
-    else{
-      if(otpCode == contactOtp.otpCode){
-        const user = await User.create({
-          name,
-          email,
-          password,
-          confirmPassword,
-          contactNo1,
-          contactNo2,
-          role
-        });
-        sendToken(user, 200, "User Register successfully", res);
-      }
-      else{
-        res.status(200).json({
-          message: "Invalid OTP.",
-          success: false
-        });
-      }
-    }
-  }
 
+    const user = await User.create({
+      name,
+      email,
+      password,
+      confirmPassword,
+      contactNo1,
+      contactNo2,
+      role,
+    });
+    sendToken(user, 200, "User Register successfully", res);
+  }
 });
 
 //Login User => /api/v1/login
 exports.login = catchAsyncErrors(async (req, res, next) => {
-
   const { email, password } = req.body;
 
   //Check if Email and Password is Entered by user

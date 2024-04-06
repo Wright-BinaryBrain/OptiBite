@@ -31,19 +31,6 @@ const Login = (props) => {
           </div>
           {/* svg for curve */}
 
-          <svg
-            className={`defaultSvg ${active ? "login-Svg" : "signup-svg"}`}
-            viewBox="0 0 365 685"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              opacity="0.9"
-              d="M327.9 315.624C269.809 192.958 316.858 53.2931 347.103 0H0V685H329.06C370.347 523.742 383.624 433.293 327.9 315.624Z"
-              fill="#71B646"
-            />
-          </svg>
-
           {/* form section */}
           <div
             className={`${active ? "loginPanel" : "signupPanel"}`}
@@ -61,12 +48,7 @@ const Login = (props) => {
                 </div>
               </div>
 
-              <div className="logo">
-                <img
-                  src="https://i.postimg.cc/pT65LyC9/sabji-land-logo-1.png"
-                  alt="logo"
-                />
-              </div>
+              <div className="divider">|</div>
               <div className="option-signin ">
                 <div
                   className={`signup-link option ${active ? "disabled" : ""}`}
@@ -87,8 +69,17 @@ const Login = (props) => {
             >
               {/* login form and signup form are used as component */}
               {/* handleSignUpSide is passed s props to use the function in loginForm component */}
-              <LoginForm setIsLoggedIn={props.setIsLoggedIn}  setUserData={props.setUserData} close={props.closeLogin} handleSignUpSide={handleSignUpSide} />
-              <SignUpForm setIsLoggedIn={props.setIsLoggedIn}  setUserData={props.setUserData} close={props.closeLogin}/>
+              <LoginForm
+                setIsLoggedIn={props.setIsLoggedIn}
+                setUserData={props.setUserData}
+                close={props.closeLogin}
+                handleSignUpSide={handleSignUpSide}
+              />
+              <SignUpForm
+                setIsLoggedIn={props.setIsLoggedIn}
+                setUserData={props.setUserData}
+                close={props.closeLogin}
+              />
             </div>
             {/* <LoginForm handleSignUpSide={handleSignUpSide} />
 

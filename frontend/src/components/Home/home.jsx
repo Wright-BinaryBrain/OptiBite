@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import TopBanner from "../TopBanner/TopBanner.jsx";
+// import TopBanner from "../TopBanner/TopBanner.jsx";
 import Carousel from "../Carousel/Carousel";
 import ProductDiv from "../Products/ProductDiv.jsx";
-import homeImages from "./home-images.js";
 import axios from "axios";
-import { Link } from "react-router-dom";
-
 function Home(props) {
   const [ProductList, setProductList] = useState([]);
   const [allBestSeller, setAllBestSeller] = useState([]);
@@ -73,7 +70,7 @@ function Home(props) {
 
   return (
     <div style={{ maxWidth: "1440px", margin: "auto", width: "90%" }}>
-      <TopBanner />
+      {/* <TopBanner /> */}
       <Carousel />
       <div className="home-product-titles">Best Sellers</div>
       <div className="product-div-container">
