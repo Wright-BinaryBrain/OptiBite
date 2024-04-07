@@ -25,4 +25,8 @@ import re
 import string
 
 
+df = pd.read_csv('1662574418893344.csv')
+df.head()
+
+len(list(df['Name'].unique()))
 
