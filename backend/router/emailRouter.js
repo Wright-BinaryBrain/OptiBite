@@ -1,14 +1,7 @@
 const express = require("express");
-const { sendEmailToSabjiland } = require("../controller/emailController");
+const { sendEmailTooptibite } = require("../controller/emailController");
 const router = express.Router();
 
-router
-    .route('/sendEmail')
-    .post(
-        sendEmailToSabjiland
-    );
-
-
-
+router.route("/sendEmail").post(sendEmailTooptibite);
 
 module.exports = router;

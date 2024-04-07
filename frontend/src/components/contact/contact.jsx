@@ -148,7 +148,7 @@ const Contact = () => {
               <div className="details">
                 <div className="contact-icon">
                   <IoMdMail />
-                  <span className="email-id f">sabjiland@gmail.com</span>
+                  <span className="email-id f">optibite@gmail.com</span>
                 </div>
 
                 <div className="contact-icon">
@@ -164,7 +164,7 @@ const Contact = () => {
                   </div>
                 </a>
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.4424668508254!2d85.3535288744387!3d27.672716327019884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb193fc9413da1%3A0x71dac426b8289451!2sSabjiland%20Pvt.%20Ltd.!5e0!3m2!1sen!2snp!4v1689058677064!5m2!1sen!2snp"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.4424668508254!2d85.3535288744387!3d27.672716327019884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb193fc9413da1%3A0x71dac426b8289451!2soptibite%20Pvt.%20Ltd.!5e0!3m2!1sen!2snp!4v1689058677064!5m2!1sen!2snp"
                   allowfullscreen=""
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
@@ -180,14 +180,14 @@ const Contact = () => {
                 <a
                   className="social-icon"
                   target="_blank"
-                  href="https://facebook.com/sabjiland"
+                  href="https://facebook.com/optibite"
                 >
                   <img
                     src="https://i.postimg.cc/nznHWVxr/Rectangle-109.png"
                     alt="facebook"
                   />
                 </a>
-                <a target="_blank" href="http://instagram.com/sabjiland">
+                <a target="_blank" href="http://instagram.com/optibite">
                   <img
                     src="https://i.postimg.cc/sx6DSktX/Instagram.png"
                     alt="instagram"

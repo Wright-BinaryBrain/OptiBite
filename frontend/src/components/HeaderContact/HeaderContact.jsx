@@ -10,7 +10,7 @@ function HeaderContact(props) {
     >
       <div className="navcontact-container">
         <GrMail className="mail-icon" />
-        <p className="navcontact-info">sabjiland@gmail.com</p>
+        <p className="navcontact-info">optibite@gmail.com</p>
         <BsFillTelephoneFill className="phone-icon" />
         <p className="navcontact-info">+977 9801077972</p>
       </div>

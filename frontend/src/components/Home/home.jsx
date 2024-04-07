@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import TopBanner from "../TopBanner/TopBanner.jsx";
-import Carousel from "../Carousel/Carousel";
+// import Carousel from "../Carousel/Carousel";
 import ProductDiv from "../Products/ProductDiv.jsx";
 import axios from "axios";
 function Home(props) {
@@ -71,7 +71,7 @@ function Home(props) {
   return (
     <div style={{ maxWidth: "1440px", margin: "auto", width: "90%" }}>
       {/* <TopBanner /> */}
-      <Carousel />
+      {/* <Carousel /> */}
       <div className="home-product-titles">Best Sellers</div>
       <div className="product-div-container">
         {bestSeller.map((itemValue) => {

@@ -6,10 +6,10 @@ import { ToastContainer, toast } from "react-toastify";
 function OrderNow(props) {
   const navigate = useNavigate();
   const [buyProduct, setBuyProduct] = useState(
-    JSON.parse(localStorage.getItem("sabjilandBuyProduct"))
+    JSON.parse(localStorage.getItem("optibiteBuyProduct"))
   );
   const [quantity, setQuantity] = useState(
-    JSON.parse(localStorage.getItem("sabjilandQuantity"))
+    JSON.parse(localStorage.getItem("optibiteQuantity"))
   );
 
   const [totalAmount, setTotalAmount] = useState(0);
@@ -19,10 +19,10 @@ function OrderNow(props) {
   var cartList;
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem("sabjilandAddToCart")) === null) {
+    if (JSON.parse(localStorage.getItem("optibiteAddToCart")) === null) {
       cartList = [];
     } else {
-      cartList = JSON.parse(localStorage.getItem("sabjilandAddToCart"));
+      cartList = JSON.parse(localStorage.getItem("optibiteAddToCart"));
     }
     setCartItemsList(cartList.length);
 
@@ -57,11 +57,11 @@ function OrderNow(props) {
     cartId = [];
     cartQty = [];
 
-    if (JSON.parse(localStorage.getItem("sabjilandBuyProduct")) === null) {
-      if (JSON.parse(localStorage.getItem("sabjilandAddToCart")) === null) {
+    if (JSON.parse(localStorage.getItem("optibiteBuyProduct")) === null) {
+      if (JSON.parse(localStorage.getItem("optibiteAddToCart")) === null) {
         cartItems = [];
       } else {
-        cartItems = JSON.parse(localStorage.getItem("sabjilandAddToCart"));
+        cartItems = JSON.parse(localStorage.getItem("optibiteAddToCart"));
       }
 
       console.log(cartItems);
@@ -71,11 +71,11 @@ function OrderNow(props) {
         cartQty.push(String(cartItems[i].qtyBtn));
       }
     } else {
-      if (JSON.parse(localStorage.getItem("sabjilandBuyProduct")) === null) {
+      if (JSON.parse(localStorage.getItem("optibiteBuyProduct")) === null) {
         cartItems = [];
       } else {
-        cartItems = [JSON.parse(localStorage.getItem("sabjilandBuyProduct"))];
-        cartQty = [JSON.parse(localStorage.getItem("sabjilandQuantity"))];
+        cartItems = [JSON.parse(localStorage.getItem("optibiteBuyProduct"))];
+        cartQty = [JSON.parse(localStorage.getItem("optibiteQuantity"))];
       }
       cartId = [cartItems[0]._id];
     }
@@ -122,10 +122,8 @@ function OrderNow(props) {
 
             navigate("/invoice");
           }
-          if (
-            JSON.parse(localStorage.getItem("sabjilandBuyProduct")) === null
-          ) {
-            localStorage.removeItem("sabjilandAddToCart");
+          if (JSON.parse(localStorage.getItem("optibiteBuyProduct")) === null) {
+            localStorage.removeItem("optibiteAddToCart");
             props.setAddedToCart([]);
           }
         })
@@ -159,14 +157,14 @@ function OrderNow(props) {
           <div>Sub Total</div>
           <div>
             Rs.{" "}
-            {JSON.parse(localStorage.getItem("sabjilandBuyProduct")) === null
+            {JSON.parse(localStorage.getItem("optibiteBuyProduct")) === null
               ? totalAmount
               : buyProduct.rate * quantity}
           </div>
         </div>
         <div style={{ fontSize: "12px" }}>
           (
-          {JSON.parse(localStorage.getItem("sabjilandBuyProduct")) === null
+          {JSON.parse(localStorage.getItem("optibiteBuyProduct")) === null
             ? `${cartItemsList} item/s`
             : "1 item"}
           )
@@ -184,7 +182,7 @@ function OrderNow(props) {
           <div>Total</div>
           <div>
             Rs.{" "}
-            {JSON.parse(localStorage.getItem("sabjilandBuyProduct")) === null
+            {JSON.parse(localStorage.getItem("optibiteBuyProduct")) === null
               ? grandTotal
               : buyProduct.rate * quantity + 100}
           </div>
@@ -207,7 +205,7 @@ function OrderNow(props) {
               checked
             />
           </div>
-          <div>I have read and agree to the Sabjiland terms and conditions</div>
+          <div>I have read and agree to the optibite terms and conditions</div>
         </div>
         <button className="place-order-button" onClick={Order}>
           <input

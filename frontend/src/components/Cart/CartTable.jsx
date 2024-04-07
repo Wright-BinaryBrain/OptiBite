@@ -8,7 +8,7 @@ function CartTable(props) {
   var deleteCartItem;
 
   function deleteId(id) {
-    deleteCartItem = JSON.parse(localStorage.getItem("sabjilandAddToCart"));
+    deleteCartItem = JSON.parse(localStorage.getItem("optibiteAddToCart"));
 
     for (let i = 0; i < deleteCartItem.length; i++) {
       if (String(deleteCartItem[i]._id) === String(id)) {
@@ -17,19 +17,16 @@ function CartTable(props) {
       }
     }
 
-    localStorage.removeItem("sabjilandAddToCart");
+    localStorage.removeItem("optibiteAddToCart");
     if (String(deleteCartItem) != String([])) {
-      localStorage.setItem(
-        "sabjilandAddToCart",
-        JSON.stringify(deleteCartItem)
-      );
+      localStorage.setItem("optibiteAddToCart", JSON.stringify(deleteCartItem));
     }
 
-    if (JSON.parse(localStorage.getItem("sabjilandAddToCart")) === null) {
+    if (JSON.parse(localStorage.getItem("optibiteAddToCart")) === null) {
       props.setAddedToCart([]);
     } else {
       props.setAddedToCart(
-        JSON.parse(localStorage.getItem("sabjilandAddToCart"))
+        JSON.parse(localStorage.getItem("optibiteAddToCart"))
       );
     }
   }
@@ -102,8 +99,7 @@ function CartTable(props) {
           </td>
           <td className="mycart-table-data">
             <div className="mycart-product-price">
-              Rs.
-              <span style={{ color: "black" }}>{itemValue.rate}/-</span>
+              $<span style={{ color: "black" }}>{itemValue.rate}/-</span>
             </div>
           </td>
           <td className="mycart-table-data">
@@ -118,7 +114,7 @@ function CartTable(props) {
           </td>
           <td className="mycart-table-data">
             <div className="mycart-subtotal-product-price">
-              Rs. {itemValue.rate * itemValue.qtyBtn}
+              $ {itemValue.rate * itemValue.qtyBtn}
             </div>
           </td>
           <td className="mycart-table-data">

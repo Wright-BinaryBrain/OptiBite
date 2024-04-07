@@ -185,12 +185,6 @@ function ProductPopup(props) {
                   quantity={quantity}
                   setQuantity={setQuantity}
                 />
-                <DropdownUnit
-                  defaultunit={props.displayPop.unitType}
-                  secondUnitType={props.displayPop.secondUnitType}
-                  unitid={"productUnit-popup" + String(1)}
-                  unitname={"productUnit-popup" + String(1)}
-                />
               </div>
               <div className="popup-buttons-parent-container">
                 <div className="popup-buttons-child-container">
