@@ -50,12 +50,12 @@ function CartOrderSummary(props) {
       <div className="mycart-order-details">
         <div className="mycart-order-flex">
           <div>Sub Total</div>
-          <div>Rs {totalAmount}/-</div>
+          <div>$ {totalAmount}</div>
         </div>
         <div style={{ fontSize: "12px" }}>{cartItemsList + " Item/s"}</div>
         <div className="mycart-order-flex">
           <div>Delivery Charge</div>
-          <div>Rs 100/-</div>
+          <div>$ 2</div>
         </div>
       </div>
       <div
@@ -64,7 +64,7 @@ function CartOrderSummary(props) {
       >
         <div className="mycart-order-flex">
           <div>Total</div>
-          <div>Rs {grandTotal}/-</div>
+          <div>$ {grandTotal}</div>
         </div>
         <button
           className="mycart-checkout-button"
