@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import TopBanner from "../TopBanner/TopBanner.jsx";
-import Carousel from "../Carousel/Carousel";
+// import Carousel from "../Carousel/Carousel";
 import ProductDiv from "../Products/ProductDiv.jsx";
 import axios from "axios";
 function Home(props) {
@@ -10,16 +10,14 @@ function Home(props) {
   const [vegetables, setVegetables] = useState([]);
   function getProduct() {
     axios
-      .get("http://localhost:4000/api/v1/getProducts", {
-        params: { rowsPerPage: 6 },
-      })
+      .get("http://localhost:4000/api/v1/getProducts", {})
       .then((res) => setProductList(res.data.data))
       .catch((err) => console.log(err));
   }
 
   function getVegetables() {
     axios
-      .get("http://localhost:4000/api/v1/getProducts?vegNonVeg=Veg", {
+      .get("http://localhost:4000/api/v1/getProducts?Veg_Non=veg", {
         params: { rowsPerPage: 4 },
       })
       .then((res) => setVegetables(res.data.data))
@@ -71,7 +69,7 @@ function Home(props) {
   return (
     <div style={{ maxWidth: "1440px", margin: "auto", width: "90%" }}>
       {/* <TopBanner /> */}
-      <Carousel />
+      {/* <Carousel /> */}
       <div className="home-product-titles">Best Sellers</div>
       <div className="product-div-container">
         {bestSeller.map((itemValue) => {

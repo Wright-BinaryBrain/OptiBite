@@ -1,67 +1,81 @@
-const joi = require('joi');
+const joi = require("joi");
+
+// const productSchema = joi.object({
+//     productName: joi.string()
+//         .max(255)
+//         .min(1)
+//         .required(true),
+
+//     nepaliName: joi.string()
+//         .max(255)
+//         .min(1)
+//         .required(false),
+
+//     rate: joi.number()
+//         .min(1)
+//         .required(true),
+
+//     unitType: joi.string()
+//         .min(1)
+//         .required(true),
+
+//     secondRate: joi.number()
+//         .min(1)
+//         .required(false),
+
+//     secondUnitType: joi.string()
+//         .min(1)
+//         .required(false),
+
+//     crossedPrice: joi.number()
+//         .min(1)
+//         .required(true),
+
+//     stock: joi.string()
+//         .valid("InStock", "Out of Stock", "Unavailable")
+//         .required(true),
+
+//     organic: joi.string()
+//         .valid('Yes', 'No')
+//         .required(true),
+
+//     edibleType: joi.string()
+//         .valid('Yes', 'No')
+//         .required(true),
+
+//     vegNonVeg: joi.string()
+//         .valid("veg", "non-veg")
+//         .required(true),
+
+//     productDescription: joi.string()
+//         .required(true),
+
+//     compare: joi.string(),
+// })
 
 const productSchema = joi.object({
-    productName: joi.string()
-        .max(255)
-        .min(1)
-        .required(true),
+  Name: joi.string().max(255).min(1).required(),
 
-    nepaliName: joi.string()
-        .max(255)
-        .min(1)
-        .required(false),    
+  C_Type: joi.string().max(255).min(1).optional(),
 
-    rate: joi.number()
-        .min(1)
-        .required(true),
+  Food_ID: joi.number().min(1).required(),
 
-    unitType: joi.string()
-        .min(1)
-        .required(true),
+  Describe: joi.string().min(1).optional(),
 
-    secondRate: joi.number()
-        .min(1)
-        .required(false),
-    
-    secondUnitType: joi.string()
-        .min(1)
-        .required(false),
+  vegNonVeg: joi.string().valid("Non-veg", "Veg").optional(),
 
-    crossedPrice: joi.number()
-        .min(1)
-        .required(true),
+  image: joi.array().items(joi.string()).optional(),
 
-    stock: joi.string()
-        .valid("InStock", "Out of Stock", "Unavailable")
-        .required(true),
-
-    organic: joi.string()
-        .valid('Yes', 'No')
-        .required(true),
-
-    edibleType: joi.string()
-        .valid('Yes', 'No')
-        .required(true),
-
-    vegNonVeg: joi.string()
-        .valid("veg", "non-veg")
-        .required(true),
-
-    productDescription: joi.string()
-        .required(true),
-    
-    compare: joi.string(),
-})
-
-
+  rate: joi.number().min(1).required(),
+});
 const productValidation = async (req, res, next) => {
-    const productObject = req.body
-    const{err} = await productSchema.validate(productObject)
-    if(!err){
-        next()
-    }else{
-        res.status(301).json(err.message)
-    }
-}
+  const productObject = req.body;
+  const { err } = await productSchema.validate(productObject);
+  if (!err) {
+    next();
+  } else {
+    res.status(301).json(err.message);
+  }
+};
 
-module.exports = productValidation
+module.exports = productValidation;

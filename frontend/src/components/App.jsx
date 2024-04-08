@@ -7,7 +7,7 @@ import ProductDiv from "./Products/ProductDiv.jsx";
 import ProductPopup from "./ProductPopup/ProductPopup.jsx";
 // import WishList from "./WishList/WishList.jsx";
 // import AboutUs from "./AboutUs/AboutUS";
-import Footer from "./Footer/Footer.jsx";
+// import Footer from "./Footer/Footer.jsx";
 import Contact from "./contact/contact";
 import Home from "./Home/home.jsx";
 import Cart from "./Cart/Cart.jsx";
@@ -100,16 +100,16 @@ function App() {
       setIsOrderCart(true);
     } else if (displayPop === "delete" && quantity === "delete") {
       setIsOrderCart(true);
-      localStorage.removeItem("sabjilandBuyProduct");
-      localStorage.removeItem("sabjilandQuantity");
+      localStorage.removeItem("optibiteBuyProduct");
+      localStorage.removeItem("optibiteQuantity");
     } else {
       // console.log("Order Details=",orderDetails);
       setIsOrderCart(false);
       setBuyProduct(displayPop);
       setBtnQuantity(quantity);
 
-      localStorage.setItem("sabjilandBuyProduct", JSON.stringify(displayPop));
-      localStorage.setItem("sabjilandQuantity", JSON.stringify(quantity));
+      localStorage.setItem("optibiteBuyProduct", JSON.stringify(displayPop));
+      localStorage.setItem("optibiteQuantity", JSON.stringify(quantity));
     }
   }
 
@@ -134,18 +134,18 @@ function App() {
   }
 
   const [addedToCart, setAddedToCart] = useState(
-    JSON.parse(localStorage.getItem("sabjilandAddToCart")) != null
-      ? JSON.parse(localStorage.getItem("sabjilandAddToCart"))
+    JSON.parse(localStorage.getItem("optibiteAddToCart")) != null
+      ? JSON.parse(localStorage.getItem("optibiteAddToCart"))
       : []
   );
   const [itemQuantity, setItemQuantity] = useState(0.5);
   var addQty;
   var cartItems;
 
-  if (JSON.parse(localStorage.getItem("sabjilandAddToCart")) === null) {
+  if (JSON.parse(localStorage.getItem("optibiteAddToCart")) === null) {
     cartItems = [];
   } else {
-    cartItems = JSON.parse(localStorage.getItem("sabjilandAddToCart"));
+    cartItems = JSON.parse(localStorage.getItem("optibiteAddToCart"));
   }
 
   function addToCart(itemValue, qty) {
@@ -164,8 +164,8 @@ function App() {
     }
 
     if (cartItems != []) {
-      localStorage.setItem("sabjilandAddToCart", JSON.stringify(cartItems));
-      setAddedToCart(JSON.parse(localStorage.getItem("sabjilandAddToCart")));
+      localStorage.setItem("optibiteAddToCart", JSON.stringify(cartItems));
+      setAddedToCart(JSON.parse(localStorage.getItem("optibiteAddToCart")));
     }
     toast.success("Added to Cart", {
       position: toast.POSITION.TOP_RIGHT,
@@ -358,7 +358,7 @@ function App() {
           <Route path="/*" element={<ErrorPage />} />
           {/* ******************************************************************** */}
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
 
         {/* <ProductDiv /> */}
         {/* <ProductPopup /> */}

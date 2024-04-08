@@ -16,7 +16,7 @@ const Wallet = () => {
       <div className="user-page-wallet-desc">
         <div className="user-page-wallet-left">
           <span className="wallet-available">
-            Available Sabjiland wallet balance: Rs.
+            Available optibite wallet balance: Rs.
             <span className="wallet-available-amount"> 100.00</span>
           </span>
           <span className="wallet-earned">
@@ -33,7 +33,7 @@ const Wallet = () => {
           <div className="wallet-note-box">
             <p className="wallet-note">
               Note: Earn Sabjiwallet credit everytime you order any vegies from
-              sabjiland. When you have enough credits, you can use them to pay
+              optibite. When you have enough credits, you can use them to pay
               for your order next time!
             </p>
           </div>
@@ -53,7 +53,7 @@ const Wallet = () => {
           </div>
           <div className="wallet-desc-container">
             <p className="wallet-available">
-              Available Sabjiland wallet balance: Rs.
+              Available optibite wallet balance: Rs.
               <span className="wallet-available-amount"> 100.00</span>
             </p>
             <p className="wallet-earned">
@@ -70,7 +70,7 @@ const Wallet = () => {
           <div className="wallet-note-box">
             <p className="wallet-note">
               Note: Earn Sabjiwallet credit everytime you order any vegies from
-              sabjiland. When you have enough credits, you can use them to pay
+              optibite. When you have enough credits, you can use them to pay
               for your order next time!
             </p>
           </div>

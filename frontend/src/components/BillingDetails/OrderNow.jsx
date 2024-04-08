@@ -2,47 +2,59 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function OrderNow(props) {
-
   const navigate = useNavigate();
-  const [buyProduct, setBuyProduct] = useState(JSON.parse(localStorage.getItem("sabjilandBuyProduct")));
-  const [quantity, setQuantity] = useState(JSON.parse(localStorage.getItem("sabjilandQuantity")));
-
+  const [buyProduct, setBuyProduct] = useState(
+    JSON.parse(localStorage.getItem("optibiteBuyProduct"))
+  );
+  const [quantity, setQuantity] = useState(
+    JSON.parse(localStorage.getItem("optibiteQuantity"))
+  );
 
   const [totalAmount, setTotalAmount] = useState(0);
   const [grandTotal, setGrandTotal] = useState(0);
-  const [cartItemsList,setCartItemsList] = useState(0);
+  const [cartItemsList, setCartItemsList] = useState(0);
   var subTotal = 0;
   var cartList;
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem("sabjilandAddToCart")) === null) {
+    if (JSON.parse(localStorage.getItem("optibiteAddToCart")) === null) {
       cartList = [];
+    } else {
+      cartList = JSON.parse(localStorage.getItem("optibiteAddToCart"));
     }
-    else {
-      cartList = JSON.parse(localStorage.getItem("sabjilandAddToCart"));
-    }
-    setCartItemsList (cartList.length);
-    
-    for (let i = 0; i < cartList.length; i++){
-      subTotal = (cartList[i].qtyBtn * cartList[i].rate) + subTotal;
+    setCartItemsList(cartList.length);
+
+    for (let i = 0; i < cartList.length; i++) {
+      subTotal = cartList[i].qtyBtn * cartList[i].rate + subTotal;
     }
     setTotalAmount(subTotal);
     setGrandTotal(subTotal + 100);
-  },[]);
+  }, []);
 
-function GoToPayment(){
-  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-  navigate("/payment")
-}
+  function GoToPayment() {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    navigate("/payment");
+  }
   return (
     <div className="place-order-summary">
       <div className="place-order-title">ORDER SUMMARY</div>
       <div className="place-order-details">
         <div className="place-order-flex">
           <div>Sub Total</div>
-            <div>Rs. {JSON.parse(localStorage.getItem("sabjilandBuyProduct")) === null ? totalAmount : buyProduct.rate * quantity}</div>
+          <div>
+            Rs.{" "}
+            {JSON.parse(localStorage.getItem("optibiteBuyProduct")) === null
+              ? totalAmount
+              : buyProduct.rate * quantity}
+          </div>
         </div>
-        <div style={{ fontSize: "12px" }}>({JSON.parse(localStorage.getItem("sabjilandBuyProduct")) === null ? `${cartItemsList} item/s` : "1 item"})</div>
+        <div style={{ fontSize: "12px" }}>
+          (
+          {JSON.parse(localStorage.getItem("optibiteBuyProduct")) === null
+            ? `${cartItemsList} item/s`
+            : "1 item"}
+          )
+        </div>
         <div className="place-order-flex">
           <div>Delivery Charge</div>
           <div>Rs 100/-</div>
@@ -54,7 +66,12 @@ function GoToPayment(){
       >
         <div className="place-order-flex">
           <div>Total</div>
-          <div>Rs. {JSON.parse(localStorage.getItem("sabjilandBuyProduct")) === null ? grandTotal : (buyProduct.rate * quantity) + 100}</div>
+          <div>
+            Rs.{" "}
+            {JSON.parse(localStorage.getItem("optibiteBuyProduct")) === null
+              ? grandTotal
+              : buyProduct.rate * quantity + 100}
+          </div>
         </div>
       </div>
       <div className="place-order-terms">
@@ -73,9 +90,16 @@ function GoToPayment(){
               value="place-order-terms-checkbox"
             />
           </div>
-          <div>I have read and agree to the Sabjiland terms and conditions</div>
+          <div>I have read and agree to the optibite terms and conditions</div>
         </div>
-        <button className="place-order-button" onClick={() => document.getElementById("place-order-terms-checkbox-1").checked ? GoToPayment() : null}>
+        <button
+          className="place-order-button"
+          onClick={() =>
+            document.getElementById("place-order-terms-checkbox-1").checked
+              ? GoToPayment()
+              : null
+          }
+        >
           <input
             type="submit"
             name="submit-place-order"

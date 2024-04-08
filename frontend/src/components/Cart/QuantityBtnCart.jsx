@@ -1,31 +1,30 @@
 import React, { useState, useEffect } from "react";
 
 function QuantityBtnCart(props) {
-
   const [quantity, setQuantity] = useState(props.qtyBtn);
   var qtyValue;
 
-  useEffect(()=> {
-    qtyValue = JSON.parse(localStorage.getItem("sabjilandAddToCart"));
-    for (let i = 0; i < qtyValue.length; i++){
-      if (String(qtyValue[i]._id) === String(props.storageId)){
+  useEffect(() => {
+    qtyValue = JSON.parse(localStorage.getItem("optibiteAddToCart"));
+    for (let i = 0; i < qtyValue.length; i++) {
+      if (String(qtyValue[i]._id) === String(props.storageId)) {
         setQuantity(qtyValue[i].qtyBtn);
         break;
       }
     }
-  },[props.addedToCart]);
+  }, [props.addedToCart]);
 
   useEffect(() => {
-    qtyValue = JSON.parse(localStorage.getItem("sabjilandAddToCart"));
-    for (let i = 0; i < qtyValue.length; i++){
-      if (String(qtyValue[i]._id) === String(props.storageId)){
+    qtyValue = JSON.parse(localStorage.getItem("optibiteAddToCart"));
+    for (let i = 0; i < qtyValue.length; i++) {
+      if (String(qtyValue[i]._id) === String(props.storageId)) {
         qtyValue[i].qtyBtn = quantity;
         break;
       }
     }
-    localStorage.removeItem("sabjilandAddToCart");
-    localStorage.setItem("sabjilandAddToCart", JSON.stringify(qtyValue));
-    props.setAddedToCart(JSON.parse(localStorage.getItem("sabjilandAddToCart")));
+    localStorage.removeItem("optibiteAddToCart");
+    localStorage.setItem("optibiteAddToCart", JSON.stringify(qtyValue));
+    props.setAddedToCart(JSON.parse(localStorage.getItem("optibiteAddToCart")));
   }, [quantity]);
 
   function handleChange(event) {
@@ -34,12 +33,12 @@ function QuantityBtnCart(props) {
   }
 
   function addNumber() {
-    setQuantity((prevValue) => Number(prevValue) + 0.5);
+    setQuantity((prevValue) => Number(prevValue) + 1);
   }
 
   function subtractNumber() {
     setQuantity((prevValue) =>
-      Number(prevValue) > 0.5 ? Number(prevValue) - 0.5 : Number(prevValue)
+      Number(prevValue) > 1 ? Number(prevValue) - 1 : Number(prevValue)
     );
   }
 

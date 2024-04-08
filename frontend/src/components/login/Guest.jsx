@@ -65,11 +65,11 @@
 //     cartQty = [];
 
 //     if (props.isOrderCart === true) {
-//       if (JSON.parse(localStorage.getItem("sabjilandAddToCart")) === null) {
+//       if (JSON.parse(localStorage.getItem("optibiteAddToCart")) === null) {
 //         cartItems = [];
 //       }
 //       else {
-//         cartItems = JSON.parse(localStorage.getItem("sabjilandAddToCart"));
+//         cartItems = JSON.parse(localStorage.getItem("optibiteAddToCart"));
 //       }
 
 //       console.log(cartItems);
@@ -109,7 +109,7 @@
 //         alert("Order placed successfully!")
 
 //         if (props.isOrderCart === true) {
-//           localStorage.removeItem("sabjilandAddToCart");
+//           localStorage.removeItem("optibiteAddToCart");
 //           props.setAddedToCart([]);
 //         }
 
@@ -341,10 +341,10 @@ const Guest = (props) => {
     cartQty = [];
 
     if (props.isOrderCart === true) {
-      if (JSON.parse(localStorage.getItem("sabjilandAddToCart")) === null) {
+      if (JSON.parse(localStorage.getItem("optibiteAddToCart")) === null) {
         cartItems = [];
       } else {
-        cartItems = JSON.parse(localStorage.getItem("sabjilandAddToCart"));
+        cartItems = JSON.parse(localStorage.getItem("optibiteAddToCart"));
       }
 
       console.log(cartItems);
@@ -462,7 +462,7 @@ const Guest = (props) => {
                 window.scrollTo({ top: 0, left: 0, behavior: "instant" });
               }
               if (props.isOrderCart === true) {
-                localStorage.removeItem("sabjilandAddToCart");
+                localStorage.removeItem("optibiteAddToCart");
                 props.setAddedToCart([]);
               }
             })

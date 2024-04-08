@@ -34,7 +34,7 @@ function Cart(props) {
   }
 
   function handleRemoveAll() {
-    localStorage.removeItem("sabjilandAddToCart");
+    localStorage.removeItem("optibiteAddToCart");
     props.setAddedToCart([]);
   }
 
@@ -45,7 +45,7 @@ function Cart(props) {
 
   function handleRemoveSelected() {
     deleteIndex = [];
-    deleteCartItems = JSON.parse(localStorage.getItem("sabjilandAddToCart"));
+    deleteCartItems = JSON.parse(localStorage.getItem("optibiteAddToCart"));
     for (let i = 0; i < selectedItems.length; i++) {
       for (let j = 0; i < deleteCartItems.length; j++) {
         if (String(selectedItems[i]) === String(deleteCartItems[j]._id)) {
@@ -61,19 +61,19 @@ function Cart(props) {
       deleteCartItems.splice(deleteIndex[i], 1);
     }
 
-    localStorage.removeItem("sabjilandAddToCart");
+    localStorage.removeItem("optibiteAddToCart");
     if (String(deleteCartItems) != String([])) {
       localStorage.setItem(
-        "sabjilandAddToCart",
+        "optibiteAddToCart",
         JSON.stringify(deleteCartItems)
       );
     }
 
-    if (JSON.parse(localStorage.getItem("sabjilandAddToCart")) === null) {
+    if (JSON.parse(localStorage.getItem("optibiteAddToCart")) === null) {
       props.setAddedToCart([]);
     } else {
       props.setAddedToCart(
-        JSON.parse(localStorage.getItem("sabjilandAddToCart"))
+        JSON.parse(localStorage.getItem("optibiteAddToCart"))
       );
     }
 
@@ -151,9 +151,7 @@ function Cart(props) {
           />
         </div>
       </div>
-      <div className="mycart-recently-viewed-titles">
-        RECENTLY VIEWED PRODUCTS
-      </div>
+      <div className="mycart-recently-viewed-titles">VIEW MORE PRODUCTS</div>
       <div className="product-div-container">
         {ProductList.map((itemValue) => {
           return (

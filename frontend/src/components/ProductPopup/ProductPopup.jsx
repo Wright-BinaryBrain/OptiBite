@@ -130,7 +130,7 @@ function ProductPopup(props) {
           >
             <div className="popup-name-container">
               <div className="popup-name">
-                {props.displayPop.productName} | {props.displayPop.nepaliName}
+                {props.displayPop.Name} | {props.displayPop.nepaliName}
               </div>
             </div>
             <div className="popup-image-container">
@@ -184,12 +184,6 @@ function ProductPopup(props) {
                   inputname={"quantity-btn-popup" + String(1)}
                   quantity={quantity}
                   setQuantity={setQuantity}
-                />
-                <DropdownUnit
-                  defaultunit={props.displayPop.unitType}
-                  secondUnitType={props.displayPop.secondUnitType}
-                  unitid={"productUnit-popup" + String(1)}
-                  unitname={"productUnit-popup" + String(1)}
                 />
               </div>
               <div className="popup-buttons-parent-container">

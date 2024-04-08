@@ -121,7 +121,7 @@ function ProductDiv(props) {
       })
       .catch((err) => console.log(err));
   }
-
+  console.log(props.itemValue);
   return (
     <div
       className="product-div"
@@ -131,8 +131,8 @@ function ProductDiv(props) {
       // onTouchStart={() => checkWishlist(props.itemValue)}
     >
       <ProductImg
-        src={`http://localhost:4000/uploads/${props.itemValue.image[0]}`}
-        alt={props.itemValue.productName}
+        src={`${props.itemValue.image}`}
+        alt={props.itemValue.Name}
         productPopup={props.productPopup}
         id={props.itemValue._id}
         itemValue={props.itemValue}
@@ -141,15 +141,12 @@ function ProductDiv(props) {
         handleAdd={addWishHandler}
         handleRemove={removeWishHandler}
       />
-      <ProductName productname={props.itemValue.productName} />
+      <ProductName productname={props.itemValue.Name} />
 
       {/* <form action="" className="product-form" onSubmit=""> */}
       <div className="product-form">
         <div className="product-quantity-container">
-          <Price
-            crossedrate={props.itemValue.crossedPrice}
-            rate={props.itemValue.rate}
-          />
+          <Price rate={props.itemValue.Rate} />
           <div className="product-quantity">
             <QuantityBtn
               inputid={"quantity-btn" + String(props.itemValue._id)}
