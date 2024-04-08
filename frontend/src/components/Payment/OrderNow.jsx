@@ -64,7 +64,7 @@ function OrderNow(props) {
         cartItems = JSON.parse(localStorage.getItem("optibiteAddToCart"));
       }
 
-      console.log(cartItems);
+      // console.log(cartItems);
 
       for (let i = 0; i < cartItems.length; i++) {
         cartId.push(String(cartItems[i]._id));
@@ -80,8 +80,8 @@ function OrderNow(props) {
       cartId = [cartItems[0]._id];
     }
 
-    console.log(cartId);
-    console.log(cartQty);
+    // console.log(cartId);
+    // console.log(cartQty);
 
     if (cartId.length !== 0 && cartQty.length !== 0) {
       const formData = new FormData();
@@ -100,10 +100,8 @@ function OrderNow(props) {
 
       // Add a placeholder or default value for the image field
 
-      for (const value of formData.values()) {
-        console.log(value);
-      }
-      console.log(formData);
+
+
       axios
         .post("http://localhost:4000/api/v1/postOrder", formData, {
           withCredentials: true,

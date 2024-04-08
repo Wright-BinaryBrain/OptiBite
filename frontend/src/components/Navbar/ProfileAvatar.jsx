@@ -49,11 +49,11 @@ const ProfileAvatar = ({ userData, setUserData, setIsLoggedIn }) => {
       document.getElementById("root").removeAttribute("aria-hidden", "false");
     }
   }, [open]);
-  console.log(open);
-  console.log(userData);
+  // console.log(open);
+  // console.log(userData);
   const initial = userData.name[0];
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  console.log(windowWidth);
+  // console.log(windowWidth);
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowWidth(() => window.innerWidth);

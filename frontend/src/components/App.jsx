@@ -77,7 +77,6 @@ function App() {
       })
       .then((res) => {
         if (res.data.success === true) {
-          console.log(res);
           setIsLoggedIn(true);
           setUserData(res.data.user);
         } else {

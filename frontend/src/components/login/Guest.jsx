@@ -311,7 +311,7 @@ const Guest = (props) => {
     }
   }
 
-  console.log(qrImage);
+  // console.log(qrImage);
 
   var cartItems;
   var cartId;
@@ -321,13 +321,13 @@ const Guest = (props) => {
     e.preventDefault();
 
     setSendOTPCount((prev) => prev + 1);
-    console.log(sendOTPCount);
+    // console.log(sendOTPCount);
     axios
       .post("http://localhost:4000/api/v1/sendOtp", {
         contactNo1: guestDetails.guestPhoneNumber,
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
         console.error(err);
@@ -347,7 +347,7 @@ const Guest = (props) => {
         cartItems = JSON.parse(localStorage.getItem("optibiteAddToCart"));
       }
 
-      console.log(cartItems);
+      // console.log(cartItems);
 
       for (let i = 0; i < cartItems.length; i++) {
         cartId.push(String(cartItems[i]._id));
@@ -358,8 +358,8 @@ const Guest = (props) => {
       cartQty.push(String(props.btnQuantity));
     }
 
-    console.log(cartId);
-    console.log(cartQty);
+    // console.log(cartId);
+    // console.log(cartQty);
 
     // if (guestDetails.guestFullname !== "" && guestDetails.guestPhoneNumber !== ""){
     //   if (cartId.length !== 0 && cartQty.length !== 0){
@@ -391,7 +391,7 @@ const Guest = (props) => {
     // else {
     //   alert("Fill up your name and contact number.")
     // }
-    console.log(qrImage);
+    // console.log(qrImage);
 
     if (
       guestDetails.guestFullname !== "" &&
@@ -418,13 +418,13 @@ const Guest = (props) => {
           formData.append("orderAddress", String(guestDetails.guestAddress));
           formData.append("otpCode", parseInt(guestDetails.guestotp));
 
-          console.log(typeof guestDetails.guestotp);
+          // console.log(typeof guestDetails.guestotp);
           // Add a placeholder or default value for the image field
           formData.append("image", qrImage || "");
           for (const value of formData.values()) {
             console.log(value);
           }
-          console.log(formData);
+          // console.log(formData);
           axios
             .post(
               "http://localhost:4000/api/v1/postOrder",
@@ -451,10 +451,10 @@ const Guest = (props) => {
                 toast.success("Thank you for Shopping with us.", {
                   position: toast.POSITION.TOP_RIGHT,
                 });
-                console.log(res.data.data);
+                // console.log(res.data.data);
                 props.setOrderQuantity(res.data.data.quantity);
                 const data = res.data.data;
-                console.log(data);
+                // console.log(data);
                 props.setOrderResponse(data);
                 props.close("none", "none");
                 navigate("/invoice");

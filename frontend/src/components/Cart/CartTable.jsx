@@ -99,7 +99,7 @@ function CartTable(props) {
           </td>
           <td className="mycart-table-data">
             <div className="mycart-product-price">
-              $<span style={{ color: "black" }}>{itemValue.rate}/-</span>
+              $<span style={{ color: "black" }}>{itemValue.Rate}/-</span>
             </div>
           </td>
           <td className="mycart-table-data">
@@ -114,14 +114,12 @@ function CartTable(props) {
           </td>
           <td className="mycart-table-data">
             <div className="mycart-subtotal-product-price">
-              $ {itemValue.rate * itemValue.qtyBtn}
+              $ {itemValue.Rate * itemValue.qtyBtn}
             </div>
           </td>
           <td className="mycart-table-data">
             <RiDeleteBin6Line
               className="mycart-delete-button"
-              // key={"mycartKey" + String(itemValue._id)}
-              // id={"mycartId" + String(itemValue._id)}
               onClick={() => deleteId(itemValue._id)}
             />
           </td>

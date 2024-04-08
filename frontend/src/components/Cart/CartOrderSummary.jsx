@@ -20,29 +20,13 @@ function CartOrderSummary(props) {
     }
 
     for (let i = 0; i < cartList.length; i++) {
-      subTotal = cartList[i].qtyBtn * cartList[i].rate + subTotal;
+      subTotal = cartList[i].qtyBtn * cartList[i].Rate + subTotal;
     }
     setTotalAmount(subTotal);
     setGrandTotal(subTotal + 100);
   }, [props.addedToCart]);
 
-  // var cartItems;
-  // useEffect(()=>{
-  //   if (props.isOrderCart === true) {
-  //     if (JSON.parse(localStorage.getItem("optibiteAddToCart")) === null) {
-  //       cartItems = [];
-  //     } else {
-  //       cartItems = JSON.parse(localStorage.getItem("optibiteAddToCart"));
-  //     }
 
-  //       if (cartItems.length !== 0 ) {
-  //         setCartEmpty(false);
-  //         // alert("Order placed successfully!");
-  //       } else {
-  //         alert("Cart Items are empty. Add items to cart prior to purchasing.");
-  //       }
-  //     }
-  // },[props.addToCart])
 
   return (
     <div className="mycart-order-summary">

@@ -236,6 +236,8 @@ exports.getAllProduct = catchAsyncErrors(async (req, res, next) => {
         .search()
         .filter()
         .pagination(resultPerPage);
+
+      console.log(apiFeatures);
     } else if (sorting == "DescendingAlphabetically") {
       var apiFeatures = new APIFeatures(
         Product.find().sort({ Name: -1 }),

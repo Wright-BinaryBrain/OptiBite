@@ -33,7 +33,7 @@ const orderSchema = joi.object({
 });
 
 const orderValidation = (req, res, next) => {
-  console.log("from joi validation", req.body);
+  // console.log("from joi validation", req.body);
   const orderObject = req.body;
   const { err } = orderSchema.validate(orderObject);
   if (!err) {

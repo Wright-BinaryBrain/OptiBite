@@ -121,7 +121,7 @@ function ProductDiv(props) {
       })
       .catch((err) => console.log(err));
   }
-  console.log(props.itemValue);
+  // console.log(props.itemValue);
   return (
     <div
       className="product-div"

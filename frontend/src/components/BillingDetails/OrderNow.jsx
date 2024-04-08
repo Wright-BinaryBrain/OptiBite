@@ -25,7 +25,9 @@ function OrderNow(props) {
     setCartItemsList(cartList.length);
 
     for (let i = 0; i < cartList.length; i++) {
-      subTotal = cartList[i].qtyBtn * cartList[i].rate + subTotal;
+      console.log(cartList[i].qtyBtn);
+      console.log(cartList[i].Rate);
+      subTotal = cartList[i].qtyBtn * cartList[i].Rate + subTotal;
     }
     setTotalAmount(subTotal);
     setGrandTotal(subTotal + 100);

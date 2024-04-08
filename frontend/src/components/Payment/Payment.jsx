@@ -7,7 +7,7 @@ function Payment(props) {
   const [qrImage, setQrImage] = useState(null);
   function handleaImage(event) {
     const { name, value, files } = event.target;
-   console.log(files);
+  //  console.log(files);
       const file = Array.from(files);
       setQrImage(file[0]);
 

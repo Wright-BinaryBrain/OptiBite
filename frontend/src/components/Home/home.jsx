@@ -30,10 +30,10 @@ function Home(props) {
         params: { rowsPerPage: 4 },
       })
       .then((res) => {
-        console.log(res.data.data);
+        // console.log(res.data.data);
         const data = res.data.data;
         const best = data.map((dd) => {
-          console.log(dd.productId);
+          // console.log(dd.productId);
           return dd.productId;
         });
         setAllBestSeller(best);
@@ -48,13 +48,13 @@ function Home(props) {
   }, []);
 
   useEffect(() => {
-    console.log(allBestSeller[0]);
+    // console.log(allBestSeller[0]);
 
     for (let i = 0; i < allBestSeller.length; i++) {
       axios
         .get(`http://localhost:4000/api/v1/getProduct/${allBestSeller[i]}`)
         .then((res) => {
-          console.log(res.data.data);
+          // console.log(res.data.data);
           setBestSeller((prev) => [...prev, res.data.data]);
         })
         .catch((err) => {
@@ -63,7 +63,7 @@ function Home(props) {
     }
   }, [allBestSeller]);
 
-  console.log(ProductList);
+  // console.log(ProductList);
   // console.log(typeof(ProductList));
 
   return (

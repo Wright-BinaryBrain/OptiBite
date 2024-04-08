@@ -15,7 +15,7 @@ function BillingDetails(props) {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data.user);
+        // console.log(res.data.user);
         setUserDetails(res.data.user);
         setAddress(res.data.user.address);
       })
