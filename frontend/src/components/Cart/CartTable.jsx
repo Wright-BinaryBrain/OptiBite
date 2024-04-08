@@ -88,7 +88,7 @@ function CartTable(props) {
             />
           </td>
           <td className="mycart-table-data">
-            <div className="mycart-product-name">{itemValue.productName}</div>
+            <div className="mycart-product-name">{itemValue.Name}</div>
             <div className="mycart-product-stock">
               {itemValue.stock === "InStock" ? (
                 <span style={{ color: "#216600" }}>IN STOCK</span>

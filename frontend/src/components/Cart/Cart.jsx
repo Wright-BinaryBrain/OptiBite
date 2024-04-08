@@ -151,9 +151,7 @@ function Cart(props) {
           />
         </div>
       </div>
-      <div className="mycart-recently-viewed-titles">
-        RECENTLY VIEWED PRODUCTS
-      </div>
+      <div className="mycart-recently-viewed-titles">VIEW MORE PRODUCTS</div>
       <div className="product-div-container">
         {ProductList.map((itemValue) => {
           return (

@@ -130,7 +130,7 @@ function ProductPopup(props) {
           >
             <div className="popup-name-container">
               <div className="popup-name">
-                {props.displayPop.productName} | {props.displayPop.nepaliName}
+                {props.displayPop.Name} | {props.displayPop.nepaliName}
               </div>
             </div>
             <div className="popup-image-container">
