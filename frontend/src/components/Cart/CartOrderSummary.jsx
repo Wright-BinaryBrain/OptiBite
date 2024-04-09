@@ -66,7 +66,7 @@ function CartOrderSummary(props) {
             value="submit-mycart-checkout"
             className="submit-mycart-checkout"
           /> */}
-          <div className="mycart-checkout-btn-text">Place Order</div>
+          <div className="mycart-checkout-btn-text">Place Order </div>
         </button>
       </div>
     </div>

@@ -7,17 +7,7 @@ function NavWish(props) {
   const [wishlistCount, setWishlistCount] = useState(0);
   var productId = useRef([]);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:4000/api/v1/getMyFavourite", {
-        withCredentials: true,
-      })
-      .then((res) => {
-        productId.current = res.data.data.productId;
-        setWishlistCount(productId.current.length);
-      })
-      .catch((err) => console.log(err));
-  }, [props.detectWishlistChange]);
+
 
   function closeHamburgerIcon() {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });

@@ -4,7 +4,6 @@ import Navbar from "./Navbar/Navbar.jsx";
 import HeaderContact from "./HeaderContact/HeaderContact.jsx";
 import UpperNav from "./Navbar/UpperNav.jsx";
 import ProductDiv from "./Products/ProductDiv.jsx";
-import ProductPopup from "./ProductPopup/ProductPopup.jsx";
 // import WishList from "./WishList/WishList.jsx";
 // import AboutUs from "./AboutUs/AboutUS";
 // import Footer from "./Footer/Footer.jsx";
@@ -264,7 +263,6 @@ function App() {
             path="/"
             element={
               <Home
-                productPopup={handleClick}
                 addToCart={addToCart}
                 addedToCart={addedToCart}
                 detectWishlistChange={detectWishlistChange}
@@ -276,7 +274,6 @@ function App() {
             path="/Shop"
             element={
               <Shop
-                productPopup={handleClick}
                 addToCart={addToCart}
                 addedToCart={addedToCart}
                 searchItem={searchItem}
@@ -363,19 +360,6 @@ function App() {
         {/* <ProductPopup /> */}
         {/* <Cart /> */}
         {/* <BillingDetails /> */}
-
-        {maxPopup ? (
-          <ProductPopup
-            isLoggedIn={isLoggedIn}
-            productPopup={handleClick}
-            displayPop={displayPop}
-            addToCart={addToCart}
-            addedToCart={addedToCart}
-            displayGuest={handleGuest}
-          />
-        ) : (
-          <ProductPopup productPopup={false} displayPop={displayPop} />
-        )}
 
         {cartPopup ? (
           <MiniCart
