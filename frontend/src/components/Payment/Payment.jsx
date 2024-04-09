@@ -1,6 +1,5 @@
 import React,{useState} from "react";
 import OrderNow from "./OrderNow.jsx";
-import CartProcess from "../CartProcess/CartProcess.jsx";
 import "./paymentDetails.css"
 
 function Payment(props) {

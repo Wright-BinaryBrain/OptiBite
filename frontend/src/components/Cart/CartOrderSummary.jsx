@@ -23,7 +23,7 @@ function CartOrderSummary(props) {
       subTotal = cartList[i].qtyBtn * cartList[i].Rate + subTotal;
     }
     setTotalAmount(subTotal);
-    setGrandTotal(subTotal + 100);
+    setGrandTotal(subTotal + 2);
   }, [props.addedToCart]);
 
 

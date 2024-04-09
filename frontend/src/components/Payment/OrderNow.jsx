@@ -30,7 +30,7 @@ function OrderNow(props) {
       subTotal = cartList[i].qtyBtn * cartList[i].rate + subTotal;
     }
     setTotalAmount(subTotal);
-    setGrandTotal(subTotal + 100);
+    setGrandTotal(subTotal + 2);
   }, []);
 
   // *****************************************************************
@@ -64,7 +64,7 @@ function OrderNow(props) {
         cartItems = JSON.parse(localStorage.getItem("optibiteAddToCart"));
       }
 
-      // console.log(cartItems);
+      console.log(cartItems);
 
       for (let i = 0; i < cartItems.length; i++) {
         cartId.push(String(cartItems[i]._id));
@@ -126,25 +126,18 @@ function OrderNow(props) {
           }
         })
         .catch((err) => {
-          // toast.error(err.response.data.message, {
-          //   position: toast.POSITION.TOP_RIGHT,
-          // });
+          toast.error(err.response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
           console.error(err);
         });
 
-      // alert("Order placed successfully!");
+     
     } else {
       alert("Cart Items are empty. Add items to cart prior to purchasing.");
     }
 
-    // alert(
-    //   "Fullname: " +
-    //     guestDetails.guestFullname +
-    //     "\nPhone:" +
-    //     guestDetails.guestPhoneNumber +
-    //     "\n Note" +
-    //     guestDetails.guestNote
-    // );
+
   };
 
   return (
@@ -169,7 +162,7 @@ function OrderNow(props) {
         </div>
         <div className="place-order-flex">
           <div>Delivery Charge</div>
-          <div>Rs 100/-</div>
+          <div>$ 2/-</div>
         </div>
       </div>
       <div
@@ -182,7 +175,7 @@ function OrderNow(props) {
             Rs.{" "}
             {JSON.parse(localStorage.getItem("optibiteBuyProduct")) === null
               ? grandTotal
-              : buyProduct.rate * quantity + 100}
+              : buyProduct.rate * quantity + 2}
           </div>
         </div>
       </div>
