@@ -14,7 +14,7 @@ import "../../CSS/navbar.css";
 
 import "../../CSS/minicart.css";
 function Navbar(props) {
-  const navItems = ["Home", "Shop", "Cart", "About Us"];
+  const navItems = ["Home", "Shop", "Cart", "Admin"];
 
   const navLinks = [
     props.navLink1,

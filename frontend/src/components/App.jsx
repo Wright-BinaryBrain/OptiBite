@@ -21,7 +21,7 @@ import MiniCart from "./Navbar/MIniCart.jsx";
 import Shop from "./Shop/Shop.jsx";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-
+import Admin from "./admin-panel/admin.jsx";
 // *******************************
 import AddressBook from "./UserProfile/UserPageNav/AddressBook";
 import Wallet from "./UserProfile/UserPageNav/Wallet";
@@ -253,7 +253,7 @@ function App() {
           navLink1="/"
           navLink2="/Shop"
           navLink3="/Cart"
-          navLink4="/AboutUs"
+          navLink4="/Admin"
           navLink5="/contact"
           typedOnSearchbar={searchHandler}
           detectWishlistChange={detectWishlistChange}
@@ -343,7 +343,7 @@ function App() {
           {/* <Route path="/OrderReceived" element={<OrderReceived />} /> */}
           {/* <Route path="/DeliveryLocation" element={<DeliveryLocation />} /> */}
           {/* <Route path="/AboutUs" element={<AboutUs />} /> */}
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/Admin" element={<Admin />} />
 
           {/* ******************************************************************** */}
           {/* user profile links */}
