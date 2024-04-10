@@ -48,6 +48,7 @@ const user = require("./router/userRoute");
 const email = require("./router/emailRouter")
 const contactOtp = require("./router/contactOTPRouter")
 const dashboard = require("./router/dashboardRouter")
+const schedule = require("./router/scheduleOrderRouter");
 
 //Using Routers
 app.use(
@@ -67,7 +68,8 @@ app.use(
   user,
   email,
   contactOtp,
-  dashboard
+  dashboard, 
+  schedule
 );
 
 //Middleware to handle errors
