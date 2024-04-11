@@ -12,19 +12,7 @@ const sendCustomerSms = require("../utils/sendCustomerSms")
 
 exports.postOrder = catchAsyncErrors(async (req, res, next) => {
 
-  if (req.files == undefined) {
-    return next(new ErrorHandler("Invalid Image", 401));
-  }
-  let images = [];
-  req.files.forEach(async (f) => {
-      await images.push(f.filename);
-  });
-  req.body.image = images;
-  if( images.length !== 0 ) {
-    req.body.paymentMethod = "Online payment"
-    req.body.paymentStatus = "Paid"
-    req.body.paymentDate = Date.now()
-  }
+
 
   if( !req.body.userId ) {
 
@@ -64,13 +52,6 @@ exports.postOrder = catchAsyncErrors(async (req, res, next) => {
     }
   }
   else{
-    var paramList = [Date.now(), req.body.userId, ]
-    var orderStatusSmsParamList = [req.body.userId, Date.now(), req.body.orderAddress];
-
-    orderStatusToCustomerEmail(
-      paramList
-    );
-    // sendCustomerSms(orderStatusSmsParamList)  
 
     const order = await new Order(req.body).save();
     res.status(200).json({

@@ -25,10 +25,12 @@ function OrderNow(props) {
     setCartItemsList(cartList.length);
 
     for (let i = 0; i < cartList.length; i++) {
-      subTotal = cartList[i].qtyBtn * cartList[i].rate + subTotal;
+      console.log(cartList[i].qtyBtn);
+      console.log(cartList[i].Rate);
+      subTotal = cartList[i].qtyBtn * cartList[i].Rate + subTotal;
     }
     setTotalAmount(subTotal);
-    setGrandTotal(subTotal + 100);
+    setGrandTotal(subTotal + 2);
   }, []);
 
   function GoToPayment() {
@@ -42,7 +44,7 @@ function OrderNow(props) {
         <div className="place-order-flex">
           <div>Sub Total</div>
           <div>
-            Rs.{" "}
+            ${" "}
             {JSON.parse(localStorage.getItem("optibiteBuyProduct")) === null
               ? totalAmount
               : buyProduct.rate * quantity}
@@ -57,7 +59,7 @@ function OrderNow(props) {
         </div>
         <div className="place-order-flex">
           <div>Delivery Charge</div>
-          <div>Rs 100/-</div>
+          <div>$ 2/-</div>
         </div>
       </div>
       <div
@@ -67,10 +69,10 @@ function OrderNow(props) {
         <div className="place-order-flex">
           <div>Total</div>
           <div>
-            Rs.{" "}
+            ${" "}
             {JSON.parse(localStorage.getItem("optibiteBuyProduct")) === null
               ? grandTotal
-              : buyProduct.rate * quantity + 100}
+              : buyProduct.rate * quantity + 2}
           </div>
         </div>
       </div>

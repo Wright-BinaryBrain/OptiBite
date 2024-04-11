@@ -22,7 +22,7 @@ function NavSearchMobile(props) {
   }, []);
 
    const handleClickOutside = (event) => {
-    console.log(event.target.id);
+    // console.log(event.target.id);
     if (String(event.target.id) === "navsearch-uppernav" || String(event.target.id) === "navSearchContainerForm") {
       setOpenSearch(true);
     }

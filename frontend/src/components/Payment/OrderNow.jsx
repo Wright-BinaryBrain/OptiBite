@@ -27,10 +27,10 @@ function OrderNow(props) {
     setCartItemsList(cartList.length);
 
     for (let i = 0; i < cartList.length; i++) {
-      subTotal = cartList[i].qtyBtn * cartList[i].rate + subTotal;
+      subTotal = cartList[i].qtyBtn * cartList[i].Rate + subTotal;
     }
     setTotalAmount(subTotal);
-    setGrandTotal(subTotal + 100);
+    setGrandTotal(subTotal + 2);
   }, []);
 
   // *****************************************************************
@@ -45,17 +45,21 @@ function OrderNow(props) {
         }
       })
       .catch((err) => console.log(err));
+
+      cartItems = [JSON.parse(localStorage.getItem("optibiteBuyProduct"))];
   }, []);
 
   var cartItems;
   var cartId;
   var cartQty;
+  var rates;
 
   const Order = (event) => {
     event.preventDefault();
 
     cartId = [];
     cartQty = [];
+    rates=[];
 
     if (JSON.parse(localStorage.getItem("optibiteBuyProduct")) === null) {
       if (JSON.parse(localStorage.getItem("optibiteAddToCart")) === null) {
@@ -64,12 +68,14 @@ function OrderNow(props) {
         cartItems = JSON.parse(localStorage.getItem("optibiteAddToCart"));
       }
 
-      console.log(cartItems);
+
 
       for (let i = 0; i < cartItems.length; i++) {
         cartId.push(String(cartItems[i]._id));
         cartQty.push(String(cartItems[i].qtyBtn));
+        rates.push(String(cartItems[i].Rate));
       }
+    
     } else {
       if (JSON.parse(localStorage.getItem("optibiteBuyProduct")) === null) {
         cartItems = [];
@@ -80,9 +86,10 @@ function OrderNow(props) {
       cartId = [cartItems[0]._id];
     }
 
+
     console.log(cartId);
     console.log(cartQty);
-
+    console.log(rates);
     if (cartId.length !== 0 && cartQty.length !== 0) {
       const formData = new FormData();
       formData.append("userId", String(userDetail._id));
@@ -93,23 +100,23 @@ function OrderNow(props) {
       cartQty.forEach((value) => {
         formData.append("quantity", value);
       });
+      rates.forEach((value) => {
+        formData.append("rates", value);
+      });
+
 
       formData.append("orderAddress", String(userDetail.Address));
 
-      formData.append("image", props.qrImage || "");
 
-      // Add a placeholder or default value for the image field
 
-      for (const value of formData.values()) {
-        console.log(value);
-      }
-      console.log(formData);
+
+
       axios
         .post("http://localhost:4000/api/v1/postOrder", formData, {
           withCredentials: true,
         })
         .then((res) => {
-          // console.log(res);
+          console.log(res);
           if (res.data.success === true) {
             toast.success("Thank you for Shopping with us.", {
               position: toast.POSITION.TOP_RIGHT,
@@ -128,25 +135,18 @@ function OrderNow(props) {
           }
         })
         .catch((err) => {
-          // toast.error(err.response.data.message, {
-          //   position: toast.POSITION.TOP_RIGHT,
-          // });
+          toast.error(err.response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
           console.error(err);
         });
 
-      // alert("Order placed successfully!");
+     
     } else {
       alert("Cart Items are empty. Add items to cart prior to purchasing.");
     }
 
-    // alert(
-    //   "Fullname: " +
-    //     guestDetails.guestFullname +
-    //     "\nPhone:" +
-    //     guestDetails.guestPhoneNumber +
-    //     "\n Note" +
-    //     guestDetails.guestNote
-    // );
+
   };
 
   return (
@@ -171,7 +171,7 @@ function OrderNow(props) {
         </div>
         <div className="place-order-flex">
           <div>Delivery Charge</div>
-          <div>Rs 100/-</div>
+          <div>$ 2/-</div>
         </div>
       </div>
       <div
@@ -184,7 +184,7 @@ function OrderNow(props) {
             Rs.{" "}
             {JSON.parse(localStorage.getItem("optibiteBuyProduct")) === null
               ? grandTotal
-              : buyProduct.rate * quantity + 100}
+              : buyProduct.rate * quantity + 2}
           </div>
         </div>
       </div>
@@ -214,7 +214,7 @@ function OrderNow(props) {
             value="submit-place-order"
             className="submit-place-order"
           />
-          <div className="place-order-btn-text">PLACE ORDER</div>
+          <div className="place-order-btn-text">PLACE ORDER </div>
         </button>
       </div>
     </div>
