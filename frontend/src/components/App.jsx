@@ -257,7 +257,6 @@ function App() {
           navLink2="/Shop"
           navLink3="/Cart"
           navLink4="/Admin"
-          navLink5="/contact"
           typedOnSearchbar={searchHandler}
           detectWishlistChange={detectWishlistChange}
           setDetectWishlistChange={setDetectWishlistChange}
