@@ -5,9 +5,8 @@ import ProductDiv from "../Products/ProductDiv.jsx";
 import axios from "axios";
 function Home(props) {
   const [ProductList, setProductList] = useState([]);
-  const [allBestSeller, setAllBestSeller] = useState([]);
-  const [bestSeller, setBestSeller] = useState([]);
   const [vegetables, setVegetables] = useState([]);
+  const [userDetail, setUserDetail] = useState();
   function getProduct() {
     axios
       .get("http://localhost:4000/api/v1/getProducts", {})
@@ -24,44 +23,22 @@ function Home(props) {
       .catch((err) => console.log(err));
   }
 
-  function getBestSeller() {
-    axios
-      .get("http://localhost:4000/api/v1/getAllBestSeller", {
-        params: { rowsPerPage: 4 },
-      })
-      .then((res) => {
-        // console.log(res.data.data);
-        const data = res.data.data;
-        const best = data.map((dd) => {
-          // console.log(dd.productId);
-          return dd.productId;
-        });
-        setAllBestSeller(best);
-        // setAllBestSeller(res.data.data.productId);
-      })
-      .catch((err) => console.log(err));
-  }
+
   useEffect(() => {
     getProduct();
-    getBestSeller();
     getVegetables();
   }, []);
 
   useEffect(() => {
-    // console.log(allBestSeller[0]);
-
-    for (let i = 0; i < allBestSeller.length; i++) {
-      axios
-        .get(`http://localhost:4000/api/v1/getProduct/${allBestSeller[i]}`)
-        .then((res) => {
-          // console.log(res.data.data);
-          setBestSeller((prev) => [...prev, res.data.data]);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [allBestSeller]);
+    axios
+      .get("http://localhost:4000/api/v1/whoami", { withCredentials: true })
+      .then((res) => {
+        if (res.data.success === true) {
+          setUserDetail(res.data.user);
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   // console.log(ProductList);
   // console.log(typeof(ProductList));
@@ -70,9 +47,10 @@ function Home(props) {
     <div style={{ maxWidth: "1440px", margin: "auto", width: "90%" }}>
       {/* <TopBanner /> */}
       {/* <Carousel /> */}
-      <div className="home-product-titles">Best Sellers</div>
+
+      <div className="home-product-titles" style={{marginTop:"12rem"}}>Recommended For You</div>
       <div className="product-div-container">
-        {bestSeller.map((itemValue) => {
+        {/* {ProductList.map((itemValue) => {
           return (
             <ProductDiv
               itemValue={itemValue}
@@ -83,9 +61,8 @@ function Home(props) {
               setDetectWishlistChange={props.setDetectWishlistChange}
             />
           );
-        })}
+        })} */}
       </div>
-
       <div className="home-product-titles">Non-Veg Items</div>
       <div className="product-div-container">
         {ProductList.map((itemValue) => {

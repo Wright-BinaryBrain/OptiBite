@@ -20,13 +20,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static("files/image"));
 
-// Create a write stream (file) for logging
-// const accessLogStream = fs.createWriteStream(path.join("./files/logs", 'access.log'), { flags: 'a' });
 
-// Use the morgan middleware to log HTTP requests to the file
-// app.use(morgan('combined', { stream: accessLogStream }));
-
-// Swagger implementation
 const swaggerUi = require(`swagger-ui-express`);
 const swaggerDocument = require(`./swagger.json`);
 app.use(`/api/docs`, swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -48,6 +42,7 @@ const user = require("./router/userRoute");
 const email = require("./router/emailRouter")
 const contactOtp = require("./router/contactOTPRouter")
 const dashboard = require("./router/dashboardRouter")
+const recommendation = require("./router/recommendationRouter")
 
 //Using Routers
 app.use(
@@ -67,7 +62,8 @@ app.use(
   user,
   email,
   contactOtp,
-  dashboard
+  dashboard,
+  recommendation
 );
 
 //Middleware to handle errors
