@@ -7,6 +7,7 @@ function Home(props) {
   const [ProductList, setProductList] = useState([]);
   const [vegetables, setVegetables] = useState([]);
   const [userDetail, setUserDetail] = useState();
+  const [recommendations, setRecommendations] = useState([]);
   function getProduct() {
     axios
       .get("http://localhost:4000/api/v1/getProducts", {})
@@ -27,6 +28,7 @@ function Home(props) {
   useEffect(() => {
     getProduct();
     getVegetables();
+    getRecommendation();
   }, []);
 
   useEffect(() => {
@@ -40,6 +42,15 @@ function Home(props) {
       .catch((err) => console.log(err));
   }, []);
 
+  function getRecommendation() {
+    axios
+      .get("http://localhost:4000/api/v1/getrecommendation", { withCredentials: true })
+      .then((res) => { 
+        setRecommendations(res.data.data);
+      })
+      .catch((err) => console.log(err));
+  }
+
   // console.log(ProductList);
   // console.log(typeof(ProductList));
 
@@ -50,7 +61,7 @@ function Home(props) {
 
       <div className="home-product-titles" style={{marginTop:"12rem"}}>Recommended For You</div>
       <div className="product-div-container">
-        {/* {ProductList.map((itemValue) => {
+        {recommendations.map((itemValue) => {
           return (
             <ProductDiv
               itemValue={itemValue}
@@ -61,7 +72,7 @@ function Home(props) {
               setDetectWishlistChange={props.setDetectWishlistChange}
             />
           );
-        })} */}
+        })}
       </div>
       <div className="home-product-titles">Non-Veg Items</div>
       <div className="product-div-container">
