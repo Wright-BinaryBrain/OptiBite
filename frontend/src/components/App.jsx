@@ -3,6 +3,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import Navbar from "./Navbar/Navbar.jsx";
 import HeaderContact from "./HeaderContact/HeaderContact.jsx";
 import UpperNav from "./Navbar/UpperNav.jsx";
+
 import ProductDiv from "./Products/ProductDiv.jsx";
 // import WishList from "./WishList/WishList.jsx";
 // import AboutUs from "./AboutUs/AboutUS";
@@ -33,9 +34,7 @@ import "./UserProfile/userProfile.css";
 // toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import Thankyou from "./Thankyou/Thankyou.jsx";
-import ErrorPage from "./404/404.jsx";
-
+import ProductPopup from "./Products/ProductPopup.jsx";
 function App() {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
@@ -60,7 +59,7 @@ function App() {
       setDisplayPop(itemValue);
     }
   }
-
+  console.log(maxPopup);
   const [isOrderCart, setIsOrderCart] = useState();
   const [buyProduct, setBuyProduct] = useState();
   const [btnQuantity, setBtnQuantity] = useState();
@@ -125,11 +124,11 @@ function App() {
     setIsGuest(false);
   };
 
-  if (maxPopup === true) {
-    document.body.style.overflowY = "hidden";
-  } else {
-    document.body.style.overflowY = "scroll";
-  }
+  // if (maxPopup === true) {
+  //   document.body.style.overflowY = "hidden";
+  // } else {
+  //   document.body.style.overflowY = "scroll";
+  // }
 
   const [addedToCart, setAddedToCart] = useState(
     JSON.parse(localStorage.getItem("optibiteAddToCart")) != null
@@ -145,6 +144,12 @@ function App() {
   } else {
     cartItems = JSON.parse(localStorage.getItem("optibiteAddToCart"));
   }
+
+  useEffect(() => {
+    if (isLoggedIn === false) {
+      cartItems = [];
+    }
+  }, [isLoggedIn]);
 
   function addToCart(itemValue, qty) {
     addQty = false;
@@ -263,6 +268,7 @@ function App() {
             path="/"
             element={
               <Home
+                productPopup={handleClick}
                 addToCart={addToCart}
                 addedToCart={addedToCart}
                 detectWishlistChange={detectWishlistChange}
@@ -351,7 +357,6 @@ function App() {
             {/* <Route path="address" element={<AddressBook />} />
             <Route path="wallet" element={<Wallet />} /> */}
           </Route>
-          <Route path="/*" element={<ErrorPage />} />
           {/* ******************************************************************** */}
         </Routes>
         {/* <Footer /> */}
@@ -360,6 +365,19 @@ function App() {
         {/* <ProductPopup /> */}
         {/* <Cart /> */}
         {/* <BillingDetails /> */}
+
+        {maxPopup ? (
+          <ProductPopup
+            isLoggedIn={isLoggedIn}
+            productPopup={handleClick}
+            displayPop={displayPop}
+            addToCart={addToCart}
+            addedToCart={addedToCart}
+            displayGuest={handleGuest}
+          />
+        ) : (
+          <ProductPopup productPopup={false} displayPop={displayPop} />
+        )}
 
         {cartPopup ? (
           <MiniCart

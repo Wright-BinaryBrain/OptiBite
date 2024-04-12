@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HamburgerIcon from "./HamburgerIcon.jsx";
 import NavItemList from "./NavItemList.jsx";
 import NavHeader from "./NavHeader.jsx";
@@ -13,8 +13,21 @@ import NavSearchMobile from "./NavSearchMobile.jsx";
 import "../../CSS/navbar.css";
 
 import "../../CSS/minicart.css";
+import axios from "axios";
 function Navbar(props) {
-  const navItems = ["Home", "Shop", "Cart", "Admin"];
+  const [navItems, setNavItems] = useState([]);
+  console.log(props.userData);
+  useEffect(() => {
+    if (props.userData) {
+      if (props.userData.role == "admin") {
+        setNavItems(["Home", "Shop", "Cart", "Admin"]);
+      } else {
+        setNavItems(["Home", "Shop", "Cart"]);
+      }
+    } else {
+      setNavItems(["Home", "Shop", "Cart"]);
+    }
+  }, [props.userData]);
 
   const navLinks = [
     props.navLink1,

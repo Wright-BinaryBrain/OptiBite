@@ -3,7 +3,6 @@ const cors = require("cors");
 const app = express();
 const morgan = require("morgan");
 
-
 var corsOptions = {
   //   origin: "*",
   origin: true,
@@ -45,10 +44,10 @@ const productType = require("./router/productTypeRouter");
 const review = require("./router/reviewRoute");
 const rider = require("./router/riderRouter");
 const user = require("./router/userRoute");
-const email = require("./router/emailRouter")
-const contactOtp = require("./router/contactOTPRouter")
-const dashboard = require("./router/dashboardRouter")
-const schedule = require("./router/scheduleOrderRouter");
+const email = require("./router/emailRouter");
+const contactOtp = require("./router/contactOTPRouter");
+const dashboard = require("./router/dashboardRouter");
+// const schedule = require("./router/scheduleOrderRouter");
 
 //Using Routers
 app.use(
@@ -68,8 +67,8 @@ app.use(
   user,
   email,
   contactOtp,
-  dashboard, 
-  schedule
+  dashboard
+  // schedule
 );
 
 //Middleware to handle errors

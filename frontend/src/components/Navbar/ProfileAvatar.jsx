@@ -34,7 +34,9 @@ const ProfileAvatar = ({ userData, setUserData, setIsLoggedIn }) => {
   const handleLogout = () => {
     console.log("Logging out...");
     axios
-      .get("http://localhost:4000/api/v1/logout", { withCredentials: true })
+      .get("http://localhost:4000/api/v1/logout", {
+        withCredentials: true,
+      })
       .then((res) => {
         setIsLoggedIn(false);
         setUserData(null);
@@ -136,11 +138,11 @@ const ProfileAvatar = ({ userData, setUserData, setIsLoggedIn }) => {
         </Link>
         <Divider />
 
-        <MenuItem>
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <LogoutIcon fontSize="small" />
           </ListItemIcon>
-          <span onClick={handleLogout}>Logout</span>
+          <span>log</span>
         </MenuItem>
       </Menu>
     </>
