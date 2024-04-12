@@ -18,6 +18,21 @@ exports.isAuthenticated = catchAsyncErrors(async (req, res, next) => {
   next();
 });
 
+exports.getUser = catchAsyncErrors(async (req, res, next) => {
+  const { token } = req.cookies;
+
+  if (!token) {
+    req.user = null;
+    return next();
+  }
+
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+  req.user = await User.findById(decoded.id);
+
+  next();
+});
+
 //Handling User Roles
 exports.authorizeRoles = (...roles) => {
   return (req, res, next) => {
