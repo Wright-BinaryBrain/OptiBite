@@ -14,11 +14,12 @@ function Home(props) {
   function getProduct() {
     axios
       .get("http://localhost:4000/api/v1/getProducts")
-      .then((res) => setProductList(res.data.data))
-      .then(() => {
-        setVeg(ProductList.filter((item) => item.Veg_Non === "veg"));
-        setNonVeg(ProductList.filter((item) => item.Veg_Non !== "veg"));
+      .then((res) => {
+        setProductList(res.data.data);
+        setVeg(res.data.data.filter((item) => item.Veg_Non === "veg"));
+        setNonVeg(res.data.data.filter((item) => item.Veg_Non !== "veg"));
       })
+
       .catch((err) => console.log(err));
   }
 

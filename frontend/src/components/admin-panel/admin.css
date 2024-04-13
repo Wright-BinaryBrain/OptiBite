@@ -54,3 +54,36 @@
   border: none;
   margin-top: 20px;
 }
+
+/* for order table */
+.order-admin-container {
+  border: solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-admin-table {
+  border: solid rgba(193, 190, 190, 0.5) 2px;
+  border-radius: 15px;
+}
+
+#order-admin-thead th {
+  padding: 18px 5px 20px 5px !important;
+  text-align: center;
+  border-bottom: 1px solid rgba(193, 190, 190, 0.5);
+}
+.order-table-rows {
+  border-spacing: 0px !important;
+}
+.order-table-rows:nth-child(odd) {
+  background-color: #ffffff;
+}
+.order-table-rows:nth-child(even) {
+  background-color: #ebe6e699;
+  border: #ebe6e699;
+}
+.order-table-rows td {
+  text-align: center;
+  padding: 18px 5px 20px 5px !important;
+}

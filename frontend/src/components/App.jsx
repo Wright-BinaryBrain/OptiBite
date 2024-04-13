@@ -7,16 +7,13 @@ import UpperNav from "./Navbar/UpperNav.jsx";
 import ProductDiv from "./Products/ProductDiv.jsx";
 // import WishList from "./WishList/WishList.jsx";
 // import AboutUs from "./AboutUs/AboutUS";
-// import Footer from "./Footer/Footer.jsx";
-import Contact from "./contact/contact";
+// import Footer from "./Footer/Footer.jsx"
 import Home from "./Home/home.jsx";
 import Cart from "./Cart/Cart.jsx";
-import BillingDetails from "./BillingDetails/BillingDetails.jsx";
 import Login from "./login/Login";
 import Guest from "./login/Guest";
 import DeliveryLocation from "./DeliveryLocation/DeliveryLocation.jsx";
 import Payment from "./Payment/Payment.jsx";
-import OrderReceived from "./OrderReceived/OrderReceived.jsx";
 import MiniCart from "./Navbar/MIniCart.jsx";
 import Shop from "./Shop/Shop.jsx";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -83,32 +80,6 @@ function App() {
       })
       .catch((err) => console.log(err));
   }, []);
-
-  function handleGuest(displayPop, quantity) {
-    if (isLoggedIn === false) {
-      setDisplayGuest((preValue) => !preValue);
-    } else {
-      handleClick();
-      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-      navigate("/billingdetails");
-    }
-
-    if (displayPop === "none" && quantity === "none") {
-      setIsOrderCart(true);
-    } else if (displayPop === "delete" && quantity === "delete") {
-      setIsOrderCart(true);
-      localStorage.removeItem("optibiteBuyProduct");
-      localStorage.removeItem("optibiteQuantity");
-    } else {
-      // console.log("Order Details=",orderDetails);
-      setIsOrderCart(false);
-      setBuyProduct(displayPop);
-      setBtnQuantity(quantity);
-
-      localStorage.setItem("optibiteBuyProduct", JSON.stringify(displayPop));
-      localStorage.setItem("optibiteQuantity", JSON.stringify(quantity));
-    }
-  }
 
   const openLoginBox = () => {
     setIsLogin(true);
@@ -311,15 +282,10 @@ function App() {
                 addToCart={addToCart}
                 addedToCart={addedToCart}
                 setAddedToCart={setAddedToCart}
-                displayGuest={handleGuest}
                 detectWishlistChange={detectWishlistChange}
                 setDetectWishlistChange={setDetectWishlistChange}
               />
             }
-          />
-          <Route
-            path="/BillingDetails"
-            element={<BillingDetails isOrderCart={isOrderCart} />}
           />
           <Route
             path="/Payment"
@@ -372,7 +338,6 @@ function App() {
             displayPop={displayPop}
             addToCart={addToCart}
             addedToCart={addedToCart}
-            displayGuest={handleGuest}
           />
         ) : (
           <ProductPopup productPopup={false} displayPop={displayPop} />
@@ -396,7 +361,6 @@ function App() {
           <Guest
             setOrderResponse={setOrderResponse}
             setOrderQuantity={setOrderQuantity}
-            close={handleGuest}
             handleClick={handleClick}
             isOrderCart={isOrderCart}
             buyProduct={buyProduct}

@@ -2,20 +2,22 @@ import React from "react";
 
 const OrderTable = ({ orders, onUpdateOrderStatus, onDeleteOrder }) => {
   return (
-    <table>
-      <thead>
+    <table className="order-admin-table">
+      <thead id="order-admin-thead">
         <tr>
-          <th>Product ID</th>
+          <th>User Name</th>
+          <th>Product Names</th>
           <th>Quantity</th>
           <th>Rate</th>
           <th>Status</th>
           <th>Actions</th>
         </tr>
       </thead>
-      <tbody>
-        {orders.map((order) => (
-          <tr key={order._id}>
-            <td>{order.productId.join(", ")}</td>
+      <tbody id="order-admin-tbody">
+        {orders?.map((order) => (
+          <tr key={order._id} className="order-table-rows">
+            <td>{order.userName}</td>
+            <td>{order.productNames}</td>
             <td>{order.quantity.join(", ")}</td>
             <td>{order.rates.join(", ")}</td>
             <td>{order.orderStatus}</td>
