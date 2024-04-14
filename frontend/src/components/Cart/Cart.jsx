@@ -162,8 +162,15 @@ function Cart(props) {
   const [totalAmount, setTotalAmount] = useState(0);
   const [grandTotal, setGrandTotal] = useState(0);
   const [cartItemsList, setCartItemsList] = useState(0);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState("");
+  const [orderTime, setOrderTime] = useState("");
   const [loggedin, setLoggedin] = useState(false);
+  const [schedule, setSchedule] = useState(true);
 
+  const [selectDay, setSelectDat] = useState("");
+
+  const day = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
   useEffect(() => {
     axios
       .get("http://localhost:4000/api/v1/whoami", { withCredentials: true })
@@ -291,6 +298,7 @@ function Cart(props) {
             </button>
           </div>
         </div>
+
         <div>
           <div className="orderAddress-container">
             <label htmlFor="orderAddress">
@@ -308,9 +316,77 @@ function Cart(props) {
             />
           </div>
           <CartOrderSummary addedToCart={props.addedToCart} />
-          <button className="mycart-checkout-button" onClick={Order}>
-            PLACE ORDER
-          </button>
+          {schedule ? (
+            ""
+          ) : (
+            <button className="mycart-checkout-button" onClick={Order}>
+              PLACE ORDER
+            </button>
+          )}
+
+          {schedule ? (
+            <>
+              <div className="schedule-order">
+                <button
+                  className="schedule-close"
+                  onClick={() => {
+                    setSchedule(false);
+                  }}
+                >
+                  X
+                </button>
+                <div className="date-container">
+                  <label htmlFor="startDate">Start Date:</label>
+
+                  <input
+                    type="date"
+                    id="startDate"
+                    value={startDate}
+                    onChange={(e) => setStartDate(e.target.value)}
+                    className="schedule-iinput"
+                  />
+                </div>
+                <div className="date-container">
+                  <label htmlFor="endDate">End Date:</label>
+                  <input
+                    type="date"
+                    id="endDate"
+                    value={endDate}
+                    onChange={(e) => setEndDate(e.target.value)}
+                    className="schedule-iinput"
+                  />
+                </div>
+                <div className="time-container">
+                  <label htmlFor="orderTime">Time:</label>
+                  <input
+                    type="time"
+                    id="orderTime"
+                    value={orderTime}
+                    onChange={(e) => setOrderTime(e.target.value)}
+                    className="schedule-iinput"
+                  />
+                </div>
+                <div></div>
+              </div>
+            </>
+          ) : (
+            ""
+          )}
+          {!schedule ? (
+            <button
+              className="mycart-checkout-button"
+              onClick={() => {
+                setSchedule(true);
+              }}
+              style={{ background: "#2784D1", border: "#2784D1" }}
+            >
+              SCHEDULE ORDER
+            </button>
+          ) : (
+            <button className="mycart-checkout-button" onClick={Order}>
+              PLACE ORDER
+            </button>
+          )}
         </div>
       </div>
     </div>
