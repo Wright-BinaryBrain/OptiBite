@@ -19,7 +19,6 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static("files/image"));
 
-
 const swaggerUi = require(`swagger-ui-express`);
 const swaggerDocument = require(`./swagger.json`);
 app.use(`/api/docs`, swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -63,7 +62,7 @@ app.use(
   email,
   contactOtp,
   dashboard
-
+);
 
 //Middleware to handle errors
 app.use(errorMiddleware);
