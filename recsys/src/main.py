@@ -108,8 +108,7 @@ recommender = recommendation_setup(rating_matrix)
 def get_status_bulk_update(food_name: str):
     print(food_name)
     recommendations = Get_Recommendations(recommender,df,rating_matrix,food_name)
-    # job_doc = status_col.find_one({"jobId": jobId}, {'_id': False})
-    # job_doc = json.loads(json_util.dumps(job_doc))
+    # rec = json.dumps(recommendations)
     return recommendations
 
 if __name__ == "__main__":
