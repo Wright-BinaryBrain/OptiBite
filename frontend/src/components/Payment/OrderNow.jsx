@@ -46,7 +46,7 @@ function OrderNow(props) {
       })
       .catch((err) => console.log(err));
 
-      cartItems = [JSON.parse(localStorage.getItem("optibiteBuyProduct"))];
+    cartItems = [JSON.parse(localStorage.getItem("optibiteBuyProduct"))];
   }, []);
 
   var cartItems;
@@ -59,7 +59,7 @@ function OrderNow(props) {
 
     cartId = [];
     cartQty = [];
-    rates=[];
+    rates = [];
 
     if (JSON.parse(localStorage.getItem("optibiteBuyProduct")) === null) {
       if (JSON.parse(localStorage.getItem("optibiteAddToCart")) === null) {
@@ -68,14 +68,11 @@ function OrderNow(props) {
         cartItems = JSON.parse(localStorage.getItem("optibiteAddToCart"));
       }
 
-
-
       for (let i = 0; i < cartItems.length; i++) {
         cartId.push(String(cartItems[i]._id));
         cartQty.push(String(cartItems[i].qtyBtn));
         rates.push(String(cartItems[i].Rate));
       }
-    
     } else {
       if (JSON.parse(localStorage.getItem("optibiteBuyProduct")) === null) {
         cartItems = [];
@@ -85,7 +82,6 @@ function OrderNow(props) {
       }
       cartId = [cartItems[0]._id];
     }
-
 
     console.log(cartId);
     console.log(cartQty);
@@ -104,12 +100,7 @@ function OrderNow(props) {
         formData.append("rates", value);
       });
 
-
       formData.append("orderAddress", String(userDetail.Address));
-
-
-
-
 
       axios
         .post("http://localhost:4000/api/v1/postOrder", formData, {
@@ -140,13 +131,9 @@ function OrderNow(props) {
           });
           console.error(err);
         });
-
-     
     } else {
       alert("Cart Items are empty. Add items to cart prior to purchasing.");
     }
-
-
   };
 
   return (
@@ -214,7 +201,7 @@ function OrderNow(props) {
             value="submit-place-order"
             className="submit-place-order"
           />
-          <div className="place-order-btn-text">PLACE ORDER </div>
+          <div className="mycart-checkout-button">PLACE ORDER </div>
         </button>
       </div>
     </div>

@@ -6,21 +6,36 @@ import axios from "axios";
 function Home(props) {
   const [ProductList, setProductList] = useState([]);
   const [vegetables, setVegetables] = useState([]);
+  const [veg, setVeg] = useState([]);
+  const [nonVeg, setNonVeg] = useState([]);
+
+
   const [userDetail, setUserDetail] = useState();
   const [recommendations, setRecommendations] = useState([]);
+
   function getProduct() {
     axios
-      .get("http://localhost:4000/api/v1/getProducts", {})
-      .then((res) => setProductList(res.data.data))
+      .get("http://localhost:4000/api/v1/getProducts")
+      .then((res) => {
+        setProductList(res.data.data);
+        setVeg(res.data.data.filter((item) => item.Veg_Non === "veg"));
+        setNonVeg(res.data.data.filter((item) => item.Veg_Non !== "veg"));
+      })
+
       .catch((err) => console.log(err));
   }
 
   function getVegetables() {
     axios
-      .get("http://localhost:4000/api/v1/getProducts?Veg_Non=veg", {
+      .get("http://localhost:4000/api/v1/getProducts", {
         params: { rowsPerPage: 4 },
       })
-      .then((res) => setVegetables(res.data.data))
+      .then((res) => {
+        console.log(res);
+        if (res.data.data.Veg_Non === "veg") {
+          setVegetables(res.data.data);
+        }
+      })
       .catch((err) => console.log(err));
   }
 
@@ -31,6 +46,8 @@ function Home(props) {
     getRecommendation();
   }, []);
 
+  useEffect(() => {}, []);
+  console.log(veg);
   useEffect(() => {
     axios
       .get("http://localhost:4000/api/v1/whoami", { withCredentials: true })
@@ -51,7 +68,9 @@ function Home(props) {
       .catch((err) => console.log(err));
   }
 
-  // console.log(ProductList);
+  console.log(ProductList);
+  console.log(ProductList.filter((item) => item.Veg_Non !== "veg"));
+
   // console.log(typeof(ProductList));
 
   return (
@@ -76,7 +95,7 @@ function Home(props) {
       </div>
       <div className="home-product-titles">Non-Veg Items</div>
       <div className="product-div-container">
-        {ProductList.map((itemValue) => {
+        {nonVeg.slice(0, 8).map((itemValue) => {
           return (
             <ProductDiv
               itemValue={itemValue}
@@ -91,7 +110,7 @@ function Home(props) {
       </div>
       <div className="home-product-titles">Veg Items</div>
       <div className="product-div-container">
-        {vegetables.map((itemValue) => {
+        {veg.slice(0, 8).map((itemValue) => {
           console.log(itemValue);
           return (
             <ProductDiv

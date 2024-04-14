@@ -8,7 +8,6 @@
   align-items: center;
   z-index: 99999;
   overflow: hidden !important;
-  transition: background 0.6s ease 0s, backdrop-filter 0.6s ease 0s;
 }
 
 .product-popup-overlay2 {
@@ -26,47 +25,13 @@
   animation-fill-mode: forwards;
 }
 
-@keyframes expand-overlay2 {
-  0% {
-    width: 0;
-    height: 1%;
-  }
-
-  50% {
-    width: 100%;
-    height: 1%;
-  }
-
-  100% {
-    width: 100%;
-    height: 100%;
-  }
-}
-
 .decrease-overlay2 {
   animation: contract-overlay2 0.6s ease 0s;
   animation-fill-mode: forwards;
 }
 
-@keyframes contract-overlay2 {
-  0% {
-    width: 100%;
-    height: 100%;
-  }
-
-  50% {
-    width: 100%;
-    height: 1%;
-  }
-
-  100% {
-    width: 0;
-    height: 0;
-  }
-}
-
 .product-popup {
-  width: 90%;
+  width: 70%;
   height: 80%;
   display: flex;
   padding: 30px;
@@ -252,7 +217,6 @@
 .popup-buttons-parent-container {
   position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
   margin-top: 20px;
   width: 100%;
@@ -293,11 +257,11 @@
 }
 
 .popup-cart-button {
-  background-color: #be4217;
+  background-color: #71b646;
   width: 178px;
   height: 55px;
   position: relative;
-  border: 2px solid #be4217;
+  border: 2px solid #71b646;
   border-radius: 30px;
   overflow: hidden;
   margin: 5px;
@@ -351,46 +315,6 @@
   pointer-events: none;
 }
 
-.popup-buy-button:hover {
-  background-color: #be4217;
-  transition: background-color 0.2s;
-}
-
-.popup-buy-button:hover > .popup-btn-buy-text {
-  color: white;
-  transition: color 0.2s;
-}
-
-.popup-wishlist-button {
-  background-color: white;
-  width: 178px;
-  height: 43px;
-  position: relative;
-  border: none;
-  border: 1px solid #747474;
-  border-radius: 30px;
-  overflow: hidden;
-  transition: background-color 0.2s;
-  white-space: nowrap;
-  margin-top: 20px;
-}
-
-.popup-btn-wishlist-text {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-
-  font-family: "Nunito Sans", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 22px;
-  letter-spacing: 0.005em;
-  color: #747474;
-  pointer-events: none;
-}
-
 .popup-horizontal-line {
   width: 100%;
   height: 2px;
@@ -438,7 +362,6 @@
   top: 30px !important;
   cursor: pointer;
   background-color: white;
-  transition: background-color 0.2s;
 }
 
 .close-cross1 {
@@ -449,7 +372,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(45deg);
-  transition: background-color 0.5s, transform 0.3s;
 }
 
 .close-cross2 {
@@ -460,24 +382,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(135deg);
-  transition: background-color 0.5s, transform 0.3s;
-}
-
-.close-popup:hover {
-  /* background-color: #f40009; */
-  transition: background-color 0.2s;
-}
-
-.close-popup:hover > .close-cross1 {
-  background-color: #f40009;
-  transform: translate(-50%, -50%) rotate(0deg);
-  transition: background-color 0.5s, transform 0.3s;
-}
-
-.close-popup:hover > .close-cross2 {
-  background-color: #f40009;
-  transform: translate(-50%, -50%) rotate(180deg);
-  transition: background-color 0.5s, transform 0.3s;
 }
 
 .popup-detail-side::-webkit-scrollbar {

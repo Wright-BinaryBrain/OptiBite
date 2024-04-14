@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import CartItems from "./CartItems.js";
 // import QuantityBtn from "../Products/QuantityBtn.jsx";
 import QuantityBtnCart from "./QuantityBtnCart.jsx";
 import { RiDeleteBin6Line } from "react-icons/ri";

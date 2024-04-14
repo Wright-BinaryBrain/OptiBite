@@ -1,13 +1,11 @@
 const mongoose = require("mongoose");
 
-
 const orderSchema = new mongoose.Schema(
   {
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
-
 
     productId: [
       {
@@ -24,23 +22,20 @@ const orderSchema = new mongoose.Schema(
     rates: [
       {
         type: Number,
-        required: false
-      }
+        required: false,
+      },
     ],
     totalAmount: {
-      type: Number
+      type: Number,
     },
-    reviewId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Review",
-    },
+
     orderAddress: {
       type: String,
       required: true,
     },
-    orderDate:{
-        type: Date,
-        default: Date.now()
+    orderDate: {
+      type: Date,
+      default: Date.now(),
     },
     orderStatus: {
       type: String,
@@ -53,8 +48,7 @@ const orderSchema = new mongoose.Schema(
         "Cancelled",
       ],
       default: "Pending",
-    }
-
+    },
   },
   { timestamps: true }
 );
