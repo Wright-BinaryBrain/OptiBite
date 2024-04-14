@@ -166,7 +166,7 @@ function Cart(props) {
   const [endDate, setEndDate] = useState("");
   const [orderTime, setOrderTime] = useState("");
   const [loggedin, setLoggedin] = useState(false);
-  const [schedule, setSchedule] = useState(true);
+  const [schedule, setSchedule] = useState(false);
 
   const [selectDay, setSelectDat] = useState("");
 

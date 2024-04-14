@@ -8,11 +8,7 @@ function NavIconsContain(props) {
       className="navicons-container navicons-container-mobile"
       style={props.largeScreen ? { display: "none" } : { display: "flex" }}
     >
-      <NavWish 
-        detectWishlistChange={props.detectWishlistChange}
-        setDetectWishlistChange={props.setDetectWishlistChange}
-      />
-      <NavCart cartPopup={props.cartPopup} addedToCart={props.addedToCart}/>
+      <NavCart cartPopup={props.cartPopup} addedToCart={props.addedToCart} />
     </div>
   );
 }

@@ -39,11 +39,6 @@ function UpperNav(props) {
         />
         <NavSearch typedOnSearchbar={props.typedOnSearchbar} />
         <div className="navicons-container">
-          <NavWish
-            typedOnSearchbar={props.typedOnSearchbar}
-            detectWishlistChange={props.detectWishlistChange}
-            setDetectWishlistChange={props.setDetectWishlistChange}
-          />
           <NavCart
             cartPopup={props.cartPopup}
             addedToCart={props.addedToCart}
