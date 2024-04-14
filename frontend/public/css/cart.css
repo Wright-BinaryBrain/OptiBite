@@ -141,7 +141,7 @@
 
 .mycart-order-summary {
   width: 295px;
-  height: 367px;
+  height: 267px;
   padding: 20px;
   background-color: #f2f2f2;
   position: relative;
@@ -192,7 +192,7 @@
   line-height: 22px;
   letter-spacing: 0.005em;
   color: #000000;
-  height: 40%;
+  height: 50px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -201,12 +201,12 @@
 
 .mycart-checkout-button {
   display: inline-block;
-  background-color: #be4217;
+  background-color: #216600;
   width: 100%;
   height: 42px;
   position: relative;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.06);
-  border: 2px solid #be4217;
+  border: 2px solid #216600;
   border-radius: 5px;
   overflow: hidden;
   white-space: nowrap;
@@ -380,6 +380,66 @@
   border-radius: 100px;
 }
 
+.schedule-order-container {
+  /* border: solid red;
+  display: flex;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center; */
+}
+
+.schedule-order {
+  margin-top: 5px;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 10px 50px;
+  padding-right: 0px;
+  height: 250px;
+  position: relative;
+}
+
+.schedule-close {
+  border: none;
+  color: #ff3434;
+  width: 20px;
+  transform: scale(1.2);
+  font-weight: bold;
+  height: 25px;
+  top: 5px;
+  background-color: none;
+  right: 5px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.date-container {
+  display: flex;
+  width: 210px;
+}
+
+.time-container {
+  display: flex;
+  width: 190px;
+  justify-content: space-between;
+}
+
+.schedule-iinput {
+  font-size: 16px;
+  color: #333;
+  background-color: transparent;
+  border: none;
+  padding-bottom: 0px;
+  margin-left: 5px;
+  width: 120px;
+  border-bottom: #000000 1px solid;
+}
+
 @media only screen and (max-width: 1109px) {
   .mycart-summary-container {
     flex-direction: column;
@@ -388,7 +448,6 @@
     flex-wrap: nowrap;
   }
 }
-
 
 @media only screen and (max-width: 1109px) {
   .mycart-table-width {

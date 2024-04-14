@@ -26,8 +26,6 @@ function CartOrderSummary(props) {
     setGrandTotal(subTotal + 2);
   }, [props.addedToCart]);
 
-
-
   return (
     <div className="mycart-order-summary">
       <div className="mycart-order-title">ORDER SUMMARY</div>
@@ -50,24 +48,6 @@ function CartOrderSummary(props) {
           <div>Total</div>
           <div>$ {grandTotal}</div>
         </div>
-        <button
-          className="mycart-checkout-button"
-          onClick={() =>
-            cartEmpty
-              ? alert(
-                  "Cart Items are empty. Add items to cart prior to purchasing."
-                )
-              : props.displayGuest("delete", "delete")
-          }
-        >
-          {/* <input
-            type="submit"
-            name="submit-mycart-checkout"
-            value="submit-mycart-checkout"
-            className="submit-mycart-checkout"
-          /> */}
-          <div className="mycart-checkout-btn-text">Place Order </div>
-        </button>
       </div>
     </div>
   );

@@ -3,7 +3,6 @@ const cors = require("cors");
 const app = express();
 const morgan = require("morgan");
 
-
 var corsOptions = {
   //   origin: "*",
   origin: true,
@@ -19,7 +18,6 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static("files/image"));
-
 
 const swaggerUi = require(`swagger-ui-express`);
 const swaggerDocument = require(`./swagger.json`);
@@ -39,12 +37,12 @@ const productType = require("./router/productTypeRouter");
 const review = require("./router/reviewRoute");
 const rider = require("./router/riderRouter");
 const user = require("./router/userRoute");
-const email = require("./router/emailRouter")
-const contactOtp = require("./router/contactOTPRouter")
-const dashboard = require("./router/dashboardRouter")
 
-const recommendation = require("./router/recommendationRouter")
-const schedule = require("./router/scheduleOrderRouter");
+const email = require("./router/emailRouter");
+const contactOtp = require("./router/contactOTPRouter");
+const dashboard = require("./router/dashboardRouter");
+const recommendation = require("./router/recommendationRouter");
+// const schedule = require("./router/scheduleOrderRouter");
 
 //Using Routers
 app.use(
@@ -64,9 +62,8 @@ app.use(
   user,
   email,
   contactOtp,
-  recommendation,
-  dashboard, 
-  schedule
+  dashboard,
+  recommendation
 );
 
 //Middleware to handle errors

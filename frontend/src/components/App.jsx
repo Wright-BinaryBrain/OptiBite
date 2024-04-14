@@ -3,24 +3,22 @@ import { Routes, Route, Link } from "react-router-dom";
 import Navbar from "./Navbar/Navbar.jsx";
 import HeaderContact from "./HeaderContact/HeaderContact.jsx";
 import UpperNav from "./Navbar/UpperNav.jsx";
+
 import ProductDiv from "./Products/ProductDiv.jsx";
 // import WishList from "./WishList/WishList.jsx";
 // import AboutUs from "./AboutUs/AboutUS";
-// import Footer from "./Footer/Footer.jsx";
-import Contact from "./contact/contact";
+// import Footer from "./Footer/Footer.jsx"
 import Home from "./Home/home.jsx";
 import Cart from "./Cart/Cart.jsx";
-import BillingDetails from "./BillingDetails/BillingDetails.jsx";
 import Login from "./login/Login";
 import Guest from "./login/Guest";
 import DeliveryLocation from "./DeliveryLocation/DeliveryLocation.jsx";
 import Payment from "./Payment/Payment.jsx";
-import OrderReceived from "./OrderReceived/OrderReceived.jsx";
 import MiniCart from "./Navbar/MIniCart.jsx";
 import Shop from "./Shop/Shop.jsx";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-
+import Admin from "./admin-panel/admin.jsx";
 // *******************************
 import AddressBook from "./UserProfile/UserPageNav/AddressBook";
 import Wallet from "./UserProfile/UserPageNav/Wallet";
@@ -33,9 +31,7 @@ import "./UserProfile/userProfile.css";
 // toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import Thankyou from "./Thankyou/Thankyou.jsx";
-import ErrorPage from "./404/404.jsx";
-
+import ProductPopup from "./Products/ProductPopup.jsx";
 function App() {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
@@ -60,7 +56,7 @@ function App() {
       setDisplayPop(itemValue);
     }
   }
-
+  console.log(maxPopup);
   const [isOrderCart, setIsOrderCart] = useState();
   const [buyProduct, setBuyProduct] = useState();
   const [btnQuantity, setBtnQuantity] = useState();
@@ -85,32 +81,6 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
-  function handleGuest(displayPop, quantity) {
-    if (isLoggedIn === false) {
-      setDisplayGuest((preValue) => !preValue);
-    } else {
-      handleClick();
-      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-      navigate("/billingdetails");
-    }
-
-    if (displayPop === "none" && quantity === "none") {
-      setIsOrderCart(true);
-    } else if (displayPop === "delete" && quantity === "delete") {
-      setIsOrderCart(true);
-      localStorage.removeItem("optibiteBuyProduct");
-      localStorage.removeItem("optibiteQuantity");
-    } else {
-      // console.log("Order Details=",orderDetails);
-      setIsOrderCart(false);
-      setBuyProduct(displayPop);
-      setBtnQuantity(quantity);
-
-      localStorage.setItem("optibiteBuyProduct", JSON.stringify(displayPop));
-      localStorage.setItem("optibiteQuantity", JSON.stringify(quantity));
-    }
-  }
-
   const openLoginBox = () => {
     setIsLogin(true);
     console.log("login");
@@ -125,11 +95,11 @@ function App() {
     setIsGuest(false);
   };
 
-  if (maxPopup === true) {
-    document.body.style.overflowY = "hidden";
-  } else {
-    document.body.style.overflowY = "scroll";
-  }
+  // if (maxPopup === true) {
+  //   document.body.style.overflowY = "hidden";
+  // } else {
+  //   document.body.style.overflowY = "scroll";
+  // }
 
   const [addedToCart, setAddedToCart] = useState(
     JSON.parse(localStorage.getItem("optibiteAddToCart")) != null
@@ -145,6 +115,12 @@ function App() {
   } else {
     cartItems = JSON.parse(localStorage.getItem("optibiteAddToCart"));
   }
+
+  useEffect(() => {
+    if (isLoggedIn === false) {
+      cartItems = [];
+    }
+  }, [isLoggedIn]);
 
   function addToCart(itemValue, qty) {
     addQty = false;
@@ -251,8 +227,7 @@ function App() {
           navLink1="/"
           navLink2="/Shop"
           navLink3="/Cart"
-          navLink4="/AboutUs"
-          navLink5="/contact"
+          navLink4="/Admin"
           typedOnSearchbar={searchHandler}
           detectWishlistChange={detectWishlistChange}
           setDetectWishlistChange={setDetectWishlistChange}
@@ -263,6 +238,7 @@ function App() {
             path="/"
             element={
               <Home
+                productPopup={handleClick}
                 addToCart={addToCart}
                 addedToCart={addedToCart}
                 detectWishlistChange={detectWishlistChange}
@@ -306,15 +282,10 @@ function App() {
                 addToCart={addToCart}
                 addedToCart={addedToCart}
                 setAddedToCart={setAddedToCart}
-                displayGuest={handleGuest}
                 detectWishlistChange={detectWishlistChange}
                 setDetectWishlistChange={setDetectWishlistChange}
               />
             }
-          />
-          <Route
-            path="/BillingDetails"
-            element={<BillingDetails isOrderCart={isOrderCart} />}
           />
           <Route
             path="/Payment"
@@ -339,7 +310,7 @@ function App() {
           {/* <Route path="/OrderReceived" element={<OrderReceived />} /> */}
           {/* <Route path="/DeliveryLocation" element={<DeliveryLocation />} /> */}
           {/* <Route path="/AboutUs" element={<AboutUs />} /> */}
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/Admin" element={<Admin />} />
 
           {/* ******************************************************************** */}
           {/* user profile links */}
@@ -351,7 +322,6 @@ function App() {
             {/* <Route path="address" element={<AddressBook />} />
             <Route path="wallet" element={<Wallet />} /> */}
           </Route>
-          <Route path="/*" element={<ErrorPage />} />
           {/* ******************************************************************** */}
         </Routes>
         {/* <Footer /> */}
@@ -360,6 +330,18 @@ function App() {
         {/* <ProductPopup /> */}
         {/* <Cart /> */}
         {/* <BillingDetails /> */}
+
+        {maxPopup ? (
+          <ProductPopup
+            isLoggedIn={isLoggedIn}
+            productPopup={handleClick}
+            displayPop={displayPop}
+            addToCart={addToCart}
+            addedToCart={addedToCart}
+          />
+        ) : (
+          <ProductPopup productPopup={false} displayPop={displayPop} />
+        )}
 
         {cartPopup ? (
           <MiniCart
@@ -379,7 +361,6 @@ function App() {
           <Guest
             setOrderResponse={setOrderResponse}
             setOrderQuantity={setOrderQuantity}
-            close={handleGuest}
             handleClick={handleClick}
             isOrderCart={isOrderCart}
             buyProduct={buyProduct}

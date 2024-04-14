@@ -1,5 +1,5 @@
+const { required } = require("joi");
 const mongoose = require("mongoose");
-
 
 const orderSchema = new mongoose.Schema(
   {
@@ -7,7 +7,6 @@ const orderSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
-
 
     productId: [
       {
@@ -24,23 +23,20 @@ const orderSchema = new mongoose.Schema(
     rates: [
       {
         type: Number,
-        required: false
-      }
+        required: false,
+      },
     ],
     totalAmount: {
-      type: Number
+      type: Number,
     },
-    reviewId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Review",
-    },
+
     orderAddress: {
       type: String,
       required: true,
     },
-    orderDate:{
-        type: Date,
-        default: Date.now()
+    orderDate: {
+      type: Date,
+      default: Date.now(),
     },
     orderStatus: {
       type: String,
@@ -53,8 +49,25 @@ const orderSchema = new mongoose.Schema(
         "Cancelled",
       ],
       default: "Pending",
-    }
+    },
+    startDate: {
+      type: Date,
+      required:false
 
+    },
+    endDate: {
+      type: Date,
+      required:false
+    },
+    time:{
+      type: String,
+      required:false
+    },
+    scheduled:{
+      type: Boolean,
+      default: false,
+      required:false
+    }
   },
   { timestamps: true }
 );

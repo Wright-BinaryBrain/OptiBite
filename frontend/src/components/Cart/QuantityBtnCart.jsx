@@ -6,7 +6,7 @@ function QuantityBtnCart(props) {
 
   useEffect(() => {
     qtyValue = JSON.parse(localStorage.getItem("optibiteAddToCart"));
-    for (let i = 0; i < qtyValue.length; i++) {
+    for (let i = 0; i < qtyValue?.length; i++) {
       if (String(qtyValue[i]._id) === String(props.storageId)) {
         setQuantity(qtyValue[i].qtyBtn);
         break;
@@ -16,7 +16,7 @@ function QuantityBtnCart(props) {
 
   useEffect(() => {
     qtyValue = JSON.parse(localStorage.getItem("optibiteAddToCart"));
-    for (let i = 0; i < qtyValue.length; i++) {
+    for (let i = 0; i < qtyValue?.length; i++) {
       if (String(qtyValue[i]._id) === String(props.storageId)) {
         qtyValue[i].qtyBtn = quantity;
         break;

@@ -10,7 +10,7 @@ const {
     } = require("../controller/scheduleOrderController");
 
 const { isAuthenticated, authorizeRoles } = require("../middleware/auth");
-// const scheduleOrderValidation = require("../validation/scheduleOrderValidation");
+const scheduleOrderValidation = require("../validation/scheduleOrderValidation");
 
 router
     .route("/scheduleOrder")
@@ -34,14 +34,14 @@ router
         getOneScheduleOrder
     );
 
-// router
-//     .route("/updateScheduleOrder/:id")
-//     .patch(
-//         isAuthenticated, 
-//         authorizeRoles("superAdmin"), 
-//         scheduleOrderValidation, 
-//         updateScheduleOrder
-//     );
+router
+    .route("/updateScheduleOrder/:id")
+    .patch(
+        isAuthenticated, 
+        authorizeRoles("superAdmin"), 
+        scheduleOrderValidation, 
+        updateScheduleOrder
+    );
 
 router
     .route("/deleteScheduleOrder/:id")
