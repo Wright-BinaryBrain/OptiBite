@@ -1,3 +1,4 @@
+
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const ErrorHandler = require("../utils/errorHandler");
 const APIFeatures = require("../utils/apiFeatures");
@@ -5,7 +6,7 @@ const APIFeatures = require("../utils/apiFeatures");
 const Schedule = require("../Model/Schedule");
 
 // Create a schedule
-exports.postSchedule = catchAsyncErrors(async (req, res, next) => {
+exports.postScheduleOrder = catchAsyncErrors(async (req, res, next) => {
   const newSchedule = req.body;
   const schedule = await new Schedule(newSchedule).save();
   res.status(200).json({
@@ -15,8 +16,9 @@ exports.postSchedule = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+
 //Get all schedule
-exports.getAllSchedule = catchAsyncErrors(async (req, res, next) => {
+exports.getAllScheduledOrders = catchAsyncErrors(async (req, res, next) => {
   if (req.query.rowsPerPage) {
     const resultPerPage = req.query.rowsPerPage;
     const scheduleCount = await Schedule.countDocuments();
@@ -51,8 +53,9 @@ exports.getAllSchedule = catchAsyncErrors(async (req, res, next) => {
   }
 });
 
+
 //Get Particular Schedule
-exports.getOneSchedule = catchAsyncErrors(async (req, res, next) => {
+exports.getOneScheduledOrder = catchAsyncErrors(async (req, res, next) => {
   const schedule = await Schedule.findById(req.params.id);
   if (!schedule) {
     return next(new ErrorHandler("Schedule not found", 404));
@@ -64,8 +67,9 @@ exports.getOneSchedule = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+
 //Update Schedule
-exports.updateSchedule = catchAsyncErrors(async (req, res, next) => {
+exports.updateScheduledOrder = catchAsyncErrors(async (req, res, next) => {
   let schedule = await Schedule.findById(req.params.id);
   if (!schedule) {
     return next(new ErrorHandler("Schedule not found", 404));
@@ -82,8 +86,9 @@ exports.updateSchedule = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+
 //Delete Schedule
-exports.deleteSchedule = catchAsyncErrors(async (req, res, next) => {
+exports.deleteScheduledOrder = catchAsyncErrors(async (req, res, next) => {
   const schedule = await Schedule.findById(req.params.id);
   if (!schedule) {
     return next(new ErrorHandler("Schedule not found", 404));
@@ -95,8 +100,9 @@ exports.deleteSchedule = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+
 //Get all schedule by user
-exports.getAllScheduleByUser = catchAsyncErrors(async (req, res, next) => {
+exports.getAllScheduledByUser = catchAsyncErrors(async (req, res, next) => {
   const schedule = await Schedule.find({ userId: req.params.id });
   if (!schedule) {
     return next(new ErrorHandler("Schedule not found", 404));
@@ -109,8 +115,9 @@ exports.getAllScheduleByUser = catchAsyncErrors(async (req, res, next) => {
 });
 
 
+
 //Get all schedule by status
-exports.getAllScheduleByStatus = catchAsyncErrors(async (req, res, next) => {
+exports.getAllScheduledByStatus = catchAsyncErrors(async (req, res, next) => {
   const schedule = await Schedule.find({ orderStatus: req.params.status });
   if (!schedule) {
     return next(new ErrorHandler("Schedule not found", 404));
@@ -122,8 +129,9 @@ exports.getAllScheduleByStatus = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+
 //Get all schedule by date
-exports.getAllScheduleByDate = catchAsyncErrors(async (req, res, next) => {
+exports.getAllScheduledByDate = catchAsyncErrors(async (req, res, next) => {
   const schedule = await Schedule.find({
     startDate: { $gte: req.params.startDate, $lt: req.params.endDate },
   });
@@ -134,5 +142,5 @@ exports.getAllScheduleByDate = catchAsyncErrors(async (req, res, next) => {
     success: true,
     data: schedule,
     message: "Schedule fetched successfully!",
-  });
+  });
 });

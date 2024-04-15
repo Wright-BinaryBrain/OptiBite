@@ -1,3 +1,4 @@
+const { required } = require("joi");
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema(
@@ -49,6 +50,24 @@ const orderSchema = new mongoose.Schema(
       ],
       default: "Pending",
     },
+    startDate: {
+      type: Date,
+      required:false
+
+    },
+    endDate: {
+      type: Date,
+      required:false
+    },
+    time:{
+      type: String,
+      required:false
+    },
+    scheduled:{
+      type: Boolean,
+      default: false,
+      required:false
+    }
   },
   { timestamps: true }
 );

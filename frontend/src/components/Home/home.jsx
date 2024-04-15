@@ -63,6 +63,7 @@ function Home(props) {
     axios
       .get("http://localhost:4000/api/v1/getrecommendation", { withCredentials: true })
       .then((res) => { 
+        console.log(res)
         setRecommendations(res.data.data);
       })
       .catch((err) => console.log(err));

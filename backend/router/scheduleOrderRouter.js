@@ -4,17 +4,23 @@ const router = express.Router();
 const {
     postScheduleOrder,
     getAllScheduledOrders,
-    getOneScheduleOrder,
-    deleteScheduleOrder,
-    updateScheduleOrder,
+    getOneScheduledOrder,
+    updateScheduledOrder,
+    deleteScheduledOrder,
+    getAllScheduledByUser,
+    getAllScheduledByStatus,
+    getAllScheduledByDate,
     } = require("../controller/scheduleOrderController");
 
 const { isAuthenticated, authorizeRoles } = require("../middleware/auth");
 const scheduleOrderValidation = require("../validation/scheduleOrderValidation");
 
+
 router
     .route("/scheduleOrder")
     .post(
+        isAuthenticated,
+        scheduleOrderValidation,
         postScheduleOrder
     );
 
@@ -27,52 +33,53 @@ router
     );
 
 router
-    .route("/getOneScheduleOrder/:id")
+    .route("/getOneScheduledOrder/:id")
     .get(
         isAuthenticated, 
         authorizeRoles("superAdmin", "admin"), 
-        getOneScheduleOrder
+        getOneScheduledOrder
     );
 
 router
-    .route("/updateScheduleOrder/:id")
+    .route("/updateScheduledOrder/:id")
     .patch(
         isAuthenticated, 
         authorizeRoles("superAdmin"), 
         scheduleOrderValidation, 
-        updateScheduleOrder
+        updateScheduledOrder
     );
 
-router
-    .route("/deleteScheduleOrder/:id")
+
+    router
+    .route("/deleteScheduledOrder/:id")
     .delete(
         isAuthenticated, 
         authorizeRoles("superAdmin"), 
-        deleteScheduleOrder
+        deleteScheduledOrder
     );
 
 router
-    .route("/getScheduleByUser/:id")
+    .route("/getScheduledByUser/:id")
     .get(
         isAuthenticated, 
         authorizeRoles("user"), 
-        getScheduleByUser
+        getAllScheduledByUser
     );
 
 router
-    .route("/gerScheduleByStatus/:status")
+    .route("/getScheduledByStatus/:status")
     .get(
         isAuthenticated, 
         authorizeRoles("superAdmin", "admin"), 
-        getScheduleByStatus
+        getAllScheduledByStatus
     );
 
 router
-    .route("/getScheduleByDate/:startDate/:endDate")
+    .route("/getScheduledByDate/:startDate/:endDate")
     .get(
         isAuthenticated, 
         authorizeRoles("superAdmin", "admin"), 
-        getScheduleByDate
+        getAllScheduledByDate
     );
 
-module.exports = router;
+module.exports = router;
