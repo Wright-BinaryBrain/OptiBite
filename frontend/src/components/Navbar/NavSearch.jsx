@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { propTypes } from "react-bootstrap/esm/Image";
 import { BiSearchAlt2 } from "react-icons/bi";
 
@@ -9,7 +9,7 @@ function NavSearch(props) {
         type="text"
         id="navsearch-uppernav"
         className="navbarSearch"
-        placeholder="Search for products..."
+        placeholder="Search"
         name="searchProducts"
         autocomplete="off"
         onChange={(event) => props.typedOnSearchbar(event)}

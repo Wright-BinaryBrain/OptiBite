@@ -63,7 +63,7 @@ function CartTable(props) {
         <th className="mycart-table-heading ">Sub Total</th>
         <th className="mycart-table-heading "></th>
       </tr>
-      {props.addedToCart.map((itemValue) => (
+      {props.addedToCart?.map((itemValue) => (
         <tr
           // key={"mycartKey" + String(itemValue._id)}
           // id={"mycartId" + String(itemValue._id)}
@@ -82,19 +82,12 @@ function CartTable(props) {
           <td className="mycart-table-data">
             <img
               className="mycart-image"
-              src={`http://localhost:4000/uploads/${itemValue.image[0]}`}
+              src={itemValue.image}
               alt={itemValue.Product}
             />
           </td>
           <td className="mycart-table-data">
             <div className="mycart-product-name">{itemValue.Name}</div>
-            <div className="mycart-product-stock">
-              {itemValue.stock === "InStock" ? (
-                <span style={{ color: "#216600" }}>IN STOCK</span>
-              ) : (
-                <span style={{ color: "#BE4217" }}>OUT OF STOCK</span>
-              )}
-            </div>
           </td>
           <td className="mycart-table-data">
             <div className="mycart-product-price">

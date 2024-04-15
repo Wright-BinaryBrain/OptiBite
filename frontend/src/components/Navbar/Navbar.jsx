@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import HamburgerIcon from "./HamburgerIcon.jsx";
 import NavItemList from "./NavItemList.jsx";
-import NavHeader from "./NavHeader.jsx";
-import NavWish from "./NavWish.jsx";
-import NavCart from "./NavCart.jsx";
+
 import NavIconsContain from "./NavIconsContain.jsx";
 import NavLogoMobile from "./NavLogoMobile.jsx";
 import { BiUserCircle } from "react-icons/bi";

@@ -91,12 +91,12 @@ function AddProducts() {
             />
           </label>
           <label className="add-product-item">
-            Description:
+            Image:
             <input
               className="add-product-input"
               type="text"
-              name="Describe"
-              value={productData.Describe}
+              name="Image"
+              value={productData.Image}
               onChange={handleChange}
             />
           </label>
@@ -106,6 +106,7 @@ function AddProducts() {
               name="vegNonVeg"
               value={productData.vegNonVeg}
               onChange={handleChange}
+              className="add-product-input"
             >
               <option value="">Select...</option>
               <option value="veg">Veg</option>
@@ -126,12 +127,12 @@ function AddProducts() {
         </div>
 
         <label className="add-product-item" id="add-product-image">
-          Image URL:
+          Description:
           <input
             className="add-product-input"
             type="text"
-            name="Image"
-            value={productData.Image}
+            name="Description"
+            value={productData.Describe}
             onChange={handleChange}
           />
         </label>

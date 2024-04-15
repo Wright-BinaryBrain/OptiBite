@@ -37,7 +37,7 @@ const productType = require("./router/productTypeRouter");
 const review = require("./router/reviewRoute");
 const rider = require("./router/riderRouter");
 const user = require("./router/userRoute");
-
+// const recommendation = require("./router/recommendationRouter");
 const email = require("./router/emailRouter");
 const contactOtp = require("./router/contactOTPRouter");
 const dashboard = require("./router/dashboardRouter");
@@ -62,10 +62,11 @@ app.use(
   user,
   email,
   contactOtp,
+
   dashboard,
   recommendation,
   schedule
-);
+
 
 
 //Middleware to handle errors

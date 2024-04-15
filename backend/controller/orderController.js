@@ -7,52 +7,51 @@ const User = require("../Model/User");
 const ContactOtp = require("../Model/ContactOtp");
 
 const orderStatusToCustomerEmail = require("../middleware/orderStatusEmail");
-const sendCustomerSms = require("../utils/sendCustomerSms")
-
+const sendCustomerSms = require("../utils/sendCustomerSms");
 
 exports.postOrder = catchAsyncErrors(async (req, res, next) => {
-
-
-
-  if( !req.body.userId ) {
-
-    const userWithGuestContact = await User.findOne({ contactNo1: req.body.guestContact })
-    if( userWithGuestContact ) {
+  if (!req.body.userId) {
+    const userWithGuestContact = await User.findOne({
+      contactNo1: req.body.guestContact,
+    });
+    if (userWithGuestContact) {
       res.status(400).json({
         success: false,
-        message: "User account with the given contact number already exists!"
+        message: "User account with the given contact number already exists!",
       });
-    }
-    else{
-      const contactOtp = await ContactOtp.findOne({ contactNo1: req.body.guestContact });
-      if(!contactOtp) {
+    } else {
+      const contactOtp = await ContactOtp.findOne({
+        contactNo1: req.body.guestContact,
+      });
+      if (!contactOtp) {
         res.status(404).json({
           message: "Invalid OTP.",
-          success: false
+          success: false,
         });
-      }
-      else{
-        if(req.body.otpCode == contactOtp.otpCode){
-          const orderStatusSmsParamList = [req.body.guestContact, Date.now(), req.body.orderAddress, req.body.guestName];
-          sendCustomerSms(orderStatusSmsParamList)
+      } else {
+        if (req.body.otpCode == contactOtp.otpCode) {
+          const orderStatusSmsParamList = [
+            req.body.guestContact,
+            Date.now(),
+            req.body.orderAddress,
+            req.body.guestName,
+          ];
+          sendCustomerSms(orderStatusSmsParamList);
           const order = await new Order(req.body).save();
           res.status(200).json({
             success: true,
             message: "Order posted successfully!",
             data: order,
           });
-        }
-        else{
+        } else {
           res.status(200).json({
             message: "Invalid OTP.",
-            success: false
+            success: false,
           });
         }
       }
     }
-  }
-  else{
-
+  } else {
     const order = await new Order(req.body).save();
     res.status(200).json({
       success: true,
@@ -114,7 +113,7 @@ exports.getMyOrder = catchAsyncErrors(async (req, res, next) => {
   if (!order) {
     res.status(200).json({
       success: true,
-      message: "No order has been made by you."
+      message: "No order has been made by you.",
     });
   }
   res.status(200).json({
@@ -129,22 +128,22 @@ exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
   if (!order) {
     return next(new ErrorHandler("Order not found", 404));
   }
-  if ((req.body.paymentStatus == "Paid")) {
+  if (req.body.paymentStatus == "Paid") {
     req.body.paymentDate = Date.now();
   }
   const patchOrder = req.body;
-  const orderId = req.params.id
+  const orderId = req.params.id;
 
   if (order.orderStatus != req.body.orderStatus) {
     if (order.userId) {
       orderStatusToCustomerEmail(
-        paramList = [ 
-        order.orderDate, 
-        order.userId.toString(),
-        orderId,
-        req.body.orderStatus
-        ]
-      )
+        (paramList = [
+          order.orderDate,
+          order.userId.toString(),
+          orderId,
+          req.body.orderStatus,
+        ])
+      );
     }
   }
 
@@ -172,31 +171,31 @@ exports.cancelOrder = catchAsyncErrors(async (req, res, next) => {
   if (!order) {
     return next(new ErrorHandler("Order not found", 404));
   }
-  if(order.userId){
-    if(req.user.id == order.userId) {
+  if (order.userId) {
+    if (req.user.id == order.userId) {
       if (order.orderStatus == "Pending") {
         req.body.orderStatus = "Cancelled";
-        await Order.findByIdAndUpdate({ _id: req.params.id }, { $set: req.body });
+        await Order.findByIdAndUpdate(
+          { _id: req.params.id },
+          { $set: req.body }
+        );
         res.status(200).json({
           success: true,
           message: "Order status changed to canceled!",
         });
-      }
-      else{
+      } else {
         res.status(400).json({
           success: false,
           message: "Order status was not on pending!",
         });
       }
-    }
-    else {
+    } else {
       res.status(400).json({
         success: false,
         message: "Not your order!",
       });
     }
-  }
-  else{
+  } else {
     res.status(400).json({
       success: false,
       message: "Guest order cant be canceled!",

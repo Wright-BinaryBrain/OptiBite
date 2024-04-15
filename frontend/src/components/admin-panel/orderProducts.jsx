@@ -18,20 +18,36 @@ const OrderPage = () => {
     setOrderDetails(orderData());
   }, [orders, users, products]);
 
+  console.log(orderDetails);
   const orderData = () => {
     return orders.map((order) => {
-      const user = users.find((user) => user._id === order.userId) || {};
-      const productDetails = order.productId.map((pid) => {
-        const product = products.find((product) => product._id === pid) || {
+      const user = users.find((user) => user._id === order.userId) || {
+        name: "Unknown User",
+      };
+      let orderTotal = 0; // Variable to store the total price of the order
+
+      const productDetails = order.productId.map((pid, index) => {
+        const product = products.find((p) => p._id === pid) || {
           name: "Unknown",
+          price: 0,
         };
-        return product.Name;
+        const quantity = order.quantity[index] || 0;
+        const rate = order.rates[index] || product.price; // Use rate if available, otherwise fall back to product price
+        const productTotal = rate * quantity;
+        orderTotal += productTotal; // Adding to the total price of the order
+
+        return {
+          name: product.Name,
+          quantity: quantity,
+          totalPrice: productTotal,
+        };
       });
 
       return {
         ...order,
         userName: user.name,
-        productNames: productDetails.join(", "),
+        productDetails: productDetails,
+        totalPrice: orderTotal,
       };
     });
   };
@@ -108,11 +124,62 @@ const OrderPage = () => {
 
   return (
     <div className="order-admin-container">
-      <OrderTable
-        orders={orderDetails}
-        onUpdateOrderStatus={updateOrderStatus}
-        onDeleteOrder={deleteOrder}
-      />
+      {orderDetails?.map((order) => (
+        <div className="admin-order-item" key={order._id}>
+          <div className="admin-order-product-details">
+            <div className="admin-order-product-name">
+              <div className="admin-order-titles">Order Id</div>
+              <div className="admin-order-details">{`: ${order._id}`}</div>
+            </div>
+            <div className="admin-order-product-name">
+              <div className="admin-order-titles">Order Date</div>
+              <div className="admin-order-details">{`: ${new Date(
+                order.createdAt
+              ).toLocaleDateString()}`}</div>
+            </div>
+            <div className="admin-order-product-name">
+              <div className="admin-order-titles">Total Price</div>
+              <div className="admin-order-details">{`: $${order.totalPrice}`}</div>
+            </div>
+            <div className="admin-order-product-name">
+              <div className="admin-order-titles">Address</div>
+              <div className="admin-order-details">{`: ${order.orderAddress}`}</div>
+            </div>
+            <div className="admin-order-product-name">
+              <div className="admin-order-titles">Status</div>
+              <div className="admin-order-details">{`: ${order.orderStatus}`}</div>
+            </div>
+          </div>
+          <div className="admin-order-product-container">
+            <div className="admin-order-product-titles">Products</div>
+            <div className="order-product-details">
+              {order.productDetails?.map((prod) => (
+                <div className="order-product-subdetails" key={prod.name}>
+                  <span className="subdetails-name">
+                    <b>Name: </b>
+                    {prod.name}
+                  </span>
+                  <span className="subdetails-quantity">
+                    <b>Quantity:</b> {prod.quantity}
+                  </span>
+                  <span>
+                    <b>Rate:</b> ${prod.totalPrice.toFixed(2)}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="admin-order-product-action">
+            <button onClick={() => updateOrderStatus(order._id, "Paid")}>
+              Mark as Paid
+            </button>
+            <button onClick={() => updateOrderStatus(order._id, "Cancelled")}>
+              Cancel Order
+            </button>
+            <button onClick={() => deleteOrder(order._id)}>Delete Order</button>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

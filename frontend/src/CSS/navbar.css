@@ -162,7 +162,7 @@ nav::-webkit-scrollbar {
 }
 
 .nav-links.active {
-  color: #be4217 !important;
+  color: #2784d1 !important;
 }
 
 #nav1:hover,
@@ -175,7 +175,7 @@ nav::-webkit-scrollbar {
 #nav8:hover,
 #nav9:hover,
 #nav10:hover {
-  color: #be4217;
+  color: #2784d1;
   transition: color 0.2s;
 }
 

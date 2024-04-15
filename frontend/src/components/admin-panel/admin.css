@@ -1,6 +1,7 @@
 .admin-container {
   position: relative;
   top: 200px;
+  padding-bottom: 50px;
 }
 
 .add-product-container {
@@ -18,7 +19,25 @@
   column-gap: 15px;
   grid-template-columns: 50% 50%;
 }
+.admin-nav {
+  width: 80%;
+  margin: auto;
+  margin-bottom: 30px;
+}
 
+.admin-nav button {
+  font-size: 20px;
+  margin-right: 35px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.active-component {
+  color: #2784d1;
+  font-weight: 600;
+  border-bottom: 1px solid !important;
+}
 .add-product-item {
   display: flex;
   flex-direction: column;
@@ -57,8 +76,8 @@
 
 /* for order table */
 .order-admin-container {
-  border: solid red;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -86,4 +105,89 @@
 .order-table-rows td {
   text-align: center;
   padding: 18px 5px 20px 5px !important;
+}
+
+.admin-order-product-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-right: 25px;
+  margin-top: 20px;
+}
+
+.admin-order-main-content {
+  /* margin-top: 10px; */
+  flex-wrap: wrap;
+  /* overflow-y: scroll; */
+  /* overflow-x: hidden; */
+  /* height: 350px; */
+  /* scroll-snap-type: y mandatory;  */
+  margin-bottom: 50px;
+}
+.admin-order-item {
+  scroll-snap-align: start;
+  width: 80%;
+  height: 138px;
+
+  background: #ffffff;
+
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 0 10px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.admin-order-product-name {
+  display: flex;
+  gap: 10px;
+}
+.admin-order-product-details {
+  width: 45%;
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.admin-order-product-action {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.admin-order-titles {
+  width: 90px;
+}
+.admin-order-delete-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.user-order-item {
+}
+
+.admin-order-product-titles {
+}
+
+.order-product-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+}
+
+.order-product-subdetails {
+  display: flex;
+}
+
+.subdetails-name {
+  width: 320px;
+}
+
+.subdetails-quantity {
+  width: 100px;
 }
