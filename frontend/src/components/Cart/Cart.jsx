@@ -92,7 +92,7 @@ function Cart(props) {
     if (schedule) {
       formData.append("startDate", startDate.toISOString().substring(0, 10)); // Format date to YYYY-MM-DD
       formData.append("endDate", endDate);
-      formData.append("orderTime", orderTime);
+      formData.append("timeOfDelivery", orderTime);
 
       axios
         .post("http://localhost:4000/api/v1/scheduleOrder", formData, {

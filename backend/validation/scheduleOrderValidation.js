@@ -15,6 +15,7 @@ const scheduleOrderSchema = joi.object({
 
     const scheduleOrderValidation = (req, res, next) => {
         const scheduleOrderObject = req.body;
+        console.log(req.body);
         const { err } = scheduleOrderSchema.validate(scheduleOrderObject);
         if (!err) {
             next();
