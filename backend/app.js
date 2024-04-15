@@ -19,9 +19,9 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static("files/image"));
 
-const swaggerUi = require(`swagger-ui-express`);
-const swaggerDocument = require(`./swagger.json`);
-app.use(`/api/docs`, swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+const swaggerUi = require(swagger-ui-express);
+const swaggerDocument = require(./swagger.json);
+app.use(/api/docs, swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 //Import Routes
 const ad = require("./router/adRouter");
@@ -42,7 +42,7 @@ const email = require("./router/emailRouter");
 const contactOtp = require("./router/contactOTPRouter");
 const dashboard = require("./router/dashboardRouter");
 const recommendation = require("./router/recommendationRouter");
-// const schedule = require("./router/scheduleOrderRouter");
+const schedule = require("./router/scheduleOrderRouter");
 
 //Using Routers
 app.use(
@@ -63,10 +63,12 @@ app.use(
   email,
   contactOtp,
   dashboard,
-  recommendation
+  recommendation,
+  schedule
 );
+
 
 //Middleware to handle errors
 app.use(errorMiddleware);
 
-module.exports = app;
+module.exports = app;
