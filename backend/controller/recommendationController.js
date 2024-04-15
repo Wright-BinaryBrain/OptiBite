@@ -24,6 +24,7 @@ exports.getUserOrders = async (req, res) => {
     const userOrders = await Order.find({ user: user._id }).populate(
       "productId"
     );
+    console.log(userOrders);
     //loop through products and get recommendations
     const recs = [];
     for (let i = 0; i < userOrders.length; i++) {

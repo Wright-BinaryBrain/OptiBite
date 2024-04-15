@@ -63,11 +63,15 @@ function Home(props) {
     axios
       .get("http://localhost:4000/api/v1/getrecommendation", { withCredentials: true })
       .then((res) => { 
-        console.log(res)
-        setRecommendations(res.data.data);
+        setRecommendations(shuffleRecommendations(res.data.data, 8));
       })
       .catch((err) => console.log(err));
   }
+
+  const shuffleRecommendations = (array, count) => {
+    const shuffledArray = array.sort(() => Math.random() - 0.5);
+    return shuffledArray.slice(0, count);
+  };
 
   console.log(ProductList);
   console.log(ProductList.filter((item) => item.Veg_Non !== "veg"));

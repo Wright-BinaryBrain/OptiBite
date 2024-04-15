@@ -14,7 +14,7 @@ function ProductDiv(props) {
 
   const [quantity, setQuantity] = useState(1);
 
-  // console.log(props.itemValue);
+  console.log(props.itemValue);
   return (
     <div
       className="product-div"

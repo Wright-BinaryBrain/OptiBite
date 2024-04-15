@@ -76,20 +76,23 @@ def recommendation_setup(rating_matrix):
     
 
 def Get_Recommendations(recommender,df,rating_matrix,title):
-    user= df[df['Name']==title]
-    user_index = np.where(rating_matrix.index==int(user['Food_ID']))[0][0]
-    user_ratings = rating_matrix.iloc[user_index]
+    try:
+        user= df[df['Name']==title]
+        user_index = np.where(rating_matrix.index==int(user['Food_ID']))[0][0]
+        user_ratings = rating_matrix.iloc[user_index]
 
-    reshaped = user_ratings.values.reshape(1,-1)
-    distances, indices = recommender.kneighbors(reshaped,n_neighbors=16)
-    
-    nearest_neighbors_indices = rating_matrix.iloc[indices[0]].index[1:]
-    nearest_neighbors = pd.DataFrame({'Food_ID': nearest_neighbors_indices})
-    
-    result = pd.merge(nearest_neighbors,df,on='Food_ID',how='left')
-    dta = json.loads('{"items":' + result.to_json(orient='records', date_format='iso') + '}')
-    
-    return dta
+        reshaped = user_ratings.values.reshape(1,-1)
+        distances, indices = recommender.kneighbors(reshaped,n_neighbors=16)
+        
+        nearest_neighbors_indices = rating_matrix.iloc[indices[0]].index[1:]
+        nearest_neighbors = pd.DataFrame({'Food_ID': nearest_neighbors_indices})
+        
+        result = pd.merge(nearest_neighbors,df,on='Food_ID',how='left')
+        dta = json.loads('{"items":' + result.to_json(orient='records', date_format='iso') + '}')
+        
+        return dta
+    except:
+        return Get_Recommendations(recommender,df,rating_matrix,"tricolour salad")
 
 
 # Function to remove all the punctuation from the "Describe" column
