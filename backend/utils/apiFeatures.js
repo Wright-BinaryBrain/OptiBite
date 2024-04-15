@@ -8,7 +8,7 @@ class APIFeatures {
 
     const keyword = this.queryString.keyword
       ? {
-          productName: {
+          Name: {
             $regex: this.queryString.keyword,
             $options: "i",
           },
@@ -35,7 +35,7 @@ class APIFeatures {
           riderName: {
             $regex: this.queryString.keyword,
             $options: "i",
-          }
+          },
         }
       : {};
 
