@@ -67,8 +67,7 @@ app.use(
   schedule
 );
 
-
 //Middleware to handle errors
 app.use(errorMiddleware);
 
-module.exports = app;
+module.exports = app;

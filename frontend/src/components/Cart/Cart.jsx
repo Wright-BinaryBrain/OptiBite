@@ -42,7 +42,7 @@ function Cart(props) {
     setTotalAmount(subTotal);
     setGrandTotal(subTotal + 2);
   }, []);
-
+  console.log(loggedin);
   const handleRemoveSelected = () => {
     let cartItems = JSON.parse(localStorage.getItem("optibiteAddToCart")) || [];
     const remainingItems = cartItems.filter(
@@ -76,27 +76,30 @@ function Cart(props) {
     let cartId = cartItems.map((item) => String(item._id));
     let cartQty = cartItems.map((item) => String(item.qtyBtn));
     let rates = cartItems.map((item) => String(item.Rate));
-
+    console.log(cartId);
     if (cartId.length === 0 || cartQty.length === 0) {
       alert("Cart is empty");
       return;
     }
 
-    const formData = new FormData();
-    formData.append("userId", String(userDetail._id));
-    cartId.forEach((value) => formData.append("productId", value));
-    cartQty.forEach((value) => formData.append("quantity", value));
-    rates.forEach((value) => formData.append("rates", value));
-    formData.append("orderAddress", String(orderAddress));
-
     if (schedule) {
-      formData.append("startDate", startDate.toISOString().substring(0, 10)); // Format date to YYYY-MM-DD
-      formData.append("endDate", endDate);
-      formData.append("timeOfDelivery", orderTime);
+      const orderData = {
+        userId: userDetail._id,
+        productId: cartId,
+        orderAddress: orderAddress,
+        quantity: cartQty,
+        rates: rates,
+        startDate: startDate.toISOString().substring(0, 10),
+        endDate: endDate,
+        timeOfDelivery: orderTime,
+      };
 
       axios
-        .post("http://localhost:4000/api/v1/scheduleOrder", formData, {
+        .post("http://localhost:4000/api/v1/scheduleOrder", orderData, {
           withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
         })
         .then((res) => {
           if (res.data.success) {
@@ -112,8 +115,15 @@ function Cart(props) {
           toast.error(err.response.data.message, {
             position: toast.POSITION.TOP_RIGHT,
           });
+          console.log(err.response);
         });
     } else {
+      const formData = new FormData();
+      formData.append("userId", String(userDetail._id));
+      cartId.forEach((value) => formData.append("productId", value));
+      cartQty.forEach((value) => formData.append("quantity", value));
+      rates.forEach((value) => formData.append("rates", value));
+      formData.append("orderAddress", String(orderAddress));
       axios
         .post("http://localhost:4000/api/v1/postOrder", formData, {
           withCredentials: true,

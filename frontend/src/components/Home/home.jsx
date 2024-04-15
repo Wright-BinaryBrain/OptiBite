@@ -9,7 +9,6 @@ function Home(props) {
   const [veg, setVeg] = useState([]);
   const [nonVeg, setNonVeg] = useState([]);
 
-
   const [userDetail, setUserDetail] = useState();
   const [recommendations, setRecommendations] = useState([]);
 
@@ -39,7 +38,6 @@ function Home(props) {
       .catch((err) => console.log(err));
   }
 
-
   useEffect(() => {
     getProduct();
     getVegetables();
@@ -61,8 +59,10 @@ function Home(props) {
 
   function getRecommendation() {
     axios
-      .get("http://localhost:4000/api/v1/getrecommendation", { withCredentials: true })
-      .then((res) => { 
+      .get("http://localhost:4000/api/v1/getrecommendation", {
+        withCredentials: true,
+      })
+      .then((res) => {
         setRecommendations(shuffleRecommendations(res.data.data, 8));
       })
       .catch((err) => console.log(err));
@@ -80,10 +80,9 @@ function Home(props) {
 
   return (
     <div style={{ maxWidth: "1440px", margin: "auto", width: "90%" }}>
-      {/* <TopBanner /> */}
-      {/* <Carousel /> */}
-
-      <div className="home-product-titles" style={{marginTop:"12rem"}}>Recommended For You</div>
+      <div className="home-product-titles" style={{ marginTop: "12rem" }}>
+        Recommended For You
+      </div>
       <div className="product-div-container">
         {recommendations.map((itemValue) => {
           return (
@@ -92,8 +91,6 @@ function Home(props) {
               productPopup={props.productPopup}
               addToCart={props.addToCart}
               addedToCart={props.addedToCart}
-              detectWishlistChange={props.detectWishlistChange}
-              setDetectWishlistChange={props.setDetectWishlistChange}
             />
           );
         })}
@@ -107,8 +104,6 @@ function Home(props) {
               productPopup={props.productPopup}
               addToCart={props.addToCart}
               addedToCart={props.addedToCart}
-              detectWishlistChange={props.detectWishlistChange}
-              setDetectWishlistChange={props.setDetectWishlistChange}
             />
           );
         })}
@@ -123,8 +118,6 @@ function Home(props) {
               productPopup={props.productPopup}
               addToCart={props.addToCart}
               addedToCart={props.addedToCart}
-              detectWishlistChange={props.detectWishlistChange}
-              setDetectWishlistChange={props.setDetectWishlistChange}
             />
           );
         })}

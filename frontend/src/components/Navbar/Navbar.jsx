@@ -6,7 +6,6 @@ import NavIconsContain from "./NavIconsContain.jsx";
 import NavLogoMobile from "./NavLogoMobile.jsx";
 import { BiUserCircle } from "react-icons/bi";
 import ProfileAvatar from "./ProfileAvatar.jsx";
-import NavSearchMobile from "./NavSearchMobile.jsx";
 
 import "../../CSS/navbar.css";
 
@@ -100,11 +99,6 @@ function Navbar(props) {
         ) : (
           <BiUserCircle className="nav-login-mobile" onClick={props.open} />
         )}
-        <NavSearchMobile
-          largeScreen={largeScreen}
-          typedOnSearchbar={props.typedOnSearchbar}
-        />
-
         {/* <NavHeader
           navHeaderLink={props.navHeaderLink}
           largeScreen={largeScreen}

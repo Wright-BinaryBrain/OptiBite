@@ -156,16 +156,16 @@
   width: 115px;
   border-radius: 25px;
   padding: 16px 24px 16px 24px;
-  border: 2px solid #be4217;
+  border: 2px solid #0d86e9;
   cursor: pointer;
-  color: #be4217;
+  color: #0d86e9;
   background-color: white;
   margin-left: 2vw;
   transition: all 0.2s;
 }
 
 .navlogin-btn:hover {
-  background-color: #be4217;
+  background-color: #0d86e9;
   color: white;
   transition: all 0.2s;
 }

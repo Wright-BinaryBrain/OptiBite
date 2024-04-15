@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import QuantityBtn from "./QuantityBtn.jsx";
-import DropdownUnit from "./DropdownUnit.jsx";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 import { useEffect } from "react";
@@ -37,16 +36,6 @@ function ProductPopup(props) {
       }
     >
       <div
-        // className="product-popup-overlay2"
-        // style={
-        //   props.productPopup
-        //     ? {
-        //         height: "100%",
-        //         width: "100%",
-        //         transition: "height 0.3s, width 0.3s"
-        //       }
-        //     : { height: "0", width: "0", transition: "height 0.3s, width 0.3s" }
-        // }
         className={
           props.productPopup
             ? "product-popup-overlay2 increase-overlay2"
@@ -83,7 +72,7 @@ function ProductPopup(props) {
                 : { opacity: "0", transition: "opacity 0.5s ease" }
             }
           >
-            <div className="popup-price">$. {props.displayPop?.Rate}</div>
+            <div className="popup-price">$ {props.displayPop?.Rate}</div>
             <div className="popup-stock">{props.displayPop?.stock}</div>
 
             <div className="popup-detail">{props.displayPop?.Describe}</div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import OrderTable from "./orderTable";
 
-const OrderPage = () => {
+const ScheduleProducts = () => {
   const [orders, setOrders] = useState([]);
   const [users, setUsers] = useState([]);
   const [products, setProducts] = useState([]);
@@ -55,7 +55,7 @@ const OrderPage = () => {
   const fetchOrders = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/v1/getAllOrder",
+        "http://localhost:4000/api/v1/getAllScheduledOrders",
         {
           withCredentials: true,
         }
@@ -80,7 +80,7 @@ const OrderPage = () => {
       console.error("Failed to fetch users:", error);
     }
   };
-
+  const schedule = true;
   const fetchProducts = async () => {
     try {
       const response = await axios.get(
@@ -98,7 +98,7 @@ const OrderPage = () => {
   const updateOrderStatus = async (orderId, newStatus) => {
     try {
       await axios.patch(
-        `http://localhost:4000/api/v1/updateOrder/${orderId}`,
+        `http://localhost:4000/api/v1/updateScheduledOrder/${orderId}`,
         { orderStatus: newStatus },
         { withCredentials: true }
       );
@@ -111,7 +111,7 @@ const OrderPage = () => {
   const deleteOrder = async (orderId) => {
     try {
       await axios.delete(
-        `http://localhost:4000/api/v1/deleteOrder/${orderId}`,
+        `http://localhost:4000/api/v1/deleteScheduledOrder/${orderId}`,
         {
           withCredentials: true,
         }
@@ -126,9 +126,10 @@ const OrderPage = () => {
     <OrderTable
       orderDetails={orderDetails}
       updateOrderStatus={updateOrderStatus}
+      schedule={schedule}
       deleteOrder={deleteOrder}
     />
   );
 };
 
-export default OrderPage;
+export default ScheduleProducts;

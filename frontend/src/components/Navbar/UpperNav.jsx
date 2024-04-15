@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import NavLogo from "./NavLogo.jsx";
 import NavSearch from "./NavSearch.jsx";
-import NavWish from "./NavWish.jsx";
 import NavCart from "./NavCart.jsx";
 import NavLoginBtn from "./NavLoginBtn.jsx";
 
 import "../login/login.css";
 import Login from "../login/Login";
-import PopupBox from "../login/PopupBox";
-import Guest from "../login/Guest";
 
 import ProfileAvatar from "./ProfileAvatar";
 import "../../CSS/uppernav.css";
@@ -53,15 +50,6 @@ function UpperNav(props) {
           ) : (
             <NavLoginBtn open={props.open} />
           )}
-
-          {/* <NavLoginBtn open={openLoginBox} guest={openGuest} /> */}
-          {/* {isLogin ? (
-            <Login closeLogin={closeLoginBox} />
-          ) : isGuest ? (
-            <Guest close={closeGuest} />
-          ) : (
-            <NavLoginBtn open={openLoginBox} guest={openGuest} />
-          )} */}
         </div>
       </div>
     </div>

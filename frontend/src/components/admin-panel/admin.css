@@ -1,3 +1,6 @@
+* {
+  font-family: "Nunito Sans";
+}
 .admin-container {
   position: relative;
   top: 200px;
@@ -55,6 +58,7 @@
 
 #add-product-image {
   width: 100%;
+  margin-top: 15px;
 }
 
 #add-product-image input {
@@ -127,7 +131,6 @@
 .admin-order-item {
   scroll-snap-align: start;
   width: 80%;
-  height: 138px;
 
   background: #ffffff;
 
@@ -135,17 +138,21 @@
   border-radius: 8px;
   margin: 10px 0;
   padding: 0 10px;
-
+  padding-bottom: 5px;
   display: flex;
   justify-content: space-between;
 }
-
+.admin-schedule-item {
+  margin-top: 15px;
+  width: 20%;
+  margin-left: 30px;
+}
 .admin-order-product-name {
   display: flex;
   gap: 10px;
 }
 .admin-order-product-details {
-  width: 45%;
+  width: 40%;
   margin: 15px 0;
   display: flex;
   justify-content: space-between;
@@ -153,8 +160,31 @@
 }
 .admin-order-product-action {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
+  height: 90%;
+  gap: 10px;
+  margin-top: 15px;
+  width: 7%;
+  margin-bottom: 10px;
+}
+
+.admin-order-product-action button {
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+  width: 70px;
+  cursor: pointer;
+}
+.order-button-start {
+  background-color: #71b646;
+  border: #71b646;
+}
+
+.order-button-cancel,
+.order-button-delete {
+  background-color: #be4217;
+  border: #be4217;
 }
 .admin-order-titles {
   width: 90px;
@@ -165,12 +195,6 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-}
-
-.user-order-item {
-}
-
-.admin-order-product-titles {
 }
 
 .order-product-details {
@@ -190,4 +214,46 @@
 
 .subdetails-quantity {
   width: 100px;
+}
+
+@media (max-width: 1600px) {
+  .admin-order-item {
+    flex-wrap: wrap;
+  }
+
+  .admin-schedule-item {
+    margin-left: auto;
+  }
+  .admin-schedule-item,
+  .admin-order-product-details {
+    width: auto;
+  }
+  .admin-order-product-action {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    width: auto;
+  }
+}
+
+@media (max-width: 580px) {
+  .admin-order-item {
+    flex-direction: column;
+  }
+
+  .admin-schedule-item,
+  .admin-order-product-details,
+  .admin-order-product-container {
+    width: 100%;
+  }
+
+  .admin-schedule-item {
+    margin-left: 0px;
+  }
+
+  .admin-order-product-container {
+    margin-bottom: 30px;
+  }
 }

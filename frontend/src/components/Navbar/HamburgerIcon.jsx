@@ -20,18 +20,18 @@ function HamburgerIcon(props) {
         top: "50%",
         transform: "translate(-50%, -50%) rotate(45deg)",
         transformOrigin: "center",
-        transition: "top 0.2s linear, transform 0.2s linear 0.2s"
+        transition: "top 0.2s linear, transform 0.2s linear 0.2s",
       });
       setBurgerLine2({
         width: "0px",
         transition: "all 0s",
-        transitionDelay: "0.2s"
+        transitionDelay: "0.2s",
       });
       setBurgerLine3({
         top: "50%",
         transform: "translate(-50%, -50%) rotate(-45deg)",
         transformOrigin: "center",
-        transition: "top 0.2s linear, transform 0.2s linear 0.2s"
+        transition: "top 0.2s linear, transform 0.2s linear 0.2s",
       });
       props.navHeight(true);
     } else {

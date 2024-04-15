@@ -1,34 +1,18 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Navbar from "./Navbar/Navbar.jsx";
-import HeaderContact from "./HeaderContact/HeaderContact.jsx";
 import UpperNav from "./Navbar/UpperNav.jsx";
 
 import ProductDiv from "./Products/ProductDiv.jsx";
-// import WishList from "./WishList/WishList.jsx";
-// import AboutUs from "./AboutUs/AboutUS";
-// import Footer from "./Footer/Footer.jsx"
 import Home from "./Home/home.jsx";
 import Cart from "./Cart/Cart.jsx";
 import Login from "./login/Login";
-import Guest from "./login/Guest";
-import DeliveryLocation from "./DeliveryLocation/DeliveryLocation.jsx";
-import Payment from "./Payment/Payment.jsx";
 import MiniCart from "./Navbar/MIniCart.jsx";
 import Shop from "./Shop/Shop.jsx";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import Admin from "./admin-panel/admin.jsx";
-// *******************************
-import AddressBook from "./UserProfile/UserPageNav/AddressBook";
-import Wallet from "./UserProfile/UserPageNav/Wallet";
 
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Orders from "./UserProfile/UserPageNav/Orders";
-import EditProfile from "./UserProfile/UserPageNav/EditProfile";
-import "./UserProfile/userProfile.css";
-// *******************************
-// toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProductPopup from "./Products/ProductPopup.jsx";
@@ -106,7 +90,7 @@ function App() {
       ? JSON.parse(localStorage.getItem("optibiteAddToCart"))
       : []
   );
-  const [itemQuantity, setItemQuantity] = useState(0.5);
+  const [itemQuantity, setItemQuantity] = useState(1);
   var addQty;
   var cartItems;
 
@@ -172,8 +156,6 @@ function App() {
           setUserData={setUserData}
           closeLogin={closeLoginBox}
         />
-      ) : isGuest ? (
-        <Guest close={closeGuest} />
       ) : (
         ""
       )}
@@ -190,28 +172,8 @@ function App() {
           cartPopup={handleCartPopup}
           addedToCart={addedToCart}
           typedOnSearchbar={searchHandler}
-          detectWishlistChange={detectWishlistChange}
-          setDetectWishlistChange={setDetectWishlistChange}
           // close={closeLoginBox}
         />
-
-        {/* <Navbar
-          navVisible={navVisible}
-          windowScroll={windowScroll}
-          cartPopup={handleCartPopup}
-          addedToCart={addedToCart}
-          navHeaderLink="/"
-          navLink1="/"
-          navLink2="/Shop"
-          navLink3="/WishList"
-          navLink4="/Cart"
-          navLink5="/BillingDetails"
-          navLink6="/Payment"
-          navLink7="/OrderReceived"
-          navLink8="/DeliveryLocation"
-          navLink9="/AboutUs"
-          navLink10="/contact"
-        /> */}
 
         <Navbar
           open={openLoginBox}
@@ -252,6 +214,7 @@ function App() {
               <Shop
                 addToCart={addToCart}
                 addedToCart={addedToCart}
+                productPopup={handleClick}
                 searchItem={searchItem}
                 setSearchItem={setSearchItem}
                 detectWishlistChange={detectWishlistChange}
@@ -261,19 +224,7 @@ function App() {
               />
             }
           />
-          {/* <Route
-            path="/WishList"
-            element={
-              <WishList
-                productPopup={handleClick}
-                addToCart={addToCart}
-                addedToCart={addedToCart}
-                setAddedToCart={setAddedToCart}
-                detectWishlistChange={detectWishlistChange}
-                setDetectWishlistChange={setDetectWishlistChange}
-              />
-            }
-          /> */}
+
           <Route
             path="/Cart"
             element={
@@ -287,50 +238,9 @@ function App() {
               />
             }
           />
-          <Route
-            path="/Payment"
-            element={
-              <Payment
-                setAddedToCart={setAddedToCart}
-                isOrderCart={isOrderCart}
-                setOrderResponse={setOrderResponse}
-                setOrderQuantity={setOrderQuantity}
-              />
-            }
-          />
-          {/* <Route
-            path="/invoice"
-            element={
-              <Thankyou
-                orderQty={orderQuantity}
-                orderResponse={orderResponse}
-              />
-            }
-          /> */}
-          {/* <Route path="/OrderReceived" element={<OrderReceived />} /> */}
-          {/* <Route path="/DeliveryLocation" element={<DeliveryLocation />} /> */}
-          {/* <Route path="/AboutUs" element={<AboutUs />} /> */}
+
           <Route path="/Admin" element={<Admin />} />
-
-          {/* ******************************************************************** */}
-          {/* user profile links */}
-          <Route path="/view">
-            <Route path="" element={<EditProfile />} />
-
-            <Route path="orders" element={<Orders />} />
-            {/* not needed */}
-            {/* <Route path="address" element={<AddressBook />} />
-            <Route path="wallet" element={<Wallet />} /> */}
-          </Route>
-          {/* ******************************************************************** */}
         </Routes>
-        {/* <Footer /> */}
-
-        {/* <ProductDiv /> */}
-        {/* <ProductPopup /> */}
-        {/* <Cart /> */}
-        {/* <BillingDetails /> */}
-
         {maxPopup ? (
           <ProductPopup
             isLoggedIn={isLoggedIn}
@@ -356,18 +266,6 @@ function App() {
             setAddedToCart={setAddedToCart}
           />
         )}
-
-        {displayGuest ? (
-          <Guest
-            setOrderResponse={setOrderResponse}
-            setOrderQuantity={setOrderQuantity}
-            handleClick={handleClick}
-            isOrderCart={isOrderCart}
-            buyProduct={buyProduct}
-            btnQuantity={btnQuantity}
-            setAddedToCart={setAddedToCart}
-          />
-        ) : null}
       </div>
     </div>
   );

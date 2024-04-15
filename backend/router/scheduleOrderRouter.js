@@ -2,84 +2,74 @@ const express = require("express");
 const router = express.Router();
 
 const {
-    postScheduleOrder,
-    getAllScheduledOrders,
-    getOneScheduledOrder,
-    updateScheduledOrder,
-    deleteScheduledOrder,
-    getAllScheduledByUser,
-    getAllScheduledByStatus,
-    getAllScheduledByDate,
-    } = require("../controller/scheduleOrderController");
+  postScheduleOrder,
+  getAllScheduledOrders,
+  getOneScheduledOrder,
+  updateScheduledOrder,
+  deleteScheduledOrder,
+  getAllScheduledByUser,
+  getAllScheduledByStatus,
+  getAllScheduledByDate,
+} = require("../controller/scheduleOrderController");
 
 const { isAuthenticated, authorizeRoles } = require("../middleware/auth");
 const scheduleOrderValidation = require("../validation/scheduleOrderValidation");
 
+router
+  .route("/scheduleOrder")
+  .post(isAuthenticated, scheduleOrderValidation, postScheduleOrder);
 
 router
-    .route("/scheduleOrder")
-    .post(
-        isAuthenticated,
-        scheduleOrderValidation,
-        postScheduleOrder
-    );
+  .route("/getAllScheduledOrders")
+  .get(
+    isAuthenticated,
+    authorizeRoles("superAdmin", "admin"),
+    getAllScheduledOrders
+  );
 
 router
-    .route("/getAllScheduledOrders")
-    .get(
-        isAuthenticated, 
-        authorizeRoles("superAdmin", "admin"), 
-        getAllScheduledOrders
-    );
+  .route("/getOneScheduledOrder/:id")
+  .get(
+    isAuthenticated,
+    authorizeRoles("superAdmin", "admin"),
+    getOneScheduledOrder
+  );
 
 router
-    .route("/getOneScheduledOrder/:id")
-    .get(
-        isAuthenticated, 
-        authorizeRoles("superAdmin", "admin"), 
-        getOneScheduledOrder
-    );
+  .route("/updateScheduledOrder/:id")
+  .patch(
+    isAuthenticated,
+    authorizeRoles("superAdmin", "admin"),
+    scheduleOrderValidation,
+    updateScheduledOrder
+  );
 
 router
-    .route("/updateScheduledOrder/:id")
-    .patch(
-        isAuthenticated, 
-        authorizeRoles("superAdmin"), 
-        scheduleOrderValidation, 
-        updateScheduledOrder
-    );
-
-
-    router
-    .route("/deleteScheduledOrder/:id")
-    .delete(
-        isAuthenticated, 
-        authorizeRoles("superAdmin"), 
-        deleteScheduledOrder
-    );
+  .route("/deleteScheduledOrder/:id")
+  .delete(
+    isAuthenticated,
+    authorizeRoles("superAdmin", "admin"),
+    deleteScheduledOrder
+  );
 
 router
-    .route("/getScheduledByUser/:id")
-    .get(
-        isAuthenticated, 
-        authorizeRoles("user"), 
-        getAllScheduledByUser
-    );
+  .route("/getScheduledByUser/:id")
+  .get(isAuthenticated, authorizeRoles("user"), getAllScheduledByUser);
 
 router
-    .route("/getScheduledByStatus/:status")
-    .get(
-        isAuthenticated, 
-        authorizeRoles("superAdmin", "admin"), 
-        getAllScheduledByStatus
-    );
+  .route("/getScheduledByStatus/:status")
+  .get(
+    isAuthenticated,
+    authorizeRoles("superAdmin", "admin"),
+    getAllScheduledByStatus
+  );
 
 router
-    .route("/getScheduledByDate/:startDate/:endDate")
-    .get(
-        isAuthenticated, 
-        authorizeRoles("superAdmin", "admin"), 
-        getAllScheduledByDate
-    );
+  .route("/getScheduledByDate/:startDate/:endDate")
+  .get(
+    isAuthenticated,
+    authorizeRoles("superAdmin", "admin"),
+    getAllScheduledByDate
+  );
 
-module.exports = router;
+module.exports = router;

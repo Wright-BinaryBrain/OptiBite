@@ -1,5 +1,4 @@
 import React from "react";
-import NavWish from "./NavWish.jsx";
 import NavCart from "./NavCart.jsx";
 
 function NavIconsContain(props) {

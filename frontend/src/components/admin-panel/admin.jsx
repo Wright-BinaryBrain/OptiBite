@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AddProducts from "./addProducts";
 import OrderPage from "./orderProducts";
 import "./admin.css";
-
+import ScheduleProducts from "./scheduleProducts";
 export default function Admin() {
   // State to manage which component is active
   const [activeComponent, setActiveComponent] = useState("addProducts");
@@ -18,10 +18,20 @@ export default function Admin() {
           Add Products
         </button>
         <button
-          className={activeComponent == "addProducts" ? "" : "active-component"}
+          className={
+            activeComponent != "orderProducts" ? "" : "active-component"
+          }
           onClick={() => setActiveComponent("orderProducts")}
         >
           Order Products
+        </button>
+        <button
+          className={
+            activeComponent != "scheduleProducts" ? "" : "active-component"
+          }
+          onClick={() => setActiveComponent("scheduleProducts")}
+        >
+          Schedule Products
         </button>
       </div>
 
@@ -29,6 +39,7 @@ export default function Admin() {
       <div className="admin-content">
         {activeComponent === "addProducts" && <AddProducts />}
         {activeComponent === "orderProducts" && <OrderPage />}
+        {activeComponent === "scheduleProducts" && <ScheduleProducts />}
       </div>
     </div>
   );
