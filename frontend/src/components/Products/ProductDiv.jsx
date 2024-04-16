@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
+
 import ProductImg from "./ProductImg.jsx";
 import ProductName from "./ProductName.jsx";
 import Price from "./Price.jsx";

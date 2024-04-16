@@ -10,7 +10,6 @@ import ProfileAvatar from "./ProfileAvatar.jsx";
 import "../../CSS/navbar.css";
 
 import "../../CSS/minicart.css";
-import axios from "axios";
 function Navbar(props) {
   const [navItems, setNavItems] = useState([]);
   console.log(props.userData);
@@ -99,10 +98,6 @@ function Navbar(props) {
         ) : (
           <BiUserCircle className="nav-login-mobile" onClick={props.open} />
         )}
-        {/* <NavHeader
-          navHeaderLink={props.navHeaderLink}
-          largeScreen={largeScreen}
-        /> */}
         <NavLogoMobile
           navHeaderLink={props.navHeaderLink}
           largeScreen={largeScreen}

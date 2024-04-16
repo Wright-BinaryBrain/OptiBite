@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-// import QuantityBtn from "../Products/QuantityBtn.jsx";
 import QuantityBtnCart from "./QuantityBtnCart.jsx";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
@@ -65,8 +64,6 @@ function CartTable(props) {
       </tr>
       {props.addedToCart?.map((itemValue) => (
         <tr
-          // key={"mycartKey" + String(itemValue._id)}
-          // id={"mycartId" + String(itemValue._id)}
           className="mycart-table-row"
         >
           <td className="mycart-table-data">
@@ -74,9 +71,7 @@ function CartTable(props) {
               className="mycart-checkbox"
               type="checkbox"
               onChange={(event) => handleChange(event, itemValue._id)}
-              // id={"checkbox" + String(itemValue._id)}
-              // name={"checkbox" + String(itemValue._id)}
-              // value={"mycartKey" + String(itemValue._id)}
+              
             />
           </td>
           <td className="mycart-table-data">

@@ -5,28 +5,11 @@ import NavCart from "./NavCart.jsx";
 import NavLoginBtn from "./NavLoginBtn.jsx";
 
 import "../login/login.css";
-import Login from "../login/Login";
 
 import ProfileAvatar from "./ProfileAvatar";
 import "../../CSS/uppernav.css";
 
 function UpperNav(props) {
-  // const [isLogin, setIsLogin] = useState(false);
-  // const [isGuest, setIsGuest] = useState(false);
-  // const openLoginBox = (event) => {
-  //   event.preventDefault();
-  //   setIsLogin(true);
-  // };
-  // const closeLoginBox = () => {
-  //   setIsLogin(false);
-  // };
-  // const openGuest = () => {
-  //   setIsGuest(true);
-  // };
-  // const closeGuest = () => {
-  //   setIsGuest(false);
-  // };
-
   return (
     <div className="uppernav">
       <div className="uppernav-container">

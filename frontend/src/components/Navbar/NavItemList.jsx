@@ -6,7 +6,6 @@ function NavItemList(props) {
 
   function handleClick() {
     window.scrollTo({ top:0, left:0, behavior: "instant"});
-    // window.scrollTo(0,0);
     if (mediaQuery.matches) {
       document.querySelector(".hamburger-icon").click();
     }

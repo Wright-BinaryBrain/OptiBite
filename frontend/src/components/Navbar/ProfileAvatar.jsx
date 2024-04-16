@@ -6,7 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import LogoutIcon from "@mui/icons-material/Logout"; // Renamed to differentiate from function n
+import LogoutIcon from "@mui/icons-material/Logout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const ProfileAvatar = ({ userData, setUserData, setIsLoggedIn }) => {

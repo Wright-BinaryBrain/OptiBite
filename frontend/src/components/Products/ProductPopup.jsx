@@ -1,9 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import QuantityBtn from "./QuantityBtn.jsx";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 import { useEffect } from "react";
-import axios from "axios";
 
 function ProductPopup(props) {
   const [quantity, setQuantity] = useState(1);
@@ -12,8 +10,6 @@ function ProductPopup(props) {
     setQuantity(1);
   }, [props.addedToCart]);
 
-  const [productFamilyName, setProductFamilyName] = useState("");
-  const [productTypeName, setProductTypeName] = useState("");
   console.log(props.displayPop);
   console.log(props.productPopup);
   return (
@@ -57,12 +53,10 @@ function ProductPopup(props) {
             <div className="popup-image-container">
               <img
                 className="popup-image"
-                // src="../images/ProductImage/jar-with-fresh-honey 1.png"
                 src={props.displayPop?.image}
                 alt={props.displayPop?.Name}
               />
             </div>
-            {/* <div className="popup-vertical-line"></div> */}
           </div>
           <div
             className="popup-detail-side"

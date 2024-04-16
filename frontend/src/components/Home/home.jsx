@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import TopBanner from "../TopBanner/TopBanner.jsx";
-// import Carousel from "../Carousel/Carousel";
 import ProductDiv from "../Products/ProductDiv.jsx";
 import axios from "axios";
 function Home(props) {
@@ -45,7 +43,6 @@ function Home(props) {
   }, []);
 
   useEffect(() => {}, []);
-  // console.log(veg);
   useEffect(() => {
     axios
       .get("http://127.0.0.1:4000/api/v1/whoami", { withCredentials: true })
@@ -73,10 +70,6 @@ function Home(props) {
     return shuffledArray.slice(0, count);
   };
 
-  // console.log(ProductList);
-
-
-  // console.log(typeof(ProductList));
 
   return (
     <div style={{ maxWidth: "1440px", margin: "auto", width: "90%" }}>
@@ -111,7 +104,6 @@ function Home(props) {
       <div className="home-product-titles">Veg Items</div>
       <div className="product-div-container">
         {veg.slice(0, 8).map((itemValue) => {
-          // console.log(itemValue);
           return (
             <ProductDiv
               itemValue={itemValue}

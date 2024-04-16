@@ -3,15 +3,11 @@ import "./login.css";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 const Login = (props) => {
-  // using state for displaying login form and signup form
   const [active, setActive] = useState(true);
 
-  // changing states
-  // function executes when signup is clicked
   function handleSignUpSide() {
     setActive(false);
   }
-  // function executes when logn is clicked
   function handleloginSide() {
     setActive(true);
   }
@@ -25,13 +21,9 @@ const Login = (props) => {
           }`}
           id="container"
         >
-          {/* close button top right position  */}
           <div className="close" onClick={props.closeLogin}>
             &#10006;
           </div>
-          {/* svg for curve */}
-
-          {/* form section */}
           <div
             className={`${active ? "loginPanel" : "signupPanel"}`}
             id="panel"
@@ -67,9 +59,7 @@ const Login = (props) => {
                 active ? "signup-transform" : "login-transform"
               }`}
             >
-              {/* login form and signup form are used as component */}
-              {/* handleSignUpSide is passed s props to use the function in loginForm component */}
-              <LoginForm
+               <LoginForm
                 setIsLoggedIn={props.setIsLoggedIn}
                 setUserData={props.setUserData}
                 close={props.closeLogin}
@@ -81,27 +71,7 @@ const Login = (props) => {
                 close={props.closeLogin}
               />
             </div>
-            {/* <LoginForm handleSignUpSide={handleSignUpSide} />
 
-          {active ? (
-            <div
-              id="login-container"
-              className={` ${
-                active ? "original-position " : "login-transform"
-              }`}
-            >
-              <LoginForm handleSignUpSide={handleSignUpSide} />
-            </div>
-          ) : (
-            <div
-              id="signup-container"
-              className={` ${
-                active ? "signup-transform" : "original-position "
-              }`}
-            >
-              <SignUpForm />
-            </div>
-          )} */}
           </div>
         </div>
       </div>

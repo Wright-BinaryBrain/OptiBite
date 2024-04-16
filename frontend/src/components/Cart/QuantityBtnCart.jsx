@@ -50,8 +50,6 @@ function QuantityBtnCart(props) {
       <input
         type="number"
         className="quantity-input"
-        // id={props.inputid}
-        // name={props.inputname}
         onChange={handleChange}
         value={quantity}
       />
