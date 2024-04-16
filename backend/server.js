@@ -16,7 +16,7 @@ connectDatabase();
 
 const server = app.listen(process.env.PORT, () => {
   console.log(
-    `Server is working on http://192.168.101.11:` +
+    `Server is working on http://127.0.0.1:` +
       process.env.PORT +
       ` in ` +
       process.env.NODE_ENV +

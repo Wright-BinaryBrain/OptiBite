@@ -76,12 +76,17 @@ exports.login = catchAsyncErrors(async (req, res, next) => {
 
 //User Profile
 exports.getMe = catchAsyncErrors(async (req, res, next) => {
-  const user = await User.findById(req.user.id);
+  try {
+    const user = await User.findById(req.user.id);
 
-  res.status(200).json({
-    success: true,
-    user: user,
-  });
+    res.status(200).json({
+      success: true,
+      user: user,
+    });
+    
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 //Logout User
