@@ -14,7 +14,7 @@ function Home(props) {
 
   function getProduct() {
     axios
-      .get("http://localhost:4000/api/v1/getProducts")
+      .get("http://127.0.0.1:4000/api/v1/getProducts")
       .then((res) => {
         setProductList(res.data.data);
         setVeg(res.data.data.filter((item) => item.Veg_Non === "veg"));
@@ -26,11 +26,11 @@ function Home(props) {
 
   function getVegetables() {
     axios
-      .get("http://localhost:4000/api/v1/getProducts", {
+      .get("http://127.0.0.1:4000/api/v1/getProducts", {
         params: { rowsPerPage: 4 },
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.data.data.Veg_Non === "veg") {
           setVegetables(res.data.data);
         }
@@ -45,10 +45,10 @@ function Home(props) {
   }, []);
 
   useEffect(() => {}, []);
-  console.log(veg);
+  // console.log(veg);
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/v1/whoami", { withCredentials: true })
+      .get("http://127.0.0.1:4000/api/v1/whoami", { withCredentials: true })
       .then((res) => {
         if (res.data.success === true) {
           setUserDetail(res.data.user);
@@ -59,7 +59,7 @@ function Home(props) {
 
   function getRecommendation() {
     axios
-      .get("http://localhost:4000/api/v1/getrecommendation", {
+      .get("http://127.0.0.1:4000/api/v1/getrecommendation", {
         withCredentials: true,
       })
       .then((res) => {
@@ -73,8 +73,8 @@ function Home(props) {
     return shuffledArray.slice(0, count);
   };
 
-  console.log(ProductList);
-  console.log(ProductList.filter((item) => item.Veg_Non !== "veg"));
+  // console.log(ProductList);
+
 
   // console.log(typeof(ProductList));
 
@@ -111,7 +111,7 @@ function Home(props) {
       <div className="home-product-titles">Veg Items</div>
       <div className="product-div-container">
         {veg.slice(0, 8).map((itemValue) => {
-          console.log(itemValue);
+          // console.log(itemValue);
           return (
             <ProductDiv
               itemValue={itemValue}

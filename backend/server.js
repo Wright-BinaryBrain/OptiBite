@@ -1,6 +1,8 @@
 const app = require("./app");
 const connectDatabase = require("./config/databaseConnection");
 
+
+
 //Handling uncaught exceptions
 process.on("uncaughtException", (err) => {
   console.log("Error", err.stack);
@@ -13,6 +15,8 @@ require("dotenv").config({ path: "config/config.env" });
 
 //Connecting to database
 connectDatabase();
+
+
 
 const server = app.listen(process.env.PORT, () => {
   console.log(

@@ -14,7 +14,7 @@ function Shop(props) {
   useEffect(() => {
     const fetchProducts = () => {
       axios
-        .get("http://localhost:4000/api/v1/getProducts", {
+        .get("http://127.0.0.1:4000/api/v1/getProducts", {
           params: {
             rowsPerPage: showProducts.current,
             page: currentPage,

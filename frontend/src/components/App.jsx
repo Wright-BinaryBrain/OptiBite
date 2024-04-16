@@ -51,7 +51,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/v1/whoami", {
+      .get("http://http://127.0.0.1/:4000/api/v1/whoami", {
         withCredentials: true,
       })
       .then((res) => {

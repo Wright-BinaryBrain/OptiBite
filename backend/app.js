@@ -2,14 +2,23 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const morgan = require("morgan");
+const path = require("path");
 
 var corsOptions = {
-  //   origin: "*",
-  origin: true,
-  optionsSuccessStatus: 200,
-  credentials: true,
+  origin: 'http://127.0.0.1:4000',
+    credentials: true,
+
 };
 app.use(cors(corsOptions));
+
+// const __dirname = path.dirname("")
+const buildPath = path.join(__dirname, '../frontend/build');
+app.use(express.static(buildPath));
+console.log(__dirname)
+
+
+
+
 app.use(morgan("dev"));
 const cookieParser = require("cookie-parser");
 const errorMiddleware = require("./middleware/errors");
@@ -49,6 +58,19 @@ app.use(
   recommendation,
   schedule
 );
+
+app.get("/*", function(req,res){
+  res.sendFile(
+    path.join(__dirname,'../frontend/build/index.html'),
+    function(err){
+      if(err){
+        // res.status(500).send(err);
+        console.log(err)
+      }
+      
+      }
+  )
+})
 
 //Middleware to handle errors
 app.use(errorMiddleware);

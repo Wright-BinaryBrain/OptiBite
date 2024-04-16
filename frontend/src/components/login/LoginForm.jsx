@@ -25,7 +25,7 @@ const LoginForm = (props) => {
 
     axios
       .post(
-        "http://localhost:4000/api/v1/login",
+        "http://127.0.0.1:4000/api/v1/login",
         {
           email: loginDetails.loginFullname,
           password: loginDetails.loginPassword,
