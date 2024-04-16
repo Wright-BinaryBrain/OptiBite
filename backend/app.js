@@ -24,21 +24,13 @@ const swaggerDocument = require("./swagger.json");
 app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 //Import Routes
-const ad = require("./router/adRouter");
 const auth = require("./router/authorizeRoute");
-const bestSeller = require("./router/bestSellerRouter");
 const category = require("./router/categoryRoute");
 const favourite = require("./router/favouriteRouter");
 const order = require("./router/orderRoute");
-const package = require("./router/packageRouter");
-const productFamily = require("./router/productFamilyRouter");
 const product = require("./router/productRoute");
 const productType = require("./router/productTypeRouter");
-const review = require("./router/reviewRoute");
-const rider = require("./router/riderRouter");
 const user = require("./router/userRoute");
-const email = require("./router/emailRouter");
-const contactOtp = require("./router/contactOTPRouter");
 const dashboard = require("./router/dashboardRouter");
 const recommendation = require("./router/recommendationRouter");
 const schedule = require("./router/scheduleOrderRouter");
@@ -46,22 +38,13 @@ const schedule = require("./router/scheduleOrderRouter");
 //Using Routers
 app.use(
   "/api/v1/",
-  ad,
   auth,
-  bestSeller,
   category,
   favourite,
   order,
-  package,
-  productFamily,
   product,
   productType,
-  review,
-  rider,
   user,
-  email,
-  contactOtp,
-
   dashboard,
   recommendation,
   schedule
