@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
+.index-container {
+  /* max-width: 1440px !important; */
+  /* margin: 0 auto; */
+  width: 100%;
+  /* margin: 130px auto 100px auto; */
+  /* padding: 0px 40px; */
+}
+
+.Toastify__toast-container--top-right {
+  z-index: 999999 !important;
+}

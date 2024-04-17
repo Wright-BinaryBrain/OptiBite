@@ -1,0 +1,126 @@
+.home-product-titles {
+  max-width: 1440px;
+  margin: 50px auto 0 auto;
+  padding-left: 40px;
+  text-align: left;
+
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 44px;
+  color: #000000;
+}
+
+.home-img-container1 {
+  max-width: 1440px;
+  margin: 50px auto 30px auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.home-img-container2 {
+  max-width: 1440px;
+  margin: 50px auto 30px auto;
+  padding: 0 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.home-image1-link,
+.home-image2-link {
+  width: 48%;
+  cursor: pointer;
+}
+
+.home-image1,
+.home-image2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-image3-link {
+  width: 96%;
+  cursor: pointer;
+}
+
+.home-image3 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-img-container3 {
+  max-width: 1440px;
+  margin: 50px auto 50px auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-image4-link,
+.home-image5-link,
+.home-image6-link {
+  width: 30%;
+  cursor: pointer;
+}
+
+.home-image4,
+.home-image5,
+.home-image6 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-div-container {
+  /* width: 93%; */
+  max-width: 1440px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 11px;
+  /* display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; */
+  margin: 20px auto;
+}
+
+@media only screen and (max-width: 800px) {
+  .home-img-container1,
+  .home-img-container2,
+  .home-img-container3 {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0;
+  }
+
+  .home-image1-link,
+  .home-image2-link,
+  .home-image3-link,
+  .home-image4-link,
+  .home-image5-link,
+  .home-image6-link {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .product-div-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    row-gap: 30px;
+    margin: 0px auto;
+  }
+}
+
+@media only screen and (max-width: 535px) {
+  .product-div-container {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    row-gap: 30px;
+    margin: 0px auto;
+  }
+}
