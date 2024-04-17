@@ -42,7 +42,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1/api/v1/whoami", {
+      .get("http://3.147.205.53/api/v1/whoami", {
         withCredentials: true,
       })
       .then((res) => {
