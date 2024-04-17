@@ -2,8 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Navbar from "./Navbar/Navbar.jsx";
 import UpperNav from "./Navbar/UpperNav.jsx";
-
-import ProductDiv from "./Products/ProductDiv.jsx";
 import Home from "./Home/home.jsx";
 import Cart from "./Cart/Cart.jsx";
 import Login from "./login/Login";
@@ -19,13 +17,11 @@ import ProductPopup from "./Products/ProductPopup.jsx";
 function App() {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
-  const [isGuest, setIsGuest] = useState(false);
   const [maxPopup, setMaxPopup] = useState(false);
   const [navVisible, setNavVisible] = useState(0);
   const [windowScroll, setWindowScroll] = useState(0);
   const [prevWinScroll, setPrevWinScroll] = useState(0);
   const [displayPop, setDisplayPop] = useState({ image: [] });
-  const [displayGuest, setDisplayGuest] = useState(false);
   const [detectWishlistChange, setDetectWishlistChange] = useState(false);
 
   window.addEventListener("scroll", function () {
@@ -40,18 +36,13 @@ function App() {
       setDisplayPop(itemValue);
     }
   }
-  console.log(maxPopup);
-  const [isOrderCart, setIsOrderCart] = useState();
-  const [buyProduct, setBuyProduct] = useState();
-  const [btnQuantity, setBtnQuantity] = useState();
-  const [orderResponse, setOrderResponse] = useState({});
-  const [orderQuantity, setOrderQuantity] = useState([]);
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState();
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:4000/api/v1/whoami", {
+      .get("http://127.0.0.1/api/v1/whoami", {
         withCredentials: true,
       })
       .then((res) => {
@@ -72,18 +63,6 @@ function App() {
   const closeLoginBox = () => {
     setIsLogin(false);
   };
-  const openGuest = () => {
-    setIsGuest(true);
-  };
-  const closeGuest = () => {
-    setIsGuest(false);
-  };
-
-  // if (maxPopup === true) {
-  //   document.body.style.overflowY = "hidden";
-  // } else {
-  //   document.body.style.overflowY = "scroll";
-  // }
 
   const [addedToCart, setAddedToCart] = useState(
     JSON.parse(localStorage.getItem("optibiteAddToCart")) != null

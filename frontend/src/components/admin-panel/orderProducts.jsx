@@ -55,7 +55,7 @@ const OrderPage = () => {
   const fetchOrders = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:4000/api/v1/getAllOrder",
+        "http://127.0.0.1/api/v1/getAllOrder",
         {
           withCredentials: true,
         }

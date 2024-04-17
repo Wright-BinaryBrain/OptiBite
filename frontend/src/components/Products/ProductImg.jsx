@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import { TiArrowShuffle } from "react-icons/ti";
 import { TbArrowsMaximize } from "react-icons/tb";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { useEffect } from "react";
 
 function ProductImg(props) {
   const [iconHover, setIconHover] = useState({
