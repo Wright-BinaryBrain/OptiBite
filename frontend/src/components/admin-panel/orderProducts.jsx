@@ -55,7 +55,7 @@ const OrderPage = () => {
   const fetchOrders = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1/api/v1/getAllOrder",
+        "http://3.147.205.53/api/v1/getAllOrder",
         {
           withCredentials: true,
         }
@@ -70,7 +70,7 @@ const OrderPage = () => {
   const fetchUsers = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:4000/api/v1/getAllUser",
+        "http://3.147.205.53/api/v1/getAllUser",
         {
           withCredentials: true,
         }
@@ -84,7 +84,7 @@ const OrderPage = () => {
   const fetchProducts = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:4000/api/v1/getProducts",
+        "http://3.147.205.53/api/v1/getProducts",
         {
           withCredentials: true,
         }
@@ -98,7 +98,7 @@ const OrderPage = () => {
   const updateOrderStatus = async (orderId, newStatus) => {
     try {
       await axios.patch(
-        `http://127.0.0.1:4000/api/v1/updateOrder/${orderId}`,
+        `http://3.147.205.53/api/v1/updateOrder/${orderId}`,
         { orderStatus: newStatus },
         { withCredentials: true }
       );
@@ -111,7 +111,7 @@ const OrderPage = () => {
   const deleteOrder = async (orderId) => {
     try {
       await axios.delete(
-        `http://127.0.0.1:4000/api/v1/deleteOrder/${orderId}`,
+        `http://3.147.205.53/api/v1/deleteOrder/${orderId}`,
         {
           withCredentials: true,
         }

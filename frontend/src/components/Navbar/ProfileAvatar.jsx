@@ -27,7 +27,7 @@ const ProfileAvatar = ({ userData, setUserData, setIsLoggedIn }) => {
   const handleLogout = () => {
     console.log("Logging out...");
     axios
-      .get("http://127.0.0.1:4000/api/v1/logout", {
+      .get("http://3.147.205.53/api/v1/logout", {
         withCredentials: true,
       })
       .then((res) => {

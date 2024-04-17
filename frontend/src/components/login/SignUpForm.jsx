@@ -33,7 +33,7 @@ const SignUpForm = ({ close,setIsLoggedIn,setUserData }) => {
     } else {
       axios
         .post(
-          "http://127.0.0.1:4000/api/v1/register",
+          "http://3.147.205.53/api/v1/register",
           {
             name: signupDetails.signupFullname,
             email: signupDetails.signupEmail,

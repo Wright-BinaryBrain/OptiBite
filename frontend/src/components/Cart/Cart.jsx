@@ -24,7 +24,7 @@ function Cart(props) {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:4000/api/v1/whoami", { withCredentials: true })
+      .get("http://3.147.205.53/api/v1/whoami", { withCredentials: true })
       .then((res) => {
         if (res.data.success) {
           setUserDetail(res.data.user);
@@ -95,7 +95,7 @@ function Cart(props) {
       };
 
       axios
-        .post("http://127.0.0.1:4000/api/v1/scheduleOrder", orderData, {
+        .post("http://3.147.205.53/api/v1/scheduleOrder", orderData, {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
@@ -125,7 +125,7 @@ function Cart(props) {
       rates.forEach((value) => formData.append("rates", value));
       formData.append("orderAddress", String(orderAddress));
       axios
-        .post("http://127.0.0.1:4000/api/v1/postOrder", formData, {
+        .post("http://3.147.205.53/api/v1/postOrder", formData, {
           withCredentials: true,
         })
         .then((res) => {

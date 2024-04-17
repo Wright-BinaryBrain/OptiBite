@@ -7,14 +7,13 @@ function Shop(props) {
   const [productList, setProductList] = useState([]);
   const [productCount, setProductCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [showProductsPerPage, setShowProductsPerPage] = useState(12);
   const showProducts = useRef(12);
   const [visiblePages, setVisiblePages] = useState([]);
 
   useEffect(() => {
     const fetchProducts = () => {
       axios
-        .get("http://127.0.0.1:4000/api/v1/getProducts", {
+        .get("http://3.147.205.53/api/v1/getProducts", {
           params: {
             rowsPerPage: showProducts.current,
             page: currentPage,
