@@ -39,7 +39,7 @@ function Home(props) {
   useEffect(() => {
     getProduct();
     getVegetables();
-    getRecommendation();
+    // getRecommendation();
   }, []);
 
   useEffect(() => {}, []);
@@ -54,16 +54,16 @@ function Home(props) {
       .catch((err) => console.log(err));
   }, []);
 
-  function getRecommendation() {
-    axios
-      .get("http://3.147.205.53/api/v1/getrecommendation", {
-        withCredentials: true,
-      })
-      .then((res) => {
-        setRecommendations(shuffleRecommendations(res.data.data, 8));
-      })
-      .catch((err) => console.log(err));
-  }
+  // function getRecommendation() {
+  //   axios
+  //     .get("http://3.147.205.53/api/v1/getrecommendation", {
+  //       withCredentials: true,
+  //     })
+  //     .then((res) => {
+  //       setRecommendations(shuffleRecommendations(res.data.data, 8));
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
 
   const shuffleRecommendations = (array, count) => {
     const shuffledArray = array.sort(() => Math.random() - 0.5);
@@ -76,7 +76,7 @@ function Home(props) {
       <div className="home-product-titles" style={{ marginTop: "12rem" }}>
         Recommended For You
       </div>
-      <div className="product-div-container">
+      {/* <div className="product-div-container">
         {recommendations.map((itemValue) => {
           return (
             <ProductDiv
@@ -87,7 +87,7 @@ function Home(props) {
             />
           );
         })}
-      </div>
+      </div> */}
       <div className="home-product-titles">Non-Veg Items</div>
       <div className="product-div-container">
         {nonVeg.slice(0, 8).map((itemValue) => {

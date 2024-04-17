@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 function QuantityBtn(props) {
   function handleChange(event) {
