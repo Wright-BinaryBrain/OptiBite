@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { propTypes } from "react-bootstrap/esm/Image";
 import { FiShoppingCart } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
@@ -42,13 +41,6 @@ function NavCart(props) {
   }
 
   return (
-    // <div className="nav-cart" onClick={props.cartPopup}>
-    //   <FiShoppingCart className="navcart-icon" />
-    //   <div className="notify-cart">
-    //     <div className="notify-num">{cartCounter}</div>
-    //   </div>
-    // </div>
-
     <Link
       to={"/Cart"}
       className="nav-cart"
