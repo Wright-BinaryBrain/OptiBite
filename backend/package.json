@@ -9,7 +9,7 @@
     "prod": "SET NODE_ENV=PRODUCTION& nodemon -L server.js",
     "start-scheduler": "node ./crons/scheduleDeliveryCron.js"
   },
-  "author": "Syvar Tech",
+  "author": "Optibyte",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",

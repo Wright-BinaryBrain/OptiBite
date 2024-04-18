@@ -1,41 +1,29 @@
-from fastapi import FastAPI, BackgroundTasks, File, UploadFile
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pymongo import MongoClient
 import pandas as pd
 import json
 import uvicorn
-import uuid
-from bson import json_util
-from typing import List
-import requests
 import numpy as np
-import os
-import time
+
 # EDA
 import pandas as pd
 import numpy as np
 
 # Data Preprocessing 
-from sklearn import preprocessing
+# Recommender System Imps
+# Collaborative Based Filtering 
+from scipy.sparse import csr_matrix
+from sklearn.neighbors import NearestNeighbors
+
+# To work with text data 
+import string
+
 
 # Data visualisation
 import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set()
 
-# Recommender System Imps
-# Content Based Filtering 
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import linear_kernel
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-# Collaborative Based Filtering 
-from scipy.sparse import csr_matrix
-from sklearn.neighbors import NearestNeighbors
-
-# To work with text data 
-import re
-import string
 
 
 app = FastAPI()
@@ -69,30 +57,30 @@ def dataImport():
 
 
 def recommendation_setup(rating_matrix):
-    csr_rating_matrix =  csr_matrix(rating_matrix.values)
-    recommender = NearestNeighbors(metric='cosine')
-    recommender.fit(csr_rating_matrix)
+    csr_rating_matrix =  csr_matrix(rating_matrix.values) # Converting the rating matrix to a CSR matrix
+    recommender = NearestNeighbors(metric='cosine') # Creating a nearest neighbors model
+    recommender.fit(csr_rating_matrix) # Fitting the model with the CSR matrix
     return recommender
     
 
 def Get_Recommendations(recommender,df,rating_matrix,title):
     try:
-        user= df[df['Name']==title]
-        user_index = np.where(rating_matrix.index==int(user['Food_ID']))[0][0]
-        user_ratings = rating_matrix.iloc[user_index]
+        user= df[df['Name']==title] #Gets food object from dataframe
+        user_index = np.where(rating_matrix.index==int(user['Food_ID']))[0][0] #Gets the index of the food object in CSR matrix
+        user_ratings = rating_matrix.iloc[user_index] # Retrives data from rating matrix through index
 
-        reshaped = user_ratings.values.reshape(1,-1)
-        distances, indices = recommender.kneighbors(reshaped,n_neighbors=16)
+        reshaped = user_ratings.values.reshape(1,-1) # Reshapes the data to fit the model
+        distances, indices = recommender.kneighbors(reshaped,n_neighbors=16) # Gets the 16 nearest neighbors
         
-        nearest_neighbors_indices = rating_matrix.iloc[indices[0]].index[1:]
-        nearest_neighbors = pd.DataFrame({'Food_ID': nearest_neighbors_indices})
+        nearest_neighbors_indices = rating_matrix.iloc[indices[0]].index[1:] # Gets the indices of the 16 nearest neighbors
+        nearest_neighbors = pd.DataFrame({'Food_ID': nearest_neighbors_indices}) # Creates a dataframe with the indices
         
-        result = pd.merge(nearest_neighbors,df,on='Food_ID',how='left')
-        dta = json.loads('{"items":' + result.to_json(orient='records', date_format='iso') + '}')
+        result = pd.merge(nearest_neighbors,df,on='Food_ID',how='left') # Merges the dataframe with the original dataframe to get the food objects
+        dta = json.loads('{"items":' + result.to_json(orient='records', date_format='iso') + '}') # Converts the dataframe to JSON
         
-        return dta
+        return dta # Returns the JSON
     except:
-        return Get_Recommendations(recommender,df,rating_matrix,"tricolour salad")
+        return Get_Recommendations(recommender,df,rating_matrix,"tricolour salad") # If the food object is not found, it returns the recommendations for tricolour salad
 
 
 # Function to remove all the punctuation from the "Describe" column

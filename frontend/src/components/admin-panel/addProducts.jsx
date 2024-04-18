@@ -24,7 +24,7 @@ function AddProducts() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://127.0.0.1/api/v1/postProduct",
+        "http://3.147.205.53/api/v1/postProduct",
         productData,
         {
           headers: {
