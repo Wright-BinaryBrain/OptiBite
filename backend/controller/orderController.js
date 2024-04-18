@@ -4,10 +4,6 @@ const APIFeatures = require("../utils/apiFeatures");
 
 const Order = require("../Model/Order");
 const User = require("../Model/User");
-const ContactOtp = require("../Model/ContactOtp");
-
-const orderStatusToCustomerEmail = require("../middleware/orderStatusEmail");
-const sendCustomerSms = require("../utils/sendCustomerSms");
 
 exports.postOrder = catchAsyncErrors(async (req, res, next) => {
   if (!req.body.userId) {
@@ -36,7 +32,6 @@ exports.postOrder = catchAsyncErrors(async (req, res, next) => {
             req.body.orderAddress,
             req.body.guestName,
           ];
-          sendCustomerSms(orderStatusSmsParamList);
           const order = await new Order(req.body).save();
           res.status(200).json({
             success: true,
@@ -133,19 +128,6 @@ exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
   }
   const patchOrder = req.body;
   const orderId = req.params.id;
-
-  if (order.orderStatus != req.body.orderStatus) {
-    if (order.userId) {
-      orderStatusToCustomerEmail(
-        (paramList = [
-          order.orderDate,
-          order.userId.toString(),
-          orderId,
-          req.body.orderStatus,
-        ])
-      );
-    }
-  }
 
   await Order.findByIdAndUpdate({ _id: req.params.id }, { $set: patchOrder });
   res.status(200).json({

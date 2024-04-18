@@ -16,8 +16,8 @@ To Run the server:
 
 To Visit the server:
 
-`localhost:4000\api\v1`
+`127.0.0.1\api\v1`
 
 To Visit Docs
 
-`localhost:4000\api\docs`
+`127.0.0.1\api\docs`

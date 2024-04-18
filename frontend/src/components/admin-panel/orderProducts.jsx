@@ -54,12 +54,9 @@ const OrderPage = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get(
-        "http://3.147.205.53/api/v1/getAllOrder",
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.get("http://127.0.0.1/api/v1/getAllOrder", {
+        withCredentials: true,
+      });
       console.log("Orders fetched", response);
       setOrders(response.data.data);
     } catch (error) {
@@ -69,12 +66,9 @@ const OrderPage = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get(
-        "http://3.147.205.53/api/v1/getAllUser",
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.get("http://127.0.0.1/api/v1/getAllUser", {
+        withCredentials: true,
+      });
       setUsers(response.data.data);
     } catch (error) {
       console.error("Failed to fetch users:", error);
@@ -83,12 +77,9 @@ const OrderPage = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get(
-        "http://3.147.205.53/api/v1/getProducts",
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.get("http://127.0.0.1/api/v1/getProducts", {
+        withCredentials: true,
+      });
       setProducts(response.data.data);
     } catch (error) {
       console.error("Failed to fetch products:", error);
@@ -98,7 +89,7 @@ const OrderPage = () => {
   const updateOrderStatus = async (orderId, newStatus) => {
     try {
       await axios.patch(
-        `http://3.147.205.53/api/v1/updateOrder/${orderId}`,
+        `http://127.0.0.1/api/v1/updateOrder/${orderId}`,
         { orderStatus: newStatus },
         { withCredentials: true }
       );
@@ -110,12 +101,9 @@ const OrderPage = () => {
 
   const deleteOrder = async (orderId) => {
     try {
-      await axios.delete(
-        `http://3.147.205.53/api/v1/deleteOrder/${orderId}`,
-        {
-          withCredentials: true,
-        }
-      );
+      await axios.delete(`http://127.0.0.1/api/v1/deleteOrder/${orderId}`, {
+        withCredentials: true,
+      });
       fetchOrders();
     } catch (error) {
       console.error("Failed to delete order:", error);

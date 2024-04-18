@@ -12,7 +12,7 @@ function Home(props) {
 
   function getProduct() {
     axios
-      .get("http://3.147.205.53/api/v1/getProducts")
+      .get("http://127.0.0.1/api/v1/getProducts")
       .then((res) => {
         setProductList(res.data.data);
         setVeg(res.data.data.filter((item) => item.Veg_Non === "veg"));
@@ -24,7 +24,7 @@ function Home(props) {
 
   function getVegetables() {
     axios
-      .get("http://3.147.205.53/api/v1/getProducts", {
+      .get("http://127.0.0.1/api/v1/getProducts", {
         params: { rowsPerPage: 4 },
       })
       .then((res) => {
@@ -39,13 +39,13 @@ function Home(props) {
   useEffect(() => {
     getProduct();
     getVegetables();
-    getRecommendation();
+    // getRecommendation();
   }, []);
 
   useEffect(() => {}, []);
   useEffect(() => {
     axios
-      .get("http://3.147.205.53/api/v1/whoami", { withCredentials: true })
+      .get("http://127.0.0.1/api/v1/whoami", { withCredentials: true })
       .then((res) => {
         if (res.data.success === true) {
           setUserDetail(res.data.user);
@@ -54,22 +54,21 @@ function Home(props) {
       .catch((err) => console.log(err));
   }, []);
 
-  function getRecommendation() {
-    axios
-      .get("http://3.147.205.53/api/v1/getrecommendation", {
-        withCredentials: true,
-      })
-      .then((res) => {
-        setRecommendations(shuffleRecommendations(res.data.data, 8));
-      })
-      .catch((err) => console.log(err));
-  }
+  // function getRecommendation() {
+  //   axios
+  //     .get("http://127.0.0.1/api/v1/getrecommendation", {
+  //       withCredentials: true,
+  //     })
+  //     .then((res) => {
+  //       setRecommendations(shuffleRecommendations(res.data.data, 8));
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
 
-  const shuffleRecommendations = (array, count) => {
-    const shuffledArray = array.sort(() => Math.random() - 0.5);
-    return shuffledArray.slice(0, count);
-  };
-
+  // const shuffleRecommendations = (array, count) => {
+  //   const shuffledArray = array.sort(() => Math.random() - 0.5);
+  //   return shuffledArray.slice(0, count);
+  // };
 
   return (
     <div style={{ maxWidth: "1440px", margin: "auto", width: "90%" }}>

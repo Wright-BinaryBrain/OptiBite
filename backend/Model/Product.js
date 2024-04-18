@@ -1,9 +1,4 @@
 const mongoose = require("mongoose");
-const Review = require("./Review");
-const Category = require("./Category");
-const ProductFamily = require("./ProductFamily");
-const ProductType = require("./ProductType");
-const Package = require("./Package");
 const { required } = require("joi");
 
 // const productSchema = new mongoose.Schema(

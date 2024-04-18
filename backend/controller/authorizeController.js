@@ -1,5 +1,4 @@
 const User = require("../Model/User");
-const ContactOtp = require("../Model/ContactOtp");
 
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
@@ -33,8 +32,6 @@ exports.register = catchAsyncErrors(async (req, res, next) => {
       success: false,
     });
   } else {
-    const contactOtp = await ContactOtp.findOne({ contactNo1: contactNo1 });
-
     const user = await User.create({
       name,
       email,
@@ -83,7 +80,6 @@ exports.getMe = catchAsyncErrors(async (req, res, next) => {
       success: true,
       user: user,
     });
-    
   } catch (error) {
     console.log(error);
   }

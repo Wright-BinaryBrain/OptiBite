@@ -55,7 +55,7 @@ const ScheduleProducts = () => {
   const fetchOrders = async () => {
     try {
       const response = await axios.get(
-        "http://3.147.205.53/api/v1/getAllScheduledOrders",
+        "http://127.0.0.1/api/v1/getAllScheduledOrders",
         {
           withCredentials: true,
         }
@@ -69,12 +69,9 @@ const ScheduleProducts = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get(
-        "http://3.147.205.53/api/v1/getAllUser",
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.get("http://127.0.0.1/api/v1/getAllUser", {
+        withCredentials: true,
+      });
       setUsers(response.data.data);
     } catch (error) {
       console.error("Failed to fetch users:", error);
@@ -83,12 +80,9 @@ const ScheduleProducts = () => {
   const schedule = true;
   const fetchProducts = async () => {
     try {
-      const response = await axios.get(
-        "http://3.147.205.53/api/v1/getProducts",
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.get("http://127.0.0.1/api/v1/getProducts", {
+        withCredentials: true,
+      });
       setProducts(response.data.data);
     } catch (error) {
       console.error("Failed to fetch products:", error);
@@ -98,7 +92,7 @@ const ScheduleProducts = () => {
   const updateOrderStatus = async (orderId, newStatus) => {
     try {
       await axios.patch(
-        `http://3.147.205.53/api/v1/updateScheduledOrder/${orderId}`,
+        `http://127.0.0.1/api/v1/updateScheduledOrder/${orderId}`,
         { orderStatus: newStatus },
         { withCredentials: true }
       );
@@ -111,7 +105,7 @@ const ScheduleProducts = () => {
   const deleteOrder = async (orderId) => {
     try {
       await axios.delete(
-        `http://3.147.205.53/api/v1/deleteScheduledOrder/${orderId}`,
+        `http://127.0.0.1/api/v1/deleteScheduledOrder/${orderId}`,
         {
           withCredentials: true,
         }

@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const Favourite = require("../Model/Favourite");
 
 const userSchema = new mongoose.Schema(
   {
@@ -48,7 +47,7 @@ const userSchema = new mongoose.Schema(
     address: {
       type: String,
       required: false,
-    }
+    },
   },
   { timestamps: true }
 );
